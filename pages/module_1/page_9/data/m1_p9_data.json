@@ -1,0 +1,152 @@
+{
+  "mainAudio": {
+    "audioSRC": "assets/audios/1sec.mp3",
+    "isEmptyAudio": false,
+    "audioIndex": 0
+  },
+  "bgImgs": [],
+  "imgCollage": {
+    "desktop": [
+      {
+        "imageSRC": "",
+        "altText": ""
+      }
+    ],
+    "portrait": [
+      {
+        "imageSRC": "",
+        "altText": ""
+      }
+    ]
+  },
+  "sections": [
+    {
+      "slideTitle": "Build the Clock",
+      "headerTitle": "Tick Tock Clock",
+      "headerImg": "pages/module_1/page_9/images/header_bg.png",
+      "headerText": "pages/module_1/page_9/images/header_title.png",
+      "ost": "",
+      "iText": [
+        "",
+        "Hi there, little learner! <br/> Welcome to Tick-Tock <span class='red'>Clock Town!</span><br/> Let's learn about <span class='red'>time</span> today!",
+        "Look here! This is a <span class='red'>clock.</span>",
+        "A <span class='red'>clock</span> tells us the time.",
+        "",
+        "<span class='red'>Oh no!</span> <br/>The numbers on the clock are missing!",
+        "Can you help the <span class='red'>clock</span> arrange the <span class='red'>numbers?</span>",
+        "Drag the <span class='red'>numbers</span> and place them in the correct position on the <span class='red'>clock.</span>",
+        "Yay! The clock looks perfect now!",
+        "",
+        "Now let's add the <span class='red'>clock hands.</span>",
+        "<span class='red'>Drag</span> them onto the clock!",
+        "This is the <span class='red'>short hand.</span>",
+        "The <span class='red'>short hand</span> shows the hour.",
+        "This is the <span class='red'>long hand.</span>",
+        "The <span class='red'>long hand</span> shows the minutes.",
+        "Move the short hand to show <br/><span class='red'>3 o'clock.</span>",
+        "Great job! This is <br/><span class='red'>3 o'clock!</span>",
+        "Now, show <br/><span class='red'>6 o'clock.</span>",
+        "Well done! <br/>This is <span class='red'>6 o'clock!</span>",
+        "Can you show <br/><span class='red'>9 o'clock?</span>",
+        "Yay! This is <br/><span class='red'>9 o'clock!</span>",
+        "Let's try <br/><span class='red'>12 o'clock!</span>",
+        "Great job!<br/> This is <span class='red'>12 o'clock.</span>",
+        "Amazing! You built the <span class='red'>clock!</span> You are a time star! "
+      ],
+      "endAudio": "",
+      "infoImg": "pages/module_1/page_9/images/info_box.png",
+      "backBtnSrc": "assets/images/back.png",
+      "infoAudio": "pages/module_1/page_9/audios/info.mp3",
+      "introAudio": "pages/module_1/page_9/audios/Let’s learn about time today!.mp3",
+      "correctAudio": [
+        "pages/module_1/page_9/audios/correct.mp3",
+        "pages/module_1/page_9/audios/correct2.mp3",
+        "pages/module_1/page_9/audios/correct3.mp3",
+        "pages/module_1/page_9/audios/correct4.mp3"
+      ],
+      "idleAudio": "pages/module_1/page_9/audios/idle.mp3",
+      "wrongAudio": "pages/module_1/page_9/audios/wrong.mp3",
+      "greatJob": "pages/module_1/page_9/audios/great_job.mp3",
+      "finalAudio": "pages/module_1/page_9/audios/final_audio.mp3",
+      "endClock": "pages/module_1/page_9/images/end_clock.png",
+      "emptyClock": "pages/module_1/page_9/images/empty_clock.png",
+      "content": {
+        "correctFeedback": {
+          "text": "Great job!",
+          "audioSrc": "pages/module_1/page_9/audios/correct.mp3"
+        },
+        "wrongFeedback": {
+          "text": "Try again!",
+          "audioSrc": "pages/module_1/page_9/audios/wrong.mp3"
+        },
+        "btnAudios": [
+          "pages/module_1/page_9/audios/click.mp3"
+        ],
+        "replayAudios": [
+          "pages/module_1/page_9/audios/Scene1.mp3",
+          "pages/module_1/page_9/audios/Scene2.mp3",
+          "pages/module_1/page_9/audios/Scene3.mp3",
+          "pages/module_1/page_9/audios/Scene4.mp3",
+          "pages/module_1/page_9/audios/Scene5.mp3",
+          "pages/module_1/page_9/audios/Scene6.mp3",
+          "pages/module_1/page_9/audios/Scene7.mp3",
+          "pages/module_1/page_9/audios/Scene8.mp3",
+          "pages/module_1/page_9/audios/Scene9.mp3",
+          "pages/module_1/page_9/audios/Scene10.mp3",
+          "pages/module_1/page_9/audios/Scene11.mp3",
+          "pages/module_1/page_9/audios/Scene12.mp3",
+          "pages/module_1/page_9/audios/Scene13.mp3",
+          "pages/module_1/page_9/audios/Scene14.mp3",
+          "pages/module_1/page_9/audios/Scene15.mp3",
+          "pages/module_1/page_9/audios/Scene16.mp3",
+          "pages/module_1/page_9/audios/Scene17.mp3",
+          "pages/module_1/page_9/audios/Scene18.mp3",
+          "pages/module_1/page_9/audios/Scene19.mp3",
+          "pages/module_1/page_9/audios/Scene2-3.mp3",
+          "pages/module_1/page_9/audios/Scene8-2.mp3",
+          "pages/module_1/page_9/audios/Scene9-2.mp3",
+          "pages/module_1/page_9/audios/Scene4-2.mp3",
+          "pages/module_1/page_9/audios/Scene7-2.mp3"
+        ],
+        "correctAudio": "pages/module_1/page_9/audios/correct.mp3",
+        "clockImg": "pages/module_1/page_9/images/clock_bg.png",
+        "overlay": "pages/module_1/page_9/images/red_overlay.png",
+        "clockCompleteImg": "pages/module_1/page_9/images/clock_bg.png",
+        "handGuideImg": "pages/module_1/page_9/images/hand_guide.png",
+        "minute_guide": "pages/module_1/page_9/images/minute_guide.png",
+        "seconds_guide": "pages/module_1/page_9/images/seconds_guide.png",
+        "hands": {
+          "hour": "pages/module_1/page_9/images/hour_hand.png",
+          "minute": "pages/module_1/page_9/images/minute_hand.png"
+        },
+        "shortHandReplay": "pages/module_1/page_9/audios/short_hand_replay.mp3",
+        "shortHandReplayText": "Drag the <span class='red'>short hand</span> on to the <span class='red'>clock</span>",
+        "longHandReplay": "pages/module_1/page_9/audios/long_hand_replay.mp3",
+        "longHandReplayText": "Drag the <span class='red'>long hand</span> on to the <span class='red'>clock</span>",
+        "replay3": "pages/module_1/page_9/audios/replay_3_clock.mp3",
+        "replay3Text": "Move the short hand to show<br/><span class='red'>3 o'clock</span>",
+        "replay6": "pages/module_1/page_9/audios/replay_6_clock.mp3",
+        "replay6Text": "Move the short hand to show<br/><span class='red'>6 o'clock</span>",
+        "replay9": "pages/module_1/page_9/audios/replay_9_clock.mp3",
+        "replay9Text": "Move the short hand to show<br/><span class='red'>9 o'clock</span>",
+        "replay12": "pages/module_1/page_9/audios/replay_12_clock.mp3",
+        "replay12Text": "Move the short hand to show<br/><span class='red'>12 o'clock</span>"
+      }
+    }
+  ],
+  "transcriptText": [
+    [
+      "Welcome to Tick-Tock Clock Town!",
+      "Let’s build the clock by placing numbers and hands."
+    ]
+  ],
+  "ccText": [
+    [
+      {
+        "text": "",
+        "startTime": 0,
+        "endTime": 6
+      }
+    ]
+  ]
+}

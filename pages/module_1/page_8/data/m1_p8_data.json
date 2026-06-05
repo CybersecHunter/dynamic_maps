@@ -1,0 +1,257 @@
+{
+  "mainAudio": {
+    "audioSRC": "assets/audios/1sec.mp3",
+    "isEmptyAudio": false,
+    "audioIndex": 0
+  },
+  "bgImgs": [
+    {
+      "imageSRC": "pages/module_1/page_8/images/banana.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/simulation.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/fun_game.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/great_job.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/back.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/bg_music.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/bg_pause.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/bg_music.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/close.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/bg_pause.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/correct.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/header_bg.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/header_title.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/info.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/info_disabled.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/music.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/mute.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/pause.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/reload.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/replay.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/right_bg.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_8/images/wrong.png",
+      "altText": ""
+    }
+  ],
+  "imgCollage": {
+    "desktop": [
+      {
+        "imageSRC": "",
+        "altText": ""
+      }
+    ],
+    "portrait": [
+      {
+        "imageSRC": "",
+        "altText": ""
+      }
+    ]
+  },
+  "sections": [
+    {
+      "slideTitle": "Course Objectives",
+      "headerTitle": "Heavy - Light",
+      "headerImg": "pages/module_1/page_8/images/header_bg.png",
+      "headerText": "pages/module_1/page_8/images/header_title.png",
+      "infoAudio": "pages/module_1/page_8/audios/info_audio.mp3",
+      "replayBtnAudios": "pages/module_1/page_8/audios/ost_audio.mp3",
+      "infoImg": "pages/module_1/page_8/images/fun_game.png",
+      "ost": "",
+      "iText": "What <span>time</span> is this? <span>Tap</span> the correct answer.",
+      "endAudio": "",
+      "backBtnSrc": "pages/module_1/page_8/images/back.png",
+      "introAudio": "pages/module_1/page_8/audios/intro_audio.mp3",
+      "correctAudio": [
+        "pages/module_1/page_8/audios/good_job.mp3",
+        "pages/module_1/page_8/audios/Excellent.mp3",
+        "pages/module_1/page_8/audios/Awesome!.mp3",
+        "pages/module_1/page_8/audios/Amazing!.mp3",
+        "pages/module_1/page_8/audios/Well_done.mp3"
+      ],
+      "correctTune":"pages/module_1/page_8/audios/claping.mp3",
+      "incorrectTune":"pages/module_1/page_8/audios/incorrectDragNDrop.mp3",
+      "wrongAudio": "pages/module_1/page_8/audios/try_again.mp3",
+      "finalAudio": "pages/module_1/page_8/audios/final_audio.mp3",
+      "defaultPng": "pages/module_1/page_8/images/option_default.png",
+      "correctPng": "pages/module_1/page_8/images/option_correct.png",
+      "wrongPng": "pages/module_1/page_8/images/option_wrong.png",
+      "star": "pages/module_1/page_7/images/star.png",
+      "cursor": "pages/module_1/page_7/images/hand.png",
+      "content": {
+        "questions": [
+          {
+            "id": 1,
+            "watchFaceImage": "pages/module_1/page_8/images/clock_3.png",
+            "options": [
+              {
+                "id": "A",
+                "text": "3 o'clock"
+              },
+              {
+                "id": "B",
+                "text": "2 o'clock"
+              },
+              {
+                "id": "C",
+                "text": "5 o'clock"
+              }
+            ],
+            "correctOption": "A"
+          },
+          {
+            "id": 2,
+            "watchFaceImage": "pages/module_1/page_8/images/clock_5.png",
+            "options": [
+              {
+                "id": "A",
+                "text": "11 o'clock"
+              },
+              {
+                "id": "B",
+                "text": "5 o'clock"
+              },
+              {
+                "id": "C",
+                "text": "4 o'clock"
+              }
+            ],
+            "correctOption": "B"
+          },
+          {
+            "id": 3,
+            "watchFaceImage": "pages/module_1/page_8/images/clock_9.png",
+            "options": [
+              {
+                "id": "A",
+                "text": "6 o'clock"
+              },
+              {
+                "id": "B",
+                "text": "8 o'clock"
+              },
+              {
+                "id": "C",
+                "text": "9 o'clock"
+              }
+            ],
+            "correctOption": "C"
+          },
+          {
+            "id": 4,
+            "watchFaceImage": "pages/module_1/page_8/images/clock_1.png",
+            "options": [
+              {
+                "id": "A",
+                "text": "12 o'clock"
+              },
+              {
+                "id": "B",
+                "text": "1 o'clock"
+              },
+              {
+                "id": "C",
+                "text": "5 o'clock"
+              }
+            ],
+            "correctOption": "B"
+          },
+          {
+            "id": 5,
+            "watchFaceImage": "pages/module_1/page_8/images/clock_12.png",
+            "options": [
+              {
+                "id": "A",
+                "text": "10 o'clock"
+              },
+              {
+                "id": "B",
+                "text": "6 o'clock"
+              },
+              {
+                "id": "C",
+                "text": "12 o'clock"
+              }
+            ],
+            "correctOption": "C"
+          }
+        ]
+      }
+    }
+  ],
+  "transcriptText": [
+    [
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+    ]
+  ],
+  "ccText": [
+    [
+      {
+        "text": "",
+        "startTime": 0,
+        "endTime": 6.2
+      }
+    ]
+  ]
+}

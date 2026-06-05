@@ -1,0 +1,15 @@
+{
+    "app_name": "index",
+    "main": "C:\\xampp\\htdocs\\project\\Module_2\\Number_Pattern_module_2\\index.html",
+    "name": "number_pattern_module_2",
+    "webkit": {},
+    "window": {
+        "frame": true,
+        "id": "Number_Pattern_module_2",
+        "resizable": true,
+        "show": true,
+        "show_in_taskbar": true,
+        "title": "Number_Pattern_module_2",
+        "visible": true
+    }
+}

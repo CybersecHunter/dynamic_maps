@@ -1,0 +1,832 @@
+// ---------- setting start ---------------
+var _preloadData, _pageData;
+var _pagePreloadArray = {
+  image: 1,
+  audio: 1,
+  video: 1,
+  data: -1,
+}; // item not availble please assign value 1.
+var jsonSRC = "pages/module_1/page_10/data/m1_p10_data.json?v=";
+_pageAudioSync = true;
+_forceNavigation = false;
+_audioRequired = false;
+_videoRequired = false;
+storeCurrentAudioTime = 0;
+_popupAudio = false;
+_reloadRequired = true;
+_globalCicked = 0;
+_currentAudio = null;
+_isPlayed = false;
+_checkAudioFlag = false;
+_tweenTimeline = null;
+_popTweenTimeline = null;
+var lastPatternId = null;
+
+var _audioIndex = 0;
+_videoId = null;
+_audioId = null;
+// ---------- setting end ---------------
+var sectionCnt = 0;
+var totalSection = 0;
+var prevSectionCnt = -1;
+var sectionTopPos = [];
+var playMainAudio = false;
+
+var dataValue = []; var currentPattern = null; var currentIndex = 0;
+var patterns = [];
+// ---------- Memory Game State ----------
+var memCards = [];
+var memFlipped = [];
+var memMatched = 0;
+var memLock = false;
+
+
+// ------------------ common function start ------------------------------------------------------------------------
+$(document).ready(function () {
+  //console.log('Page ready')
+  _preloadData = new PagePreload();
+  _preloadData.initObj(_pagePreloadArray, jsonSRC);
+  _preloadData.addCustomEvent("ready", _pageLoaded);
+  //console.log('Page ready 1', _preloadData)
+});
+
+function _pageLoaded() {
+  //console.log('_pageLoaded')
+  _pageData = _preloadData.jsonData;
+  if (_audioRequired) {
+    _audioId = _pageData.mainAudio.audioSRC;
+    _audioIndex = _pageData.mainAudio.audioIndex;
+  }
+
+  if (_videoRequired) _videoId = "courseVideo";
+
+  //addSlideData();
+  console.log(_pageData.sections, _pageData.sections[0].backBtnSrc, "pageDAtat")
+  appState.pageCount = _controller.pageCnt - 1;
+  addSectionData();
+  $('.introInfo').attr('data-popup', 'introPopup-7');
+  $("#f_header").css({ backgroundImage: `url(${_pageData.sections[0].headerImg})` });
+  $("#f_header").find("#f_courseTitle").css({ backgroundImage: `url(${_pageData.sections[0].headerText})` });
+  $(".home_btn").css({ backgroundImage: `url(${_pageData.sections[0].backBtnSrc})` });
+  // playBtnSounds(_pageData.sections[sectionCnt - 1].endAudio);
+  //   showEndAnimations();
+  //checkGlobalAudio();
+  assignAudio(
+    _audioId,
+    _audioIndex,
+    _pageAudioSync,
+    _forceNavigation,
+    _videoId,
+    _popupAudio,
+    _reloadRequired
+  );
+  pagePreLoad();
+}
+
+// ------------------ common function end ------------------------------------------------------------------------
+
+// -------- adding slide data ------------
+
+
+// -------- adding slide data ------------
+function addSectionData() {
+  totalSection = _pageData.sections.length;
+  for (let n = 0; n < _pageData.sections.length; n++) {
+    sectionCnt = n + 1;
+    if (sectionCnt == 1) {
+
+      playBtnSounds(_pageData.sections[sectionCnt - 1].replayBtnAudios);
+      audioEnd(function () {
+        $(".dummy-patch").hide();
+        $(".wrapTextaudio").removeClass("playing");
+        $(".wrapTextaudio").addClass("paused");
+        resetSimulationAudio();
+      });
+
+      // ---- Instruction line ----
+
+      let mapHtml = `
+      <div class="dynamic-map-container">
+          <!-- Layers Sidebar -->
+          <div class="layers-sidebar">
+              <div class="layers-header">
+                  <h3>`+ _pageData.sections[0].content.uiText.layersPanelTitle + `</h3>
+                  <div class="layer-info-tooltip">
+                      <button class="layer-i-btn">i</button>
+                      <div class="tooltip-text">`+ _pageData.sections[0].content.uiText.layersTooltip + `</div>
+                  </div>
+              </div>
+              <div class="layers-list">`;
+
+      for (let i = 0; i < _pageData.sections[0].content.mapLayers.length; i++) {
+        let layer = _pageData.sections[0].content.mapLayers[i];
+        mapHtml += `
+                  <label class="layer-option">
+                      <input type="radio" name="map_layer" value="${layer.value}">
+                      <span class="checkmark"></span>
+                      ${layer.label}
+                  </label>`;
+      }
+      mapHtml += `</div>
+          </div>
+          
+          <!-- Map Area -->
+          <div class="map-view-area">
+              <div class="zoom-controls">
+                  <button class="zoom-btn" id="mapZoomIn" title="Zoom In">+</button>
+                  <button class="zoom-btn" id="mapZoomOut" title="Zoom Out">-</button>
+                  <button class="reset-view-btn" id="mapReset" style="display:none;">Reset View</button>
+              </div>
+              
+              <div class="map-wrapper" id="mapWrapper">
+               <div class="map-img-layer" id="mapImgLayer">
+                  <img src="`+ _pageData.sections[0].content.mapImage.src + `" 
+                    alt="` + _pageData.sections[0].content.mapImage.alt + `" 
+                    id="baseMapImg" 
+                    onerror="this.src='` + _pageData.sections[0].content.mapImage.fallback + `'" 
+                    style="width:100%; height:auto;" />
+                </div>
+                  <svg class="map-svg-overlay" id="physicalLayerSVG" 
+                    viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet" 
+                    style="display:none; position:absolute; top:0; left:0; width:100%; height:100%;">
+                  </svg>
+                  <div class="map-region-tooltip" id="mapTooltip" style="display:none;"></div>
+              </div>
+          </div>
+          
+          <!-- Information Panel -->
+          <div class="div-info-panel" id="divInfoPanel" style="display:none;">
+              <div class="info-content">
+                  <h2 id="infoTitle">Division Name</h2>
+                  <p id="infoDesc">Description of the physical division goes here.</p>
+                  <h4>`+ _pageData.sections[0].content.uiText.infoPanelKeyFeaturesLabel + `</h4>
+                  <ul id="infoFeatures"></ul>
+              </div>
+          </div>
+      </div>
+      `;
+
+      $("#section-" + sectionCnt)
+        .find(".content-holder")
+        .find(".col-left")
+        .find(".content")
+        .find(".content-bg")
+        .find(".content-style")
+        .html(mapHtml); // Replace everything with mapHTML
+
+      initMapInteractions();
+
+    } // end sectionCnt == 1
+  } // end for
+} // end addSectionData
+
+
+// ============================================================
+// MAP INTERACTIONS — FUNCTIONS
+// ============================================================
+
+let currentZoomScale = 1;
+
+function initMapInteractions() {
+  $("input[name='map_layer']").on("change", function () {
+    let val = $(this).val();
+    renderLayer(val);
+  });
+
+  $("#mapReset").on("click", function () {
+    currentZoomScale = 1;
+    TweenMax.to("#mapWrapper", 1, {
+      scale: 1,
+      transformOrigin: "center center",
+      ease: Power2.easeInOut
+    });
+    $(".phy-region").removeClass("active");
+    TweenMax.to(".phy-region", 0.3, { fillOpacity: 0.6, strokeWidth: 2 });
+    $("#divInfoPanel").fadeOut();
+    $(this).fadeOut();
+  });
+
+  $("#mapZoomIn").on("click", function () {
+    currentZoomScale += _pageData.sections[0].content.zoomSettings.step;
+    if (currentZoomScale > _pageData.sections[0].content.zoomSettings.max)
+      currentZoomScale = _pageData.sections[0].content.zoomSettings.max;
+    TweenMax.to("#mapWrapper", 0.5, { scale: currentZoomScale, ease: Power2.easeOut });
+    $("#mapReset").fadeIn();
+  });
+
+  $("#mapZoomOut").on("click", function () {
+    currentZoomScale -= _pageData.sections[0].content.zoomSettings.step;
+    if (currentZoomScale < _pageData.sections[0].content.zoomSettings.min)
+      currentZoomScale = _pageData.sections[0].content.zoomSettings.min;
+    TweenMax.to("#mapWrapper", 0.5, { scale: currentZoomScale, ease: Power2.easeOut });
+    if (currentZoomScale === _pageData.sections[0].content.zoomSettings.defaultScale)
+      $("#mapReset").fadeOut();
+  });
+}
+
+// ── Renders image + SVG regions for the selected layer ──
+function renderLayer(layerKey) {
+  let layerData = _pageData.sections[0].content.layerData[layerKey];
+  if (!layerData) return;
+
+  // Reset view
+  $("#mapReset").trigger("click");
+  $("#divInfoPanel").hide();
+
+  // 1. Swap map image
+  $("#baseMapImg").attr("src", layerData.mapImage.src)
+    .attr("alt", layerData.mapImage.alt);
+
+  // 2. Rebuild SVG regions
+  let svgHtml = "";
+  layerData.regions.forEach(function (r) {
+    svgHtml += `<path class="phy-region"
+      data-id="${r.id}"
+      d="${r.d}"
+      fill="${r.fill}"
+      stroke="#fff"
+      stroke-width="2"/>`;
+  });
+  $("#physicalLayerSVG").html(svgHtml).fadeIn();
+
+  // 3. Re-bind hover + click on new paths
+  bindRegionEvents(layerData.regions);
+}
+
+
+function bindRegionEvents(regions) {
+  let regionMap = {};
+  regions.forEach(r => regionMap[r.id] = r);
+
+  $(document).off("mouseenter mouseleave click", ".phy-region");
+
+  $(".phy-region").on("mouseenter", function () {
+    if (!$(this).hasClass("active")) {
+      TweenMax.to(this, 0.3, { fillOpacity: 0.9, strokeWidth: 4 });
+      $(this).css("cursor", "pointer");
+      let regionId = $(this).data("id");
+      let d = regionMap[regionId];
+      if (d) {
+        $("#mapTooltip").text(d.name).fadeIn(150);
+      }
+    }
+  }).on("mousemove", function (e) {
+    // ✅ Follow cursor
+    let offset = $("#mapWrapper").offset();
+    let x = e.pageX - offset.left + 12;
+    let y = e.pageY - offset.top + 12;
+    $("#mapTooltip").css({ left: x + "px", top: y + "px" });
+  }).on("mouseleave", function () {
+    if (!$(this).hasClass("active")) {
+      TweenMax.to(this, 0.3, { fillOpacity: 0.6, strokeWidth: 2 });
+    }
+    $("#mapTooltip").fadeOut(100);
+  }).on("click", function () {
+    let regionId = $(this).data("id");
+    let d = regionMap[regionId];
+    if (!d) return;
+    if (d.highlightImg) {
+      $("#baseMapImg").fadeOut(200, function () {
+        $(this).attr("src", d.highlightImg).fadeIn(300);
+      });
+    }
+
+    $(".phy-region").removeClass("active");
+    TweenMax.to(".phy-region", 0.3, { fillOpacity: 0.3, strokeWidth: 1 });
+
+    $(this).addClass("active");
+    TweenMax.to(this, 0.3, { fillOpacity: 1, strokeWidth: 4 });
+
+    TweenMax.to("#mapWrapper", 1, {
+      scale: d.scale,
+      transformOrigin: d.cx + " " + d.cy,
+      ease: Power2.easeInOut
+    });
+
+    $("#infoTitle").text(d.name);
+    $("#infoDesc").text(d.desc);
+    let fHtml = "";
+    d.features.forEach(f => fHtml += "<li>" + f + "</li>");
+    $("#infoFeatures").html(fHtml);
+    $("#divInfoPanel").fadeIn();
+    $("#mapReset").fadeIn();
+  });
+}
+/* ---------- showEndAnimations — overrides shared version ---------- */
+function showEndAnimations() {
+  var $audio = $("#simulationAudio");
+  closePopup("introPopup-7");
+  pageVisited();
+
+  $audio.on("timeupdate", function () {
+    var currentTime = this.currentTime;
+    $(".greetingsPop").css({ visibility: "visible", opacity: "1" });
+
+    if (currentTime >= 1) {
+      $(".confetti").addClass("show");
+
+      setTimeout(function () {
+        $(".greetingsPop").css({ visibility: "hidden", opacity: "0" });
+        $(".popup").css({ visibility: "visible", opacity: "1" });
+      }, 1500);
+
+      setTimeout(function () {
+        $(".confetti").removeClass("show");
+      }, 2000);
+
+      $audio.off("timeupdate");
+    }
+  });
+}
+
+
+/* ---------- restartActivity — overrides shared version ---------- */
+function restartActivity() {
+  $(".popup").css("opacity", "0");
+  setTimeout(function () {
+    $(".popup").css({ visibility: "hidden", opacity: "0" });
+  }, 500);
+
+  _globalCicked = 0;
+  memRerenderGrid();
+}
+
+function playFeedbackAudio(_audio) {
+  $(".dummy-patch").show();
+  playBtnSounds(_audio)
+  audioEnd(function () {
+    $(".dummy-patch").hide();
+  })
+}
+
+
+function onClickAudioHandler(e) {
+
+  $("#simulationAudio")[0].pause();
+  playClickThen();
+  $('.dummy-box').show();
+  e.stopPropagation();
+  const audioSrc = $(this).data('audio');
+  if (!audioSrc) {
+    console.log('No audio src found');
+    return;
+  }
+
+  const audio = document.getElementById('simulationAudio');
+  if (!audio) {
+    console.log('Audio element not found');
+    return;
+  }
+
+  audio.src = audioSrc;
+  audio.currentTime = 0;
+
+  audio.play().catch(err => {
+    console.error('Audio play failed:', err);
+  });
+
+  audio.addEventListener('ended', function () {
+    console.log('Audio finished playing');
+    $("dummy-patch").hide();
+    resetSimulationAudio();
+
+    $('.dummy-box').hide();
+
+  });
+}
+
+/* ---------------- Interaction ---------------- */
+$(document).on("pointerdown", ".cup", function (e) {
+  e.preventDefault();
+
+  if (!currentPattern) return;
+
+  const selectedValue = $(this).data("value");
+  const correctValue = currentPattern.correctNextValue;
+
+  if (selectedValue !== correctValue) {
+    wrongFeedback(this);
+    return;
+  }
+
+  correctFeedback(this);
+  fillNextSlot(selectedValue);
+});
+
+function stayPage() {
+  playClickThen();
+  // AudioController.play();
+
+  // Resume simulation audio if it was playing before popup
+  if (typeof resumeSimulationAudio === 'function') {
+    resumeSimulationAudio();
+  }
+
+  $("#home-popup").hide();
+}
+
+function leavePage() {
+  playClickThen();
+
+
+  var audio = document.getElementById("simulationAudio");
+  if (audio) {
+    // Stop audio whether it's playing or paused
+    audio.pause();
+    audio.currentTime = 0;
+  }
+
+  // Clear the manual pause flag since we're leaving
+  if (typeof isManuallyPaused !== 'undefined') {
+    isManuallyPaused = false;
+  }
+  if (typeof simulationWasPlaying !== 'undefined') {
+    simulationWasPlaying = false;
+  }
+
+  jumtoPage(5);
+}
+
+function jumtoPage(pageNo) {
+  playClickThen();
+
+  _controller.pageCnt = pageNo;
+
+  _controller.updateViewNow();
+}
+
+
+var activeAudio = null;
+
+function playBtnSounds(soundFile) {
+  if (!soundFile) {
+    console.warn("Audio source missing!");
+    return;
+  }
+
+  console.log("calling audios");
+
+  const audio = document.getElementById("simulationAudio");
+
+  // Stop previous audio if it exists
+  if (activeAudio && !activeAudio.paused) {
+    activeAudio.pause();
+    // Do NOT reset src yet, let it finish
+  }
+
+  audio.loop = false;
+  audio.src = soundFile;
+  audio.load();
+
+  activeAudio = audio;
+
+  audio.play().catch((err) => {
+    console.warn("Audio play error:", err);
+  });
+
+}
+
+
+
+function resetSimulationAudio() {
+
+  $("dummy-patch").hide();
+
+  const audioElement = document.getElementById("simulationAudio");
+  if (!audioElement) return;
+
+  audioElement.pause();
+
+  audioElement.src = "";
+  audioElement.removeAttribute("src");
+
+  const source = audioElement.querySelector("source");
+  if (source) source.src = "";
+
+  audioElement.load();
+  audioElement.onended = null;
+  // ✅ ensure button enabled
+
+}
+
+
+
+
+
+function audioEnd(callback) {
+  const audio = document.getElementById("simulationAudio");
+  audio.onended = null;
+  audio.onended = () => {
+    if (typeof callback === "function") callback();
+  };
+}
+
+
+function toggleAudio(el) {
+  playClickThen();
+  // console.log(event, "current e")
+  // const el = event.currentTarget; 
+  const audio = document.getElementById("audio_src");
+
+  // console.log(el, "Target class");
+
+  if (audio.paused) {
+    audio.muted = false;
+    audio.play();
+    el.classList.remove("mute");
+    el.classList.add("playing");
+    _controller._globalMusicPlaying = true;
+  } else {
+    audio.pause();
+    el.classList.remove("playing");
+    el.classList.add("mute");
+    _controller._globalMusicPlaying = false;
+  }
+}
+
+var AudioController = (() => {
+  const audio = document.getElementById("simulationAudio");
+
+  const hasAudio = () => audio && audio.src;
+
+  return {
+    play() {
+      if (hasAudio()) audio.play();
+    },
+    pause() {
+      if (hasAudio()) audio.pause();
+    }
+  };
+})();
+
+
+
+
+
+
+function restartActivity() {
+  $(".popup").css("opacity", "0");
+  setTimeout(function () {
+    $(".popup").css("display", "none");
+  }, 500);
+  _globalCicked = 0;
+  restartPage();
+}
+
+function showEndAnimations() {
+  var $audio = $("#simulationAudio");
+  closePopup('introPopup-1');
+  console.log("Audio ending");
+  pageVisited();
+
+  $audio.on("timeupdate", function () {
+    var currentTime = this.currentTime;
+    $(".greetingsPop").css("visibility", "visible");
+    $(".greetingsPop").css("opacity", "1");
+
+    if (currentTime >= 1) {
+      $(".confetti").addClass("show");
+      // $(".confetti").show();
+      setTimeout(function () {
+        $(".greetingsPop").css("visibility", "hidden");
+        $(".greetingsPop").css("opacity", "0");
+        $(".popup").css("visibility", "visible");
+        $(".popup").css("opacity", "1");
+      }, 1500)
+      setTimeout(function () {
+        $(".confetti").removeClass("show");
+        // $(".confetti").hide();                
+      }, 2000);
+
+      $audio.off("timeupdate");
+    }
+
+  });
+}
+
+// function closeIntroPop(ldx) {
+//   playClickThen();
+//   // AudioController.play();
+//   document.getElementById(ldx).style.display = 'none';
+//   let audio = document.getElementById("popupAudio");
+//   if (audio.src) {
+//     audio.pause();
+//     audio.currentTime = 0;
+//   }
+// }
+
+
+// --- UPDATED REPLAY FUNCTION ---
+function replayLastAudio(btn) {
+  const audio = document.getElementById("simulationAudio");
+  const audioSource = btn.getAttribute('data-src') || window.replayBtnAudio;
+
+  console.log("Replay/Toggle triggered");
+
+  // 1. RESTART: If audio has finished or isn't loaded
+  if (audio.ended || !audio.src || audio.src === "") {
+    console.log("Starting Audio Fresh");
+
+    // Reset Mute to False (Play with sound)
+    audio.muted = false;
+
+    // SHOW patch on start
+    $(".dummy-patch").show();
+
+    playBtnSounds(audioSource);
+    setButtonState(btn, "playing");
+
+    // Attach completion listener
+    audioEnd(() => {
+      setButtonState(btn, "paused");
+      $(".dummy-patch").hide(); // Always hide when done
+      console.log("Audio completed");
+    });
+    return;
+  }
+
+  // 2. TOGGLE Logic (While Playing)
+  if (audio.muted) {
+    // --- RESUME (UNMUTE) ---
+    console.log("Resuming Sound");
+    audio.muted = false;
+    setButtonState(btn, "playing");
+
+    // SHOW patch because audio is audible now
+    $(".dummy-patch").show();
+  } else {
+    // --- MUTE (SILENT PLAY) ---
+    console.log("Muting Sound");
+    audio.muted = true;
+    setButtonState(btn, "paused");
+
+    // HIDE patch because audio is silent (user wants to interact)
+    $(".dummy-patch").hide();
+  }
+}
+
+// Helper to toggle classes
+function setButtonState(btn, state) {
+  if (state === "playing") {
+    btn.classList.remove("paused");
+    btn.classList.add("playing");
+  } else if (state === "paused") {
+    btn.classList.remove("playing");
+    btn.classList.add("paused");
+  }
+}
+
+// Handle the end event
+function audioEnd(callback) {
+  const audio = document.getElementById("simulationAudio");
+  audio.onended = null;
+  audio.onended = () => {
+    if (typeof callback === "function") callback();
+  };
+}
+
+
+// function enableButtons() {
+//   $(".flip-card").prop("disabled", false);
+//   $(".flipTextAudio").prop("disabled", false);
+// }
+
+// function disableButtons() {
+//   $(".flip-card").prop("disabled", true);
+//   $(".flipTextAudio").prop("disabled", true);
+// }
+
+// function resetToggle() {
+//   $(".flip-card").removeClass('flipped');
+// }
+
+// -------- update CSS ------------
+function setCSS(sectionCnt) {
+  _wrapperWidth = $("#f_wrapper").outerWidth();
+  _wrapperHeight = $("#f_wrapper").outerHeight();
+  // ---- checking device width and height ----
+  if (_wrapperWidth > 768) {
+    for (var i = 0; i < _pageData.imgCollage.desktop.length; i++) {
+      $("#section-1")
+        .find(".bg-img")
+        .eq(i)
+        .css({
+          "background-image":
+            "url(" + _pageData.imgCollage.desktop[i].imageSRC + ")",
+          "background-size": "cover",
+        });
+    }
+  } else {
+    for (var j = 0; j < _pageData.imgCollage.portrait.length; j++) {
+      $("#section-1")
+        .find(".bg-img")
+        .eq(j)
+        .css({
+          "background-image":
+            "url(" + _pageData.imgCollage.portrait[j].imageSRC + ")",
+          "background-size": "cover",
+        });
+    }
+  }
+}
+
+// -------- animations ------------
+//function updateCurrentTime(_currTime) {
+//    _tweenTimeline.seek(_currTime)
+//}
+
+/*
+function removeTags(str) {
+    if ((str === null) || (str === ''))
+        return false;
+    else
+        str = str.toString();
+    return str.replace(/(<([^>]+)>)/ig, '');
+}*/
+function removeTags(str) {
+  //console.log('removeTags 0', str)
+  if (str === null || str === "") {
+    return false;
+  } else {
+    str = _controller.removeTags(str);
+    return str;
+  }
+}
+function initPageAnimations() {
+  if (_tweenTimeline) {
+    _tweenTimeline.kill();
+  }
+  _tweenTimeline = new TimelineLite();
+
+  mainAnimation();
+  if (_pageAudioSync && !_pageData.mainAudio.isEmptyAudio) {
+    withAudioSync();
+  } else {
+    withoutAudioSync();
+  }
+}
+
+function mainAnimation() {
+  $(".f_page_content").animate(
+    {
+      opacity: 1,
+    },
+    300
+  );
+}
+
+function withAudioSync() {
+  _tweenTimeline.play();
+
+  _tweenTimeline.add(animateFadeIn($("h1"), 0.5).play(), 0.5);
+
+  _tweenTimeline.add(animateFadeIn($(".ost"), 0.5).play(), 0.1);
+  _tweenTimeline.add(animateFadeOut($(".ost"), 0.5).play(), 4.5);
+  _tweenTimeline.add(animateFadeOut($(".dummy-patch"), 0.5).play(), 3);
+  // _tweenTimeline.add(animateFadeIn($(".inst"), 0.5).play(), 5);
+
+  _tweenTimeline.add(
+    animateFadeIn($(".animat-container"), 0.5, 0).play(),
+    0.3
+  );
+
+  var rightListTiming = [0.3];
+  // for (var k = 0; k < rightListTiming.length; k++) {
+  //   _tweenTimeline.add(
+  //     animateFadeIn(
+  //       $(".animat-container").find(".flip-container").eq(k),
+  //       0.5,
+  //       0
+  //     ).play(),
+  //     rightListTiming[k]
+  //   );
+  // }
+}
+
+// function withoutAudioSync() {
+//   _tweenTimeline.play();
+//   _tweenTimeline.add(animateFadeIn($("h1"), 0.5).play(), 0.5);
+//   _tweenTimeline.add(animateFadeIn($(".animat-container"), 0.5, 0).play(), 0.1);
+//   let time = 1,
+//     t = 0,
+//     pTag = 0,
+//     listTag = 0,
+//     divTag = 0;
+//   let time1 = time;
+//   for (let j = 0; j < _pageData.sections[0].content.listText.length; j++) {
+//     t = time1 + j * 0.5;
+//     _tweenTimeline.add(
+//       animateFromRight(
+//         $(".animat-container").find(".list li").eq(listTag),
+//         0.5,
+//         0
+//       ).play(),
+//       t
+//     );
+//     listTag++;
+//   }
+// }
+// -------- resize page details ------------
+/*window.onresize = function() {
+    //setCSS()
+}*/

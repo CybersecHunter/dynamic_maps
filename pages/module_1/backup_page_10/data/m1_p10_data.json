@@ -1,0 +1,322 @@
+{
+  "mainAudio": {
+    "audioSRC": "assets/audios/1sec.mp3",
+    "isEmptyAudio": false,
+    "audioIndex": 0
+  },
+  "bgImgs": [
+    {
+      "imageSRC": "pages/module_1/page_10/images/banana.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_10/images/simulation.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_10/images/fun_game.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_10/images/back.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_10/images/bg_music.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_10/images/bg_pause.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_10/images/bg_music.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_10/images/close.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_10/images/bg_pause.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_10/images/correct.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_10/images/header_bg.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_10/images/header_title.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_10/images/info.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_10/images/info_disabled.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_10/images/music.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_10/images/mute.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_10/images/pause.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_10/images/reload.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_10/images/replay.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_10/images/right_bg.png",
+      "altText": ""
+    },
+    {
+      "imageSRC": "pages/module_1/page_10/images/wrong.png",
+      "altText": ""
+    }
+  ],
+  "imgCollage": {
+    "desktop": [
+      {
+        "imageSRC": "",
+        "altText": ""
+      }
+    ],
+    "portrait": [
+      {
+        "imageSRC": "",
+        "altText": ""
+      }
+    ]
+  },
+  "sections": [
+    {
+      "slideTitle": "Course Objectives",
+      "headerTitle": "Heavy - Light",
+      "headerImg": "pages/module_1/page_10/images/header_bg.png",
+      "headerText": "pages/module_1/page_10/images/header_title.png",
+      "infoAudio": "pages/module_1/page_10/audios/info_audio.mp3",
+      "replayBtnAudios": "pages/module_1/page_10/audios/ost_audio.mp3",
+      "infoImg": "pages/module_1/page_10/images/fun_game.png",
+      "ost": "",
+      "iText": "Click to match the <span>clocks</span> with the same time.",
+      "endAudio": "",
+      "backBtnSrc": "pages/module_1/page_10/images/back.png",
+      "introAudio": "pages/module_1/page_10/audios/intro_audio.mp3",
+      "correctAudio": "pages/module_1/page_10/audios/good_job.mp3",
+      "wrongAudio": "pages/module_1/page_10/audios/try_again.mp3",
+      "finalAudio": "pages/module_1/page_10/audios/final_audio.mp3",
+      "card_front": "pages/module_1/page_10/images/car_front.png",
+      "star": "pages/module_1/page_10/images/star.png",
+      "cursor": "pages/module_1/page_10/images/hand.png",
+      "content": {
+        "mapLayers": [
+          {
+            "value": "physical",
+            "label": "Physical Division of India"
+          },
+          {
+            "value": "rivers",
+            "label": "Major Rivers"
+          },
+          {
+            "value": "vegetation",
+            "label": "Vegetation"
+          },
+          {
+            "value": "population",
+            "label": "Population Density"
+          },
+          {
+            "value": "parks",
+            "label": "National Parks and Sanctuaries"
+          }
+        ],
+        "mapImage": {
+          "src": "pages/module_1/page_10/images/maps.jpg",
+          "fallback": "pages/module_1/page_10/images/demo_map.jpg",
+          "alt": "Map of India"
+        },
+        "uiText": {
+          "layersPanelTitle": "Layers",
+          "layersTooltip": "Select layer(s) to add to your map.",
+          "infoPanelKeyFeaturesLabel": "Key Features:"
+        },
+        "zoomSettings": {
+          "step": 0.5,
+          "min": 1,
+          "max": 4,
+          "defaultScale": 1
+        },
+        "layerData": {
+          "physical": {
+            "mapImage": {
+              "src": "pages/module_1/page_10/images/physical_map.jpg",
+              "alt": "Physical Map of India"
+            },
+            "regions": [
+              {
+                "id": "northern-mountains",
+                "d": "M350,150 Q450,100 550,150 Q500,200 400,200 Z",
+                "fill": "rgba(150, 200, 150, 0.6)",
+                "name": "Northern Mountains",
+                "highlightImg": "pages/module_1/page_10/images/highlight_northern_mountains.png",
+                "desc": "The great Himalayan mountain range forms the northern border of India.",
+                "features": [
+                  "High peaks like Mt. Everest and K2",
+                  "Cold climate with snow-covered mountains",
+                  "Source of major rivers like Ganga and Yamuna"
+                ],
+                "cx": "50%",
+                "cy": "15%",
+                "scale": 2.2
+              },
+              {
+                "id": "plains",
+                "d": "M300,220 Q450,200 600,250 Q500,300 350,280 Z",
+                "fill": "rgba(200, 250, 150, 0.6)",
+                "name": "Northern Plains",
+                "highlightImg": "pages/module_1/page_10/images/highlight_northern_plains.png",
+                "desc": "A large, fertile flat land formed by river deposits.",
+                "features": [
+                  "Highly fertile soil",
+                  "Densely populated",
+                  "Flat terrain"
+                ],
+                "cx": "50%",
+                "cy": "25%",
+                "scale": 2.5
+              }
+            ]
+          },
+          "rivers": {
+            "mapImage": {
+              "src": "pages/module_1/page_10/images/river.jpg",
+              "alt": "Major Rivers of India"
+            },
+            "regions": [
+              {
+                "id": "ganga",
+                "d": "M400,200 Q450,300 420,400 Z",
+                "fill": "rgba(100, 180, 255, 0.6)",
+                "name": "Ganga",
+                "highlightImg": "pages/module_1/page_10/images/highlight_ganga.png",
+                "desc": "The most sacred river of India, originating from Gangotri glacier.",
+                "features": [
+                  "Originates from Gangotri glacier",
+                  "Flows through UP, Bihar, West Bengal",
+                  "Drains into Bay of Bengal"
+                ],
+                "cx": "50%",
+                "cy": "35%",
+                "scale": 2
+              }
+            ]
+          },
+          "vegetation": {
+            "mapImage": {
+              "src": "pages/module_1/page_10/images/vegetation_map.jpg",
+              "alt": "Vegetation Map of India"
+            },
+            "regions": [
+              {
+                "id": "tropical-evergreen",
+                "d": "M350,400 Q450,350 550,400 Q500,450 400,450 Z",
+                "fill": "rgba(50, 200, 50, 0.6)",
+                "name": "Tropical Evergreen Forests",
+                "highlightImg": "pages/module_1/page_10/images/highlight_tropical_evergreen.png",
+                "desc": "Dense forests found in areas with heavy rainfall.",
+                "features": [
+                  "Found in Western Ghats and Andaman & Nicobar Islands",
+                  "Rich biodiversity with many endemic species",
+                  "Important for climate regulation"
+                ],
+                "cx": "50%",
+                "cy": "70%",
+                "scale": 2
+              }
+            ]
+          },
+          "population": {
+            "mapImage": {
+              "src": "pages/module_1/page_10/images/population_map.jpg",
+              "alt": "Population Density Map of India"
+            },
+            "regions": [
+              {
+                "id": "high-density",
+                "d": "M300,220 Q450,200 600,250 Q500,300 350,280 Z",
+                "fill": "rgba(255, 100, 100, 0.6)",
+                "name": "High Population Density",
+                "highlightImg": "pages/module_1/page_10/images/highlight_high_population.png",
+                "desc": "Areas with more than 1000 people per sq km.",
+                "features": [
+                  "Includes cities like Mumbai, Delhi, Kolkata",
+                  "High demand for resources and infrastructure",
+                  "Challenges include congestion and pollution"
+                ],
+                "cx": "50%",
+                "cy": "25%",
+                "scale": 2.5
+              }
+            ]
+          },
+          "parks": {
+            "mapImage": {
+              "src": "pages/module_1/page_10/images/parks_map.jpg",
+              "alt": "National Parks Map of India"
+            },
+            "regions": [
+              {
+                "id": "sundarbans",
+                "d": "M350,400 Q450,350 550,400 Q500,450 400,450 Z",
+                "fill": "rgba(255, 200, 50, 0.6)",
+                "name": "Sundarbans National Park",
+                "highlightImg": "pages/module_1/page_10/images/highlight_sundarbans.png",
+                "desc": "A UNESCO World Heritage Site and the largest mangrove forest in the world.",
+                "features": [
+                  "Located in West Bengal",
+                  "Home to the Bengal tiger and saltwater crocodile",
+                  "Important for coastal protection"
+                ],
+                "cx": "50%",
+                "cy": "70%",
+                "scale": 2
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "transcriptText": [
+    [
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+    ]
+  ],
+  "ccText": [
+    [
+      {
+        "text": "",
+        "startTime": 0,
+        "endTime": 6.2
+      }
+    ]
+  ]
+}

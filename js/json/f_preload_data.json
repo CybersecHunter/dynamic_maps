@@ -1,0 +1,42 @@
+{
+  "__comment": "",
+  "images": [
+    {
+      "src": "assets/images/Main_BG.png"
+    },
+    {
+      "src": "assets/images/common_bg.png"
+    },
+    {
+      "src": "assets/images/preload_sprites.png"
+    },
+    {
+      "src": "assets/images/main_logo.png"
+    },
+    {
+      "src": "pages/module_1/page_9/images/clock_bg.png"
+    }
+  ],
+  "audios": [
+    {
+      "src": "assets/audios/1sec.mp3"
+    },
+    {
+      "src": "assets/audios/BG.mp3"
+    }
+  ],
+  "videos": [
+    {
+      "src": "assets/video/video_1.mp4"
+    },
+    {
+      "src": "pages/module_1/page_1/videos/video_1.mp4"
+    },
+    {
+      "src": "pages/module_1/page_2/videos/main.mp4"
+    },
+    {
+      "src": "pages/module_1/page_6/videos/video_1.mp4"
+    }
+  ]
+}
