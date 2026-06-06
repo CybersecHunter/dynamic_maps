@@ -16,6 +16,15 @@
             "hasVideo": "false",
             "subpage": [
               {
+                "heading": "10",
+                "URL": "pages/module_1/page_10/page.html",
+                "hasAudio": "true",
+                "hasVideo": "false",
+                "page": [],
+                "inMenuShow": "true",
+                "type": "simulation"
+              },
+              {
                 "heading": "1",
                 "URL": "pages/module_1/page_1/page.html",
                 "hasAudio": "true",

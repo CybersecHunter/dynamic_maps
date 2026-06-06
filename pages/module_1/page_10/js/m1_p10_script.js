@@ -65,8 +65,8 @@ function _pageLoaded() {
   appState.pageCount = _controller.pageCnt - 1;
   addSectionData();
   $('.introInfo').attr('data-popup', 'introPopup-7');
-  $("#f_header").css({ backgroundImage: `url(${_pageData.sections[0].headerImg})` });
-  $("#f_header").find("#f_courseTitle").css({ backgroundImage: `url(${_pageData.sections[0].headerText})` });
+  // $("#f_header").css({ backgroundImage: `url(${_pageData.sections[0].headerImg})` });
+  // $("#f_header").find("#f_courseTitle").css({ backgroundImage: `url(${_pageData.sections[0].headerText})` });
   $(".home_btn").css({ backgroundImage: `url(${_pageData.sections[0].backBtnSrc})` });
   $(".home_btn").attr("data-tooltip", "Back");
   // playBtnSounds(_pageData.sections[sectionCnt - 1].endAudio);
@@ -96,13 +96,13 @@ function addSectionData() {
     sectionCnt = n + 1;
     if (sectionCnt == 1) {
 
-      playBtnSounds(_pageData.sections[sectionCnt - 1].replayBtnAudios);
-      audioEnd(function () {
-        $(".dummy-patch").hide();
-        $(".wrapTextaudio").removeClass("playing");
-        $(".wrapTextaudio").addClass("paused");
-        resetSimulationAudio();
-      });
+      // playBtnSounds(_pageData.sections[sectionCnt - 1].replayBtnAudios);
+      // audioEnd(function () {
+      //   $(".dummy-patch").hide();
+      //   $(".wrapTextaudio").removeClass("playing");
+      //   $(".wrapTextaudio").addClass("paused");
+      //   resetSimulationAudio();
+      // });
 
       // ---- Instruction line ----
 

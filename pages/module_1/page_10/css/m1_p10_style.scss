@@ -400,7 +400,7 @@
 							height: 100%;
 							position: relative;
 							overflow: hidden;
-							padding-top: clamp(50px, 9vh, 100px); // ← ADD: matches .header height
+							// padding-top: clamp(50px, 9vh, 100px); // ← ADD: matches .header height
 							box-sizing: border-box; // ← ADD: so padding doesn't cause overflow
 
 							@include tablet-landscape-height {
@@ -480,6 +480,7 @@
 							border-right: 2px solid #ddd;
 							padding: 16px; // ← ADD: internal breathing room
 							box-sizing: border-box; // ← ADD
+							padding-top: clamp(60px, 10vh, 120px); // ← ADD: matches .header height
 							// margin-top: 0;         ← already removed, keep it gone
 
 							.layers-header {
