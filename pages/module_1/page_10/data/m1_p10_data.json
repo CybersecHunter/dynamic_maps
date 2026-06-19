@@ -157,6 +157,13 @@
           "layersTooltip": "Select layer(s) to add to your map.",
           "infoPanelKeyFeaturesLabel": "Key Features:"
         },
+        "layerIcons": {
+          "physical": "pages/module_1/page_10/images/india_division.png",
+          "rivers": "pages/module_1/page_10/images/river.png",
+          "vegetation": "pages/module_1/page_10/images/vegetation.png",
+          "population": "pages/module_1/page_10/images/density.png",
+          "parks": "pages/module_1/page_10/images/park.png"
+        },
         "zoomSettings": {
           "step": 0.5,
           "min": 1,

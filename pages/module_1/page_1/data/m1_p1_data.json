@@ -4,34 +4,35 @@
 		"isEmptyAudio": false,
 		"audioIndex": 0
 	},
-	"bgImgs": [],
+	"bgImgs": [
+		{
+			"imageSRC": "pages/module_1/page_1/images/bgimg.png"
+		}
+	],
 	"imgCollage": {
 		"desktop": [
 			{
-				"imageSRC": "",
+				"imageSRC": "pages/module_1/page_1/images/bgimg.png",
 				"altText": ""
 			}
 		],
 		"portrait": [
 			{
-				"imageSRC": "",
+				"imageSRC": "pages/module_1/page_1/images/bgimg.png",
 				"altText": ""
 			}
 		]
-	},
-	"bgVid": {
-		"videoSRC": "pages/module_1/page_1/videos/video_1.mp4"
 	},
 	"sections": [
 		{
 			"slideType": "overview",
 			"slideTitle": "overview",
-			"headerTitle": "Explore & Learn: <span>Area and Perimeter</span>",
+			"headerTitle": "pages/module_1/page_1/images/title.png",
 			"infoPopAudio":"pages/module_1/page_1/audios/info_audio.mp3",
 			"infoPopImage":"pages/module_1/page_1/images/home_info.png",
-			"homeBtnSrc":"pages/module_1/page_1/images/home.png",
+			"homeBtnSrc": "assets/images/home.png",
 			"ost": "",
-			"insText": "Select a map to explore.",
+			"insText": "Choose one of the maps to explore further.",
 			"content": {
 				"text": [
 					""
@@ -48,7 +49,7 @@
 						"title": "Physical Map of India"
 					},
 					{
-						"sectionID": 2,
+						"sectionID": 11,
 						"sectionIndx": 2,
 						"infoAudio": "pages/module_1/page_1/audios/audio2.mp3",
 						"isEmptyAudio": false,

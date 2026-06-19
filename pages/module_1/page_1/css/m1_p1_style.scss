@@ -3,8 +3,15 @@
 @import "../../../../sass/media_query.scss";
 
 @keyframes fade-in {
-	from { opacity: 0; transform: translateY(-10px); }
-	to { opacity: 1; transform: translateY(0); }
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 .f_page_content {
@@ -35,7 +42,8 @@
 		top: 0;
 		transform: scale(1);
 		transform-origin: left top;
-		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 100% 100% !important;
 	}
 
 	.content-holder {
@@ -130,7 +138,8 @@
 							opacity: 0;
 							width: 100%;
 							text-align: center;
-							margin-bottom: 30px;
+							margin-bottom: 10px;
+							justify-items: center;
 
 							&>p {
 								color: $white;
@@ -141,16 +150,22 @@
 							// FIX: text color is #000 (dark) so it reads on light/semi-transparent backgrounds.
 							// FIX: removed conflicting CSS animation — GSAP on parent (.text-container) handles fade-in timing.
 							.ins-txt {
+								background-image: url(../images/instruction.png);
+								background-repeat: no-repeat;
+								background-position: center;
+								background-size: 100% 100%;
 								display: block !important;
 								opacity: 1;
 								justify-items: center;
 
-								p, label {
+								p,
+								label {
 									color: #000;
 									font-size: 1.5rem;
 									font-weight: 500;
-									margin-bottom: 10px;
-									font-family: Arial, Helvetica, sans-serif;
+									// margin: 10px;
+									padding: 10px 30px 15px 50px;
+									// font-family: Arial, Helvetica, sans-serif;
 								}
 							}
 
@@ -189,7 +204,7 @@
 							align-items: center;
 							justify-content: center;
 							height: 100%;
-							gap: clamp(20px, 4vw, 60px);
+							gap: clamp(20px, 12vw, 180px);
 
 							@include mobile-landscape {
 								gap: clamp(8px, 2vw, 20px);
@@ -200,8 +215,8 @@
 								// is anchored to the card corner, not to a distant ancestor.
 								position: relative;
 								// Keep original fixed size so .box width/height work as before
-								width: 300px;
-								height: 400px;
+								width: 500px;
+								height: 360px;
 								display: flex;
 								flex-direction: row;
 								align-items: center;
@@ -217,7 +232,7 @@
 									height: 100%;
 									background-color: #fff;
 									border-radius: 12px;
-									box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+									box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 									overflow: hidden;
 									cursor: pointer;
 									display: flex;
@@ -229,7 +244,7 @@
 
 									&:hover {
 										transform: translateY(-5px) scale(1.02);
-										box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+										box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 									}
 
 									&:focus-visible {
@@ -251,15 +266,15 @@
 
 									.card-title {
 										padding: 10px;
-										font-size: 1.1rem;
+										font-size: 1.8rem;
 										font-weight: bold;
-										color: #333;
+										color: #f6f6fa;
 										text-align: center;
-										background: #f8f9fa;
+										// background: #f8f9fa;
 										flex-shrink: 0;
 										position: absolute;
 										width: 100%;
-										bottom: 0;
+										bottom: 10px;
 									}
 								}
 
@@ -369,23 +384,24 @@
 				padding: 1%;
 				background: transparent;
 
+
 				.introPopclose {
 					position: absolute;
-					top: 30px;
-					right: 125px;
-					background: url("../images/close.png") no-repeat;
+					top: 35px;
+					right: 35px;
+					background: url("../images/popup_close.png") no-repeat;
 					background-size: contain;
-					width: 20px;
-					height: 20px;
+					width: 30px;
+					height: 30px;
 					cursor: pointer;
 					transition: transform 0.5s ease-in-out;
 
-					@include mobile-landscape {
-						top: 15px;
-						right: 60px;
-						width: 15px;
-						height: 15px;
-					}
+					// @include mobile-landscape {
+					// 	top: 15px;
+					// 	right: 60px;
+					// 	width: 15px;
+					// 	height: 15px;
+					// }
 
 					&:hover {
 						transform: scale(1.125);
@@ -424,17 +440,17 @@
 					position: absolute;
 					width: 40px;
 					height: 40px;
-					top: 50px;
-					left: 100px;
+					top: 30px;
+					right: 70px;
 					cursor: pointer;
 					transition: transform 0.5s ease-in-out;
 
-					@include mobile-landscape {
-						width: 20px;
-						height: 20px;
-						top: 20px;
-						left: 45px;
-					}
+					// @include mobile-landscape {
+					// 	width: 20px;
+					// 	height: 20px;
+					// 	top: 20px;
+					// 	left: 45px;
+					// }
 
 					&:hover {
 						transform: scale(1.125);
@@ -451,6 +467,41 @@
 					}
 				}
 
+				.popup-info {
+					position: absolute;
+					top: 15%;
+					left: 3%;
+					background: url(../images/popupinfotext.png) no-repeat;
+					text-align: center;
+					background-size: revert;
+					background-size: contain;
+					color: #fff;
+					/* font-size: 1.2rem; */
+					font-weight: bold;
+					height: 15%;
+					width: 100%;
+					padding: 10px;
+
+					p {
+						margin-left: 8%;
+						font-size: 1.6vw;
+						color: #e0d06d;
+						font-weight: normal;
+					}
+				}
+
+				.popup-text {
+					position: absolute;
+					top: 70%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					text-align: center;
+					color: #fff;
+					font-size: 1rem;
+					font-weight: normal;
+					padding: 10px;
+				}
+
 				img {
 					width: 100%;
 					height: auto;
@@ -459,9 +510,17 @@
 		}
 
 		@keyframes slowInFastOut {
-			0% { transform: scale(1); }
-			65% { transform: scale(1.1); }
-			100% { transform: scale(1); }
+			0% {
+				transform: scale(1);
+			}
+
+			65% {
+				transform: scale(1.1);
+			}
+
+			100% {
+				transform: scale(1);
+			}
 		}
 	}
 
@@ -600,15 +659,37 @@
 }
 
 @keyframes slowInFastOut {
-	0% { transform: scale(1); }
-	65% { transform: scale(1.1); }
-	100% { transform: scale(1); }
+	0% {
+		transform: scale(1);
+	}
+
+	65% {
+		transform: scale(1.1);
+	}
+
+	100% {
+		transform: scale(1);
+	}
 }
 
 @keyframes beat {
-	0% { transform: scale(1); }
-	25% { transform: scale(1.1); }
-	50% { transform: scale(1); }
-	75% { transform: scale(1.1); }
-	100% { transform: scale(1); }
+	0% {
+		transform: scale(1);
+	}
+
+	25% {
+		transform: scale(1.1);
+	}
+
+	50% {
+		transform: scale(1);
+	}
+
+	75% {
+		transform: scale(1.1);
+	}
+
+	100% {
+		transform: scale(1);
+	}
 }

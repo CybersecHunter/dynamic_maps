@@ -65,8 +65,8 @@ function _pageLoaded() {
   appState.pageCount = _controller.pageCnt - 1;
   addSectionData();
   $('.introInfo').attr('data-popup', 'introPopup-7');
-  $("#f_header").css({ backgroundImage: `url(${_pageData.sections[0].headerImg})` });
-  $("#f_header").find("#f_courseTitle").css({ backgroundImage: `url(${_pageData.sections[0].headerText})` });
+  $("#f_header").css({ background: `#f4ede4` });
+  $("#f_header").find("#f_courseTitle").css({ content: `Dynamic Maps` });
   $(".home_btn").css({ backgroundImage: `url(${_pageData.sections[0].backBtnSrc})` });
   $(".home_btn").attr("data-tooltip", "Back");
   // playBtnSounds(_pageData.sections[sectionCnt - 1].endAudio);
@@ -105,31 +105,42 @@ function addSectionData() {
       });
 
       // ---- Instruction line ----
-
+      const layerIcons = {
+        physical: `<img src="${_pageData.sections[sectionCnt - 1].content.layerIcons.physical}" alt="Icon">`,
+        rivers: `<img src="${_pageData.sections[sectionCnt - 1].content.layerIcons.rivers}" alt="Icon">`,
+        vegetation: `<img src="${_pageData.sections[sectionCnt - 1].content.layerIcons.vegetation}" alt="Icon">`,
+        population: `<img src="${_pageData.sections[sectionCnt - 1].content.layerIcons.population}" alt="Icon">`,
+        parks: `<img src="${_pageData.sections[sectionCnt - 1].content.layerIcons.parks}" alt="Icon">`
+      };
       let mapHtml = `
-      <div class="dynamic-map-container">
-          <!-- Layers Sidebar -->
-          <div class="layers-sidebar">
-              <div class="layers-header">
-                  <h3>`+ _pageData.sections[0].content.uiText.layersPanelTitle + `</h3>
-                  <div class="layer-info-tooltip">
-                      <button class="layer-i-btn">i</button>
-                      <div class="tooltip-text">`+ _pageData.sections[0].content.uiText.layersTooltip + `</div>
-                  </div>
-              </div>
-              <div class="layers-list">`;
+        <div class="dynamic-map-container">
+            <!-- Layers Sidebar -->
+            <div class="layers-sidebar">
+                <div class="layers-toggle-bar">
+                    <button class="layers-toggle-btn" id="layersToggleBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="layers-stack-icon"><rect x="2" y="3" width="20" height="4" rx="1"/><rect x="2" y="10" width="20" height="4" rx="1"/><rect x="2" y="17" width="20" height="4" rx="1"/></svg>
+                        LAYERS
+                    </button>
+                    <div class="layers-info-pill">
+                        <span class="layers-info-icon">i</span>
+                        <span class="layers-info-text">`+ _pageData.sections[0].content.uiText.layersTooltip + `</span>
+                    </div>
+                </div>
+                <div class="layers-list" id="layersList" style="display:none;">`;
 
       for (let i = 0; i < _pageData.sections[0].content.mapLayers.length; i++) {
         let layer = _pageData.sections[0].content.mapLayers[i];
+        let icon = layerIcons[layer.value] || layerIcons.physical;
         mapHtml += `
-                  <label class="layer-option">
-                      <input type="radio" name="map_layer" value="${layer.value}">
-                      <span class="checkmark"></span>
-                      ${layer.label}
-                  </label>`;
+              <label class="layer-option">
+                  <input type="checkbox" name="map_layer" value="${layer.value}">
+                  <span class="layer-icon-wrap">${icon}</span>
+                  <span class="layer-label-text">${layer.label}</span>
+                  <span class="checkmark"></span>
+              </label>`;
       }
       mapHtml += `</div>
-          </div>
+      </div>
           
           <!-- Map Area -->
           <div class="map-view-area">
@@ -225,7 +236,7 @@ function addSectionData() {
         .append(popupDiv + mapHtml); // Replace everything with mapHTML
 
       initMapInteractions();
-      
+
 
       /* ================= BUTTON EVENTS ================= */
 
@@ -254,8 +265,7 @@ if (typeof currentZoomScale === 'undefined') {
 }
 function initMapInteractions() {
   $("input[name='map_layer']").on("change", function () {
-    let val = $(this).val();
-    renderLayer(val);
+    renderActiveLayers();
     currentZoomScale = 1;
   });
 
@@ -272,6 +282,7 @@ function initMapInteractions() {
     $(".phy-region").removeClass("active");
     TweenMax.to(".phy-region", 0.3, { fillOpacity: 0.3, strokeWidth: 0.1 });
     $("#divInfoPanel").fadeOut();
+    $("input[name='map_layer']").prop("checked", false);
     $(this).fadeOut();
   });
 
@@ -291,37 +302,53 @@ function initMapInteractions() {
     if (currentZoomScale === _pageData.sections[0].content.zoomSettings.defaultScale)
       $("#mapReset").fadeOut();
   });
+
+  $("#layersToggleBtn").on("click", function () {
+  let $list = $("#layersList");
+  if ($list.is(":visible")) {
+    $list.slideUp(200);
+    $(this).closest(".layers-sidebar").removeClass("open");
+  } else {
+    $list.slideDown(200);
+    $(this).closest(".layers-sidebar").addClass("open");
+  }
+});
 }
 
 // ── Renders image + SVG regions for the selected layer ──
-function renderLayer(layerKey) {
-  let layerData = _pageData.sections[0].content.layerData[layerKey];
-  if (!layerData) return;
-
-  // Reset view
-  $("#mapReset").trigger("click");
-  $("#divInfoPanel").hide();
-
-  // 1. Swap map image
-  $("#baseMapImg").attr("src", layerData.mapImage.src)
-    .attr("alt", layerData.mapImage.alt);
-  $("#svgTopImg").attr("href", layerData.mapImage.src);
-
-  // 2. Rebuild SVG regions
+function renderActiveLayers() {
+  // Collect all checked layer keys
+  let activeKeys = [];
+  $("input[name='map_layer']:checked").each(function () {
+    activeKeys.push($(this).val());
+  });
+  // Nothing checked — clear the SVG overlay and info panel
+  if (activeKeys.length === 0) {
+    $("#regionPathsGroup").empty();
+    $("#physicalLayerSVG").fadeOut();
+    $("#divInfoPanel").hide();
+    return;
+  }
+  // Merge all active layers' regions into one SVG group
   let svgHtml = "";
-  layerData.regions.forEach(function (r) {
-    svgHtml += `<path class="phy-region"
-      data-id="${r.id}"
-      d="${r.d}"
-      fill="${r.fill}"
-      stroke="#fff"
-      stroke-width="0.1"/>`;
+  let allRegions = [];
+  activeKeys.forEach(function (key) {
+    let layerData = _pageData.sections[0].content.layerData[key];
+    if (!layerData) return;
+    layerData.regions.forEach(function (r) {
+      svgHtml += `<path class="phy-region"
+        data-id="${r.id}"
+        d="${r.d}"
+        fill="${r.fill}"
+        stroke="#fff"
+        stroke-width="0.1"/>`;
+      allRegions.push(r);
+    });
   });
   $("#regionPathsGroup").html(svgHtml);
   $("#physicalLayerSVG").fadeIn();
-
-  // 3. Re-bind hover + click on new paths
-  bindRegionEvents(layerData.regions);
+  $("#divInfoPanel").hide();
+  bindRegionEvents(allRegions);
 }
 
 

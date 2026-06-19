@@ -62,7 +62,8 @@ function _pageLoaded() {
 
     $('.introInfo').attr('data-popup', 'introPopup-2');
     $("#f_header").find(".music, .introInfo").show();
-    $("#f_header, #f_courseTitle").css("background", "transparent");
+    // $("#f_header, #f_courseTitle").css("background","transparent");
+        $("#f_courseTitle").css("background",`url(${_pageData.sections[0].headerTitle}) no-repeat center center`);
     $(".home_btn").css({ backgroundImage: `url(${_pageData.sections[0].homeBtnSrc})` });
     $(".home_btn").attr("data-tooltip", "Home");
 
@@ -144,7 +145,16 @@ function addSectionData() {
     <div class="popup-content">
         <button class="introPopAudio mute" onclick="togglePopAudio(this, '${_pageData.sections[sectionCnt - 1].infoPopAudio}')"></button>
         <button class="introPopclose" data-tooltip="Close" onclick="closePopup('introPopup-2')"></button>
-        <img src="assets/images/home_info.png" alt="">
+        <img src="assets/images/popup.png" alt="">
+        <div class="popup-info">
+            <p> INFORMATION </p>
+        </div>
+        <div class="popup-text">
+            <div class="section">
+            
+            </div>
+            
+        </div>
     </div>
 </div>
 `;
@@ -163,20 +173,11 @@ function addSectionData() {
         backButton = $('.goback-btn')
 
         backButton.off('click').on('click', selectOption);
-        $('#section-' + sectionCnt)
-            .find('.bg-img').append(`
-            <video
-                id="bgVideo"
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="auto"
-            >
-                <source src="${_pageData.bgVid.videoSRC}" type="video/mp4">
-            </video>
-        `);
-        
+        // $('#section-' + sectionCnt)
+        //     .find('.bg-img').append(`
+        //     <img id="bgVideo" src="${_pageData.bgVid.imageSRC}" alt="" >
+        // `);
+
     }
 
     //showVisitedModule();
@@ -361,7 +362,7 @@ function onClickHandler(evt) {
 
     var body = $('#section-' + sectionCnt).find('.content-holder').find('.col-mid').find('.content').find('.content-bg').find('.body')
     //var sectionArray = _pageData.sections[sectionCnt - 1].content.sectionArray;
-    var jumpToPage = [9, 6]; // [Physical Map (page 10), Political Map (page 2)]
+    var jumpToPage = [1, 2]; // [Physical Map (page 10), Political Map (page 2)]
     console.log("Jump to page", jumpToPage[num])
     //var jumpToPage = sectionArray.sectionID
 

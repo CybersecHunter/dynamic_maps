@@ -55,7 +55,8 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   top: 0;
   transform: scale(1);
   transform-origin: left top;
-  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100% !important;
 }
 #section-1 .content-holder {
   position: relative;
@@ -144,23 +145,28 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   opacity: 0;
   width: 100%;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+  justify-items: center;
 }
 #section-1 .content-holder .col-left .content .content-bg > .body > .text-container > p {
   color: #FFF;
   font-size: 1rem;
 }
 #section-1 .content-holder .col-left .content .content-bg > .body > .text-container .ins-txt {
+  background-image: url(../images/instruction.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
   display: block !important;
   opacity: 1;
   justify-items: center;
 }
-#section-1 .content-holder .col-left .content .content-bg > .body > .text-container .ins-txt p, #section-1 .content-holder .col-left .content .content-bg > .body > .text-container .ins-txt label {
+#section-1 .content-holder .col-left .content .content-bg > .body > .text-container .ins-txt p,
+#section-1 .content-holder .col-left .content .content-bg > .body > .text-container .ins-txt label {
   color: #000;
   font-size: 1.5rem;
   font-weight: 500;
-  margin-bottom: 10px;
-  font-family: Arial, Helvetica, sans-serif;
+  padding: 10px 30px 15px 50px;
 }
 #section-1 .content-holder .col-left .content .content-bg > .body > .text-container > ul {
   margin-left: 40px;
@@ -191,7 +197,7 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   align-items: center;
   justify-content: center;
   height: 100%;
-  gap: clamp(20px, 4vw, 60px);
+  gap: clamp(20px, 12vw, 180px);
 }
 @media (max-width: 950px) and (orientation: landscape) {
   #section-1 .content-holder .col-left .content .content-bg > .body > .image-container {
@@ -200,8 +206,8 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 }
 #section-1 .content-holder .col-left .content .content-bg > .body > .image-container .btn_holder {
   position: relative;
-  width: 300px;
-  height: 400px;
+  width: 500px;
+  height: 360px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -249,15 +255,14 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 }
 #section-1 .content-holder .col-left .content .content-bg > .body > .image-container .btn_holder .box .card-title {
   padding: 10px;
-  font-size: 1.1rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  color: #333;
+  color: #f6f6fa;
   text-align: center;
-  background: #f8f9fa;
   flex-shrink: 0;
   position: absolute;
   width: 100%;
-  bottom: 0;
+  bottom: 10px;
 }
 #section-1 .content-holder .col-left .content .content-bg > .body > .image-container .btn_holder .btn_info,
 #section-1 .content-holder .col-left .content .content-bg > .body > .image-container .btn_holder .i-txt-toolTip {
@@ -363,22 +368,14 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 }
 #section-1 .content-holder #introPopup-2 .popup-content .introPopclose {
   position: absolute;
-  top: 30px;
-  right: 125px;
-  background: url("../images/close.png") no-repeat;
+  top: 35px;
+  right: 35px;
+  background: url("../images/popup_close.png") no-repeat;
   background-size: contain;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
   transition: transform 0.5s ease-in-out;
-}
-@media (max-width: 950px) and (orientation: landscape) {
-  #section-1 .content-holder #introPopup-2 .popup-content .introPopclose {
-    top: 15px;
-    right: 60px;
-    width: 15px;
-    height: 15px;
-  }
 }
 #section-1 .content-holder #introPopup-2 .popup-content .introPopclose:hover {
   transform: scale(1.125);
@@ -413,18 +410,10 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   position: absolute;
   width: 40px;
   height: 40px;
-  top: 50px;
-  left: 100px;
+  top: 30px;
+  right: 70px;
   cursor: pointer;
   transition: transform 0.5s ease-in-out;
-}
-@media (max-width: 950px) and (orientation: landscape) {
-  #section-1 .content-holder #introPopup-2 .popup-content .introPopAudio {
-    width: 20px;
-    height: 20px;
-    top: 20px;
-    left: 45px;
-  }
 }
 #section-1 .content-holder #introPopup-2 .popup-content .introPopAudio:hover {
   transform: scale(1.125);
@@ -436,6 +425,38 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 #section-1 .content-holder #introPopup-2 .popup-content .introPopAudio.mute {
   background: url("../images/pause.png") no-repeat;
   background-size: contain;
+}
+#section-1 .content-holder #introPopup-2 .popup-content .popup-info {
+  position: absolute;
+  top: 15%;
+  left: 3%;
+  background: url(../images/popupinfotext.png) no-repeat;
+  text-align: center;
+  background-size: revert;
+  background-size: contain;
+  color: #fff;
+  /* font-size: 1.2rem; */
+  font-weight: bold;
+  height: 15%;
+  width: 100%;
+  padding: 10px;
+}
+#section-1 .content-holder #introPopup-2 .popup-content .popup-info p {
+  margin-left: 8%;
+  font-size: 1.6vw;
+  color: #e0d06d;
+  font-weight: normal;
+}
+#section-1 .content-holder #introPopup-2 .popup-content .popup-text {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: normal;
+  padding: 10px;
 }
 #section-1 .content-holder #introPopup-2 .popup-content img {
   width: 100%;

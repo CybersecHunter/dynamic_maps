@@ -66,22 +66,24 @@
                   <div id="f_companyLogo_main">
                <a href="https://macmillaneducation.in/" target="_blank"><img tabindex="-1" alt="e y logo" src="./assets/images/logo.png" /></a> 
             </div> 
-            <button id="full-screen" class="full-screen fullScreen" onclick="toggleFullscreen(this)" data-tooltip="Fullscreen"></button>
+            <!-- <button id="full-screen" class="full-screen fullScreen" onclick="toggleFullscreen(this)" data-tooltip="Fullscreen"></button> -->
             </div>
             <div id="intro">
-                  <video autoplay muted loop playsinline src="assets/video/video_1.mp4"></video>
+                  <!-- <video autoplay muted loop playsinline src="assets/video/video_1.mp4"></video> -->
+                   <img class="intro-bg" src="./assets/images/intro_bg.png" alt="Intro Background" />
                 <div id="intro-text">
                     <div id="intro-btns">
                         <button data-tooltip="Music" class="music mute"></button>
                         <button data-tooltip="Information" data-popup="introPopup-1" class="introInfo"></button>
+                        <!-- <button id="full-screen" class="full-screen fScreen fullScreen" onclick="toggleFullscreen(this)" data-tooltip="Fullscreen"></button> -->
                     </div>
                     <div id="intro-header">
                         <!-- <div class="left-char"></div> -->
                         <div class="intro-text-content">                      
-								 <h1 class="intro-header-container" tabindex="-1" aria-label="Course Title goes here">
-                                Dynamic<br/><span>Maps</span>
-                            </h1>
-                       <div class='instruction'></div>
+								 <div class="intro-header-container" tabindex="-1" aria-label="Dynamic Maps">
+                                    <img src="./assets/images/intro_header.png" alt="Dynamic Maps" />
+                                 </div>
+                       <!-- <div class='instruction'></div> -->
 
                         <div id="intro-button">
                             <button type="button" id="f_launchBtn" data-tooltip="Play"></button>
@@ -156,23 +158,23 @@
             <!-- header start -->
             <div id="f_header">
                 <div class="header-container">
-                 <div class="nav_btns">
-                <button onClick="goHome(appState.pageCount)" class="home_btn" data-tooltip="Home"></button>
-                <button class="music playing" data-tooltip="Music"></button>
-                <button class="introInfo" data-tooltip="Information"></button>
-                <button class="playPause" data-tooltip="Pause" onClick="playPauseSimulation(this)"></button>
-                </div>
-                 <div id="f_courseTitle">
-                    <p tabindex="0"></p>
-                </div>
                 <div class="right-nav">
                 <div id="f_companyLogo">
                     <div class="logo-bg-patch">
                         <a href="https://macmillaneducation.in/" target="_blank"><img tabindex="0" alt="e y logo" src="./assets/images/logo.png" /></a>
                     </div>
                 </div>
-                <button id="full-screen" class="full-screen fScreen fullScreen" onclick="toggleFullscreen(this)" data-tooltip="Fullscreen"></button>
                 </div>
+                <div id="f_courseTitle">
+                    <p tabindex="0"></p>
+                </div>
+                <div class="nav_btns">
+                <button onClick="goHome(appState.pageCount)" class="home_btn" data-tooltip="Home"></button>
+                <button class="music playing" data-tooltip="Music"></button>
+                <button class="introInfo" data-tooltip="Information"></button>
+                <button class="playPause" data-tooltip="Pause" onClick="playPauseSimulation(this)"></button>
+                </div>
+                
                </div>
             </div>
             <!-- header end -->
@@ -504,9 +506,9 @@
             <audio id="customeAudio" aria-hidden="true"></audio>
             <audio id="landingPageAudio" aria-hidden="true"></audio>
         </div>
-           <footer>
+           <!-- <footer>
                 <p>Copyright @2026 Macmillan Education India Private Limited. All rights reserved.</p>
-            </footer> 
+            </footer>  -->
       
         <!-- <div id="resumePlayBlock">
 				<div class="outer">
@@ -733,6 +735,28 @@ function togglePopAudio(el, src) {
         audio.onended = null;
     }
 }
+
+TweenMax.set([
+    ".intro-bg",
+    "#intro-header",
+    ".intro-header-container",
+    "#intro-button"
+], { opacity: 0 });
+
+const tl = new TimelineMax();
+
+tl.fromTo("#intro-header", 1,
+    { opacity: 0, y: 20 },
+    { opacity: 1, y: 0 })
+  .fromTo(".intro-header-container", 1,
+    { opacity: 0, y: 20 },
+    { opacity: 1, y: 0 })
+  .fromTo("#intro-button", 1,
+    { opacity: 0, scale: 0.8 },
+    { opacity: 1, scale: 1 })
+  .fromTo("#intro-btns", 0.1,
+    { opacity: 0, scale: 0.8 },
+    { opacity: 1, scale: 1 });
 
 function playClickThen() {
     clickSound.currentTime = 0;

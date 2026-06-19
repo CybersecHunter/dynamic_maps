@@ -5,8 +5,8 @@
 }
 
 @font-face {
-     font-family: "Alphakind";
-     src: url("../assets/fonts/Alphakind.ttf") format("truetype");
+     font-family: "heycomic";
+     src: url("../assets/fonts/hey_comic.ttf") format("truetype");
      font-weight: normal;
      font-style: normal;
      font-display: swap;
@@ -16,7 +16,7 @@ body,
 html {
      overflow: hidden;
      /*font: normal 16px EYInterstateLight,sans-serif;*/
-     font-family: "Alphakind", Arial, sans-serif;
+     font-family: "heycomic", Arial, sans-serif;
      font-size: 1rem;
      font-style: normal;
      font-weight: lighter;
@@ -187,6 +187,13 @@ h2 {}
                justify-content: normal;
                align-items: center;
 
+               .intro-bg {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+               }
+
                video {
                     position: absolute;
                     width: 100%;
@@ -195,7 +202,7 @@ h2 {}
                     // object-fit: cover;
                     // background-position: top;
                }
-               
+
 
                #intro-text {
                     position: relative;
@@ -208,10 +215,11 @@ h2 {}
                     align-items: center;
 
                     #intro-btns {
+                         opacity: 0;
                          position: absolute;
                          top: 0;
                          padding: 15px 20px;
-                         left: 0;
+                         right: 0;
                          display: flex;
                          justify-content: flex-start;
                          align-items: center;
@@ -219,6 +227,93 @@ h2 {}
 
                          @include mobile-landscape {
                               padding: 5px 10px;
+                         }
+
+                         .full-screen {
+                              position: relative;
+                              width: 50px;
+                              height: 50px;
+                              transition: transform 0.5s ease-in-out;
+                              cursor: pointer;
+
+                              @include mobile-landscape {
+                                   width: 35px;
+                                   height: 35px;
+                              }
+
+                              &:disabled {
+                                   pointer-events: none;
+                              }
+
+                              &:hover {
+                                   transform: scale(1.125);
+                              }
+
+                              &.fullScreen {
+                                   background: url("../assets/images/nav-fullscreen-on.png") no-repeat;
+                                   background-size: contain;
+                                   // background-position: center;
+
+                                   // @include ipad-landscape {
+                                   //      width: 35px;
+                                   // }
+
+                                   @include tablet-landscape-height {
+                                        width: 40px;
+                                        height: 40px;
+                                   }
+                              }
+
+                              &.offScreen {
+                                   background: url("../assets/images/nav-fullscreen-off.png") no-repeat;
+                                   background-size: contain;
+                                   // background-position: center;
+
+                                   // @include ipad-landscape {
+                                   //      width: 35px;
+                                   // }
+
+                                   @include tablet-landscape-height {
+                                        width: 35px;
+                                        height: 35px;
+                                   }
+                              }
+
+                              &::after {
+                                   content: attr(data-tooltip);
+                                   /* tooltip text from attribute */
+                                   position: absolute;
+                                   top: 100%;
+                                   /* below the button */
+                                   left: 50%;
+                                   transform: translateX(-50%);
+                                   background: rgba(0, 0, 0, 0.85);
+                                   font-weight: bold;
+                                   white-space: nowrap;
+                                   box-shadow: 0 2px 19px rgba(0, 0, 0, 0.6);
+                                   border: 1px solid rgba(255, 255, 255, 0.3);
+                                   color: #fff;
+                                   font-size: 10px;
+                                   padding: 3px 5px;
+                                   border-radius: 4px;
+                                   white-space: nowrap;
+                                   opacity: 0;
+                                   font-family: "Times New Roman", Times, serif;
+                                   pointer-events: none;
+                                   transition: opacity 0.2s ease;
+                                   margin-top: 4px;
+                                   z-index: 10;
+
+                                   @include mobile-landscape {
+                                        font-size: 8px;
+                                        left: 20%;
+                                   }
+                              }
+
+                              /* Show tooltip on hover */
+                              &:hover::after {
+                                   opacity: 1;
+                              }
                          }
 
                          .music {
@@ -355,12 +450,24 @@ h2 {}
                          }
                     }
 
+                    #intro-header{
+                         width:100%;
+                         background-image: url("../assets/images/intro_layer.png");
+                         background-repeat: no-repeat;
+                         background-size: 100% 100%;
+                         height:50%;
+                         opacity: 0;
+
+                    }
+
                     .intro-text-content {
                          display: flex;
                          flex-direction: column;
                          gap: 30px;
                          justify-content: center;
                          align-items: center;
+                         margin-top:30px;
+                         position: relative;
 
                          @include tablet-landscape-height {
                               gap: 15px;
@@ -371,51 +478,79 @@ h2 {}
                          }
                     }
 
-                    .intro-header-container {
-                         position: relative;
-                         width: 100%;
-                         margin: 0 auto;
-                         color: #44c3ee;
-                         font-size: 100px;
-                         font-family: "Alphakind", Arial, sans-serif !important;
-                         line-height: 0.9;
-                         text-shadow:
-                              1px 1px 0 #000,
-                              3px 3px 0 #000,
-                              4px 4px 0 #0a0808;
-                         margin: 0;
-                         font-weight: normal;
-                         text-align: center;
-                         // display: flex;
-                         // justify-content: center;
-                         line-height: 1;
+                    // .intro-header-container {
+                    //      width: 50px !important;
+                    //      height: auto;
+                    //      // position: relative;
+                    //      // width: 100%;
+                    //      // margin: 0 auto;
+                    //      // color: #44c3ee;
+                    //      // font-size: 90px;
+                    //      // font-family: "hey_comic", Arial, sans-serif !important;
+                    //      // line-height: 0.9;
+                    //      // text-shadow:
+                    //      //      1px 1px 0 #000,
+                    //      //      3px 3px 0 #000,
+                    //      //      4px 4px 0 #0a0808;
+                    //      // margin: 0;
+                    //      // font-weight: normal;
+                    //      // text-align: center;
+                    //      // // display: flex;
+                    //      // // justify-content: center;
+                    //      // line-height: 1;
 
-                         // letter-spacing: 2px;
+                    //      img {
+                    //           height: 100%;
+                    //           width: 100%;
+                    //      }
+
+                    //      // letter-spacing: 2px;
+                    //      @include tablet-landscape-height {
+                    //           font-size: 80px;
+                    //      }
+
+                    //      @include mobile-landscape {
+                    //           font-size: 52.5px;
+                    //      }
+
+                    //      span {
+                    //           color: #894bca;
+                    //           // font-weight: bold;
+                    //           /* Purple */
+                    //           font-size: 90px;
+                    //           // text-shadow: 0.1vw 0.1vw 0 #000, 0.2vw 0.2vw 0 #000;
+                    //           box-sizing: border-box;
+                    //           font-family: "hey_comic", Arial, sans-serif;
+
+                    //           @include tablet-landscape-height {
+                    //                font-size: 80px;
+                    //           }
+
+                    //           @include mobile-landscape {
+                    //                font-size: 52.5px;
+                    //           }
+                    //      }
+                    // }
+                    .intro-header-container {
+                         opacity: 0;
+                         width: fit-content;
+                         max-width: 600px; // Adjust as needed
+                         margin: 0 auto;
+
                          @include tablet-landscape-height {
-                              font-size: 80px;
+                              max-width: 500px;
                          }
 
                          @include mobile-landscape {
-                              font-size: 52.5px;
+                              max-width: 350px;
                          }
+                    }
 
-                         span {
-                              color: #894bca;
-                              // font-weight: bold;
-                              /* Purple */
-                              font-size: 100px;
-                              // text-shadow: 0.1vw 0.1vw 0 #000, 0.2vw 0.2vw 0 #000;
-                              box-sizing: border-box;
-                              font-family: "Alphakind", Arial, sans-serif;
-
-                              @include tablet-landscape-height {
-                                   font-size: 80px;
-                              }
-
-                              @include mobile-landscape {
-                                   font-size: 52.5px;
-                              }
-                         }
+                    .intro-header-container img {
+                         display: block;
+                         width: 100%;
+                         height: auto;
+                         object-fit: contain;
                     }
 
                     .instruction {
@@ -437,7 +572,10 @@ h2 {}
                     }
 
                     #intro-button {
+                         position: absolute;
                          text-align: center;
+                         top:120px;
+                         opacity: 0;
                     }
 
                     #f_launchBtn {
@@ -1162,7 +1300,7 @@ footer {
      z-index: 2;
      justify-content: center;
      top: 15px;
-     right: 15px;
+     left: 15px;
      gap: 5px;
 
      @include mobile-landscape {
@@ -1239,7 +1377,7 @@ footer {
           &.fullScreen {
                background: url("../assets/images/nav-fullscreen-on.png") no-repeat;
                background-size: contain;
-               background-position: center;
+               // background-position: center;
 
                // @include ipad-landscape {
                //      width: 35px;
