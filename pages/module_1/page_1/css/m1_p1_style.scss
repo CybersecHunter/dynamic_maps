@@ -57,7 +57,7 @@
 
 		.col-left {
 			position: relative;
-			width: calc(100% - 100px);
+			// width: calc(100% - 100px);
 			height: 100%;
 			margin: 0px auto;
 
@@ -202,9 +202,9 @@
 							// Use a wider value so both cards fit comfortably.
 							width: 100%;
 							align-items: center;
-							justify-content: center;
+							justify-content: space-between;
 							height: 100%;
-							gap: clamp(20px, 12vw, 180px);
+							// gap: clamp(20px, 12vw, 180px);
 
 							@include mobile-landscape {
 								gap: clamp(8px, 2vw, 20px);
@@ -216,7 +216,7 @@
 								position: relative;
 								// Keep original fixed size so .box width/height work as before
 								width: 500px;
-								height: 360px;
+								height: 100%;
 								display: flex;
 								flex-direction: row;
 								align-items: center;
@@ -230,21 +230,21 @@
 								.box {
 									width: 100%;
 									height: 100%;
-									background-color: #fff;
+									background-color: transparent;
 									border-radius: 12px;
-									box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+									// box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 									overflow: hidden;
 									cursor: pointer;
 									display: flex;
 									flex-direction: column;
 									transition: transform 0.3s ease, box-shadow 0.3s ease;
-									border: 1px solid #ccc;
+									// border: 1px solid #ccc;
 									padding: 0;
 									position: relative;
 
 									&:hover {
 										transform: translateY(-5px) scale(1.02);
-										box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+										// box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 									}
 
 									&:focus-visible {
@@ -259,9 +259,9 @@
 										background-size: cover;
 										background-position: center;
 										background-repeat: no-repeat;
-										border-bottom: 2px solid #ddd;
-										background-color: #e9ecef;
-										background-size: cover;
+										// border-bottom: 2px solid #ddd;
+										// background-color: #e9ecef;
+										background-size: contain;
 									}
 
 									.card-title {
@@ -336,7 +336,7 @@
 										padding: 3px 5px;
 										border-radius: 4px;
 										opacity: 0;
-										font-family: "Times New Roman", Times, serif;
+										// font-family: "Times New Roman", Times, serif;
 										pointer-events: none;
 										transition: opacity 0.2s;
 										margin-top: 4px;
@@ -424,7 +424,7 @@
 						border-radius: 4px;
 						white-space: nowrap;
 						opacity: 0;
-						font-family: "Times New Roman", Times, serif;
+						// font-family: "Times New Roman", Times, serif;
 						pointer-events: none;
 						transition: opacity 0.2s;
 						margin-top: 4px;
@@ -479,11 +479,11 @@
 					/* font-size: 1.2rem; */
 					font-weight: bold;
 					height: 15%;
-					width: 100%;
+					width: 50%;
 					padding: 10px;
 
 					p {
-						margin-left: 8%;
+						margin-left: 15%;
 						font-size: 1.6vw;
 						color: #e0d06d;
 						font-weight: normal;
@@ -598,7 +598,7 @@
 					border-radius: 4px;
 					white-space: nowrap;
 					opacity: 0;
-					font-family: "Times New Roman", Times, serif;
+					// font-family: "Times New Roman", Times, serif;
 					pointer-events: none;
 					transition: opacity 0.2s;
 					margin-top: 4px;

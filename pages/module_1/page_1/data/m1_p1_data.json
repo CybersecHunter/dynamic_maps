@@ -30,6 +30,7 @@
 			"headerTitle": "pages/module_1/page_1/images/title.png",
 			"infoPopAudio":"pages/module_1/page_1/audios/info_audio.mp3",
 			"infoPopImage":"pages/module_1/page_1/images/home_info.png",
+			"infoBtnSrc": "assets/images/info.png",
 			"homeBtnSrc": "assets/images/home.png",
 			"ost": "",
 			"insText": "Choose one of the maps to explore further.",

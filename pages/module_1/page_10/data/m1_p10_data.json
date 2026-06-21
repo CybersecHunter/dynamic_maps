@@ -119,6 +119,7 @@
       "ost": "",
       "iText": "",
       "endAudio": "",
+      "homeBtnSrc": "pages/module_1/page_10/images/home.png",
       "backBtnSrc": "pages/module_1/page_10/images/back.png",
       "introAudio": "pages/module_1/page_10/audios/intro_audio.mp3",
       "correctAudio": "pages/module_1/page_10/audios/good_job.mp3",
@@ -128,23 +129,28 @@
         "mapLayers": [
           {
             "value": "physical",
-            "label": "Physical Division of India"
+            "label": "Physical Division of India",
+            "image":"pages/module_1/page_10/images/physical_division.png"
           },
           {
             "value": "rivers",
-            "label": "Major Rivers"
+            "label": "Major Rivers",
+            "image":"pages/module_1/page_10/images/rivers.png"
           },
           {
             "value": "vegetation",
-            "label": "Vegetation"
+            "label": "Vegetation",
+            "image":"pages/module_1/page_10/images/rivers.png"
           },
           {
             "value": "population",
-            "label": "Population Density"
+            "label": "Population Density",
+            "image":"pages/module_1/page_10/images/rivers.png"
           },
           {
             "value": "parks",
-            "label": "National Parks and Sanctuaries"
+            "label": "National Parks and Sanctuaries",
+            "image":"pages/module_1/page_10/images/park_map.png"
           }
         ],
         "mapImage": {

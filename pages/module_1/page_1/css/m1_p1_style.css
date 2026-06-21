@@ -69,7 +69,6 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 }
 #section-1 .content-holder .col-left {
   position: relative;
-  width: calc(100% - 100px);
   height: 100%;
   margin: 0px auto;
 }
@@ -195,9 +194,8 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   flex-direction: row;
   width: 100%;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: 100%;
-  gap: clamp(20px, 12vw, 180px);
 }
 @media (max-width: 950px) and (orientation: landscape) {
   #section-1 .content-holder .col-left .content .content-bg > .body > .image-container {
@@ -207,7 +205,7 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 #section-1 .content-holder .col-left .content .content-bg > .body > .image-container .btn_holder {
   position: relative;
   width: 500px;
-  height: 360px;
+  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -222,21 +220,18 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 #section-1 .content-holder .col-left .content .content-bg > .body > .image-container .btn_holder .box {
   width: 100%;
   height: 100%;
-  background-color: #fff;
+  background-color: transparent;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #ccc;
   padding: 0;
   position: relative;
 }
 #section-1 .content-holder .col-left .content .content-bg > .body > .image-container .btn_holder .box:hover {
   transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 #section-1 .content-holder .col-left .content .content-bg > .body > .image-container .btn_holder .box:focus-visible {
   outline: 3px solid #feb242;
@@ -249,9 +244,7 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-bottom: 2px solid #ddd;
-  background-color: #e9ecef;
-  background-size: cover;
+  background-size: contain;
 }
 #section-1 .content-holder .col-left .content .content-bg > .body > .image-container .btn_holder .box .card-title {
   padding: 10px;
@@ -326,7 +319,6 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   padding: 3px 5px;
   border-radius: 4px;
   opacity: 0;
-  font-family: "Times New Roman", Times, serif;
   pointer-events: none;
   transition: opacity 0.2s;
   margin-top: 4px;
@@ -397,7 +389,6 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   border-radius: 4px;
   white-space: nowrap;
   opacity: 0;
-  font-family: "Times New Roman", Times, serif;
   pointer-events: none;
   transition: opacity 0.2s;
   margin-top: 4px;
@@ -438,11 +429,11 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   /* font-size: 1.2rem; */
   font-weight: bold;
   height: 15%;
-  width: 100%;
+  width: 50%;
   padding: 10px;
 }
 #section-1 .content-holder #introPopup-2 .popup-content .popup-info p {
-  margin-left: 8%;
+  margin-left: 15%;
   font-size: 1.6vw;
   color: #e0d06d;
   font-weight: normal;
@@ -550,7 +541,6 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   border-radius: 4px;
   white-space: nowrap;
   opacity: 0;
-  font-family: "Times New Roman", Times, serif;
   pointer-events: none;
   transition: opacity 0.2s;
   margin-top: 4px;

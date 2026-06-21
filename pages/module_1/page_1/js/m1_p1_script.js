@@ -58,12 +58,14 @@ function _pageLoaded() {
     if (_controller._globalMusicPlaying) {
         document.getElementById("audio_src").play();
     }
-
-
+    $(".introInfo").css({ backgroundImage: `url(${_pageData.sections[0].infoBtnSrc})` });
+    $(".introInfo").attr("data-tooltip", "Information");
     $('.introInfo').attr('data-popup', 'introPopup-2');
+    // $(".introInfo").attr('data-popup', 'introPopup-1');
+
     $("#f_header").find(".music, .introInfo").show();
     // $("#f_header, #f_courseTitle").css("background","transparent");
-        $("#f_courseTitle").css("background",`url(${_pageData.sections[0].headerTitle}) no-repeat center center`);
+    $("#f_courseTitle").css("background", `url(${_pageData.sections[0].headerTitle}) no-repeat center center`);
     $(".home_btn").css({ backgroundImage: `url(${_pageData.sections[0].homeBtnSrc})` });
     $(".home_btn").attr("data-tooltip", "Home");
 
@@ -128,8 +130,8 @@ function addSectionData() {
                         imgObj += '<div class="card-title">' + _pageData.sections[sectionCnt - 1].content.sectionArray[i].title + '</div>';
                     }
 
-                    imgObj += '</button><div class="btn_info i-txt-toolTip" id="info-' + (i + 1) + '" data-tooltip="Information"></div></div>'
-
+                    // imgObj += '</button><div class="btn_info i-txt-toolTip" id="info-' + (i + 1) + '" data-tooltip="Information"></div></div>'
+                    imgObj += '</button></div>'
                     $('#section-' + sectionCnt).find('.content-holder').append(
                         '<div class="infobtnPopup" id="infobtnPopup-' + (i + 1) + '"><div class="popup-content">' +
                         '<button class="infoPopAudio mute" onclick="togglePopAudio(this, \'' + _pageData.sections[sectionCnt - 1].content.sectionArray[i].infoAudio + '\')"></button>' +
@@ -151,9 +153,7 @@ function addSectionData() {
         </div>
         <div class="popup-text">
             <div class="section">
-            
             </div>
-            
         </div>
     </div>
 </div>
@@ -173,6 +173,11 @@ function addSectionData() {
         backButton = $('.goback-btn')
 
         backButton.off('click').on('click', selectOption);
+
+        infoButton = $('.introInfo')
+
+        infoButton.off('click');
+
         // $('#section-' + sectionCnt)
         //     .find('.bg-img').append(`
         //     <img id="bgVideo" src="${_pageData.bgVid.imageSRC}" alt="" >

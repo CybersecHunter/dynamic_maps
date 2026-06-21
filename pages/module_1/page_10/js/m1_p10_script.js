@@ -34,6 +34,8 @@ var playMainAudio = false;
 
 var dataValue = []; var currentPattern = null; var currentIndex = 0;
 var patterns = [];
+var layerOrder = [];
+var activeLayerOrder = [];
 // ---------- Memory Game State ----------
 var memCards = [];
 var memFlipped = [];
@@ -64,7 +66,13 @@ function _pageLoaded() {
   console.log(_pageData.sections, _pageData.sections[0].backBtnSrc, "pageDAtat")
   appState.pageCount = _controller.pageCnt - 1;
   addSectionData();
-  $('.introInfo').attr('data-popup', 'introPopup-7');
+
+  $(".introInfo").css({ backgroundImage: `url(${_pageData.sections[0].homeBtnSrc})` });
+  $(".introInfo").attr("data-tooltip", "Home");
+  $('.introInfo').on("click", function () {
+    window.location.reload();
+  });
+    // $('.introInfo').attr('data-popup', 'introPopup-7');
   $("#f_header").css({ background: `#f4ede4` });
   $("#f_header").find("#f_courseTitle").css({ content: `Dynamic Maps` });
   $(".home_btn").css({ backgroundImage: `url(${_pageData.sections[0].backBtnSrc})` });
@@ -118,11 +126,10 @@ function addSectionData() {
             <div class="layers-sidebar">
                 <div class="layers-toggle-bar">
                     <button class="layers-toggle-btn" id="layersToggleBtn">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="layers-stack-icon"><rect x="2" y="3" width="20" height="4" rx="1"/><rect x="2" y="10" width="20" height="4" rx="1"/><rect x="2" y="17" width="20" height="4" rx="1"/></svg>
-                        LAYERS
+                          LAYERS
                     </button>
                     <div class="layers-info-pill">
-                        <span class="layers-info-icon">i</span>
+                        <span class="layers-info-icon"></span>
                         <span class="layers-info-text">`+ _pageData.sections[0].content.uiText.layersTooltip + `</span>
                     </div>
                 </div>
@@ -139,15 +146,23 @@ function addSectionData() {
                   <span class="checkmark"></span>
               </label>`;
       }
-      mapHtml += `</div>
-      </div>
+      mapHtml += `<div class="layer-position-panel">
+                    <div class="layer-position-title">
+                      Layer Position
+                    </div>
+                  <div id="layerPositionList"></div>
+                </div>
+                </div></div>
+      
           
           <!-- Map Area -->
           <div class="map-view-area">
               <div class="zoom-controls">
-                  <button class="zoom-btn" id="mapZoomIn" title="Zoom In">+</button>
-                  <button class="zoom-btn" id="mapZoomOut" title="Zoom Out">-</button>
-                  <button class="reset-view-btn" id="mapReset" style="display:none;">Reset View</button>
+                  <div class="zoomButtons">
+                    <button class="zoom-btn" id="mapZoomIn" title="Zoom In"></button>
+                    <button class="zoom-btn" id="mapZoomOut" title="Zoom Out"></button>
+                  </div>
+                  <button class="reset-view-btn" id="mapReset" style="display:none;"></button>
               </div>
               
               <div class="map-wrapper" id="mapWrapper">
@@ -157,6 +172,9 @@ function addSectionData() {
                     id="baseMapImg" 
                     onerror="this.src='` + _pageData.sections[0].content.mapImage.fallback + `'" 
                     style="width:100%; height:auto;" />
+                    <div id="layerContainer"
+     style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:5;">
+</div>
                 </div>
                   <svg class="map-svg-overlay" id="physicalLayerSVG" 
                     viewBox="0 0 382 444" preserveAspectRatio="xMidYMid meet" 
@@ -217,7 +235,7 @@ function addSectionData() {
           <div class="popup-content modal-box">
             <h2 class="modal-title">Oops!</h2>
             <div class="modal-message">
-              <p>If you leave the memory game then you have to start from beginning.</p>
+              <p>If you leave the dyanamic maps then you have to start from beginning.</p>
               <p class="modal-question">Are you sure you want to leave?</p>
             </div>
             <div class="modal-buttons">
@@ -246,16 +264,18 @@ function addSectionData() {
         jumtoPage(_controller.pageCnt);
       });
 
-      $("#homeBack").on("click", function () {
-        playClickThen();
-        jumtoPage(0);
-      });
+
+
+
+      // $("#homeBack").on("click", function () {
+      //   jumtoPage(1); 
+      // });
 
     } // end sectionCnt == 1
   } // end for
 } // end addSectionData
 
-
+window.appState = { pageCount: 0 };
 // ============================================================
 // MAP INTERACTIONS — FUNCTIONS
 // ============================================================
@@ -304,51 +324,187 @@ function initMapInteractions() {
   });
 
   $("#layersToggleBtn").on("click", function () {
-  let $list = $("#layersList");
-  if ($list.is(":visible")) {
-    $list.slideUp(200);
-    $(this).closest(".layers-sidebar").removeClass("open");
-  } else {
-    $list.slideDown(200);
-    $(this).closest(".layers-sidebar").addClass("open");
-  }
-});
+    let $list = $("#layersList");
+    if ($list.is(":visible")) {
+      $list.slideUp(200);
+      $(this).closest(".layers-sidebar").removeClass("open");
+    } else {
+      $list.slideDown(200);
+      $(this).closest(".layers-sidebar").addClass("open");
+    }
+  });
+
+  layerOrder = _pageData.sections[0].content.mapLayers.map(l => l.value);
+
+  updateLayerOrderUI();
+}
+
+function updateLayerOrderUI() {
+  let html = "";
+  layerOrder.forEach((key, index) => {
+    let layer = _pageData.sections[0].content.mapLayers.find(
+      l => l.value === key
+    );
+    html += `
+        <li class="layer-order-item"
+            draggable="true"
+            data-layer="${key}">
+            <span>${index + 1}</span>
+            ${layer.label}
+        </li>`;
+  });
+  $("#layerOrderList").html(html);
+  initLayerDrag();
+}
+
+function initLayerDrag() {
+
+  let dragged = null;
+
+  $(".layer-order-item").on("dragstart", function () {
+    dragged = this;
+  });
+
+  $(".layer-order-item").on("dragover", function (e) {
+    e.preventDefault();
+  });
+
+  $(".layer-order-item").on("drop", function (e) {
+
+    e.preventDefault();
+
+    if (dragged === this) return;
+
+    let from = layerOrder.indexOf($(dragged).data("layer"));
+    let to = layerOrder.indexOf($(this).data("layer"));
+
+    let moved = layerOrder.splice(from, 1)[0];
+    layerOrder.splice(to, 0, moved);
+
+    updateLayerOrderUI();
+    renderActiveLayers();
+  });
 }
 
 // ── Renders image + SVG regions for the selected layer ──
+// function renderActiveLayers() {
+//   // Collect all checked layer keys
+//   let activeKeys = [];
+//   $("input[name='map_layer']:checked").each(function () {
+//     activeKeys.push($(this).val());
+//   });
+//   // Nothing checked — clear the SVG overlay and info panel
+//   if (activeKeys.length === 0) {
+//     $("#regionPathsGroup").empty();
+//     $("#physicalLayerSVG").fadeOut();
+//     $("#divInfoPanel").hide();
+//     return;
+//   }
+//   // Merge all active layers' regions into one SVG group
+//   let svgHtml = "";
+//   let allRegions = [];
+//   activeKeys.forEach(function (key) {
+//     let layerData = _pageData.sections[0].content.layerData[key];
+//     if (!layerData) return;
+//     layerData.regions.forEach(function (r) {
+//       svgHtml += `<path class="phy-region"
+//         data-id="${r.id}"
+//         d="${r.d}"
+//         fill="${r.fill}"
+//         stroke="#fff"
+//         stroke-width="0.1"/>`;
+//       allRegions.push(r);
+//     });
+//   });
+//   $("#regionPathsGroup").html(svgHtml);
+//   $("#physicalLayerSVG").fadeIn();
+//   $("#divInfoPanel").hide();
+//   bindRegionEvents(allRegions);
+// }
 function renderActiveLayers() {
-  // Collect all checked layer keys
-  let activeKeys = [];
+  // Add newly checked layers
   $("input[name='map_layer']:checked").each(function () {
-    activeKeys.push($(this).val());
+    let key = $(this).val();
+    if (!activeLayerOrder.includes(key)) {
+      activeLayerOrder.push(key);
+    }
   });
-  // Nothing checked — clear the SVG overlay and info panel
-  if (activeKeys.length === 0) {
-    $("#regionPathsGroup").empty();
-    $("#physicalLayerSVG").fadeOut();
-    $("#divInfoPanel").hide();
-    return;
-  }
-  // Merge all active layers' regions into one SVG group
-  let svgHtml = "";
-  let allRegions = [];
-  activeKeys.forEach(function (key) {
-    let layerData = _pageData.sections[0].content.layerData[key];
-    if (!layerData) return;
-    layerData.regions.forEach(function (r) {
-      svgHtml += `<path class="phy-region"
-        data-id="${r.id}"
-        d="${r.d}"
-        fill="${r.fill}"
-        stroke="#fff"
-        stroke-width="0.1"/>`;
-      allRegions.push(r);
-    });
+  // Remove unchecked layers
+  activeLayerOrder = activeLayerOrder.filter(key =>
+    $(`input[value="${key}"]`).prop("checked")
+  );
+  // Render images
+  $("#layerContainer").empty();
+  activeLayerOrder.forEach(function (key) {
+    let layer = _pageData.sections[0].content.mapLayers.find(
+      x => x.value === key
+    );
+    if (layer && layer.image) {
+      $("#layerContainer").append(`
+                <img
+                    src="${layer.image}"
+                    class="map-layer-img"
+                    data-layer="${key}"
+                    style="
+                        position:absolute;
+                        left:0;
+                        top:0;
+                        width:100%;
+                        height:100%;
+                    ">
+            `);
+    }
   });
-  $("#regionPathsGroup").html(svgHtml);
-  $("#physicalLayerSVG").fadeIn();
-  $("#divInfoPanel").hide();
-  bindRegionEvents(allRegions);
+  updateLayerPositionUI();
+}
+
+function updateLayerPositionUI() {
+  let html = "";
+  activeLayerOrder.forEach((key, index) => {
+    let layer = _pageData.sections[0].content.mapLayers.find(
+      x => x.value === key
+    );
+    html += `
+        <div class="layer-position-item"
+             draggable="true"
+             data-layer="${key}">
+            <span class="layer-no">${index + 1}</span>
+            <span class="layer-name">${layer.label}</span>
+        </div>`;
+  });
+  $("#layerPositionList").html(html);
+  initLayerSorting();
+}
+
+function initLayerSorting() {
+
+  let dragged = null;
+
+  $(".layer-position-item").off();
+
+  $(".layer-position-item").on("dragstart", function () {
+    dragged = this;
+  });
+
+  $(".layer-position-item").on("dragover", function (e) {
+    e.preventDefault();
+  });
+
+  $(".layer-position-item").on("drop", function (e) {
+
+    e.preventDefault();
+
+    let fromLayer = $(dragged).data("layer");
+    let toLayer = $(this).data("layer");
+
+    let fromIndex = activeLayerOrder.indexOf(fromLayer);
+    let toIndex = activeLayerOrder.indexOf(toLayer);
+
+    let moved = activeLayerOrder.splice(fromIndex, 1)[0];
+    activeLayerOrder.splice(toIndex, 0, moved);
+
+    renderActiveLayers();
+  });
 }
 
 

@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="x-ua-compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Time</title>
+    <title>Dynamic Maps</title>
     <!-- <link rel="shortcut icon" href="favicon.ico" /> -->
     <link rel="stylesheet" type="text/css" href="css/line-awesome.css" />
     <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
@@ -150,7 +150,7 @@
                 <div class="popup-content">
                     <button class="introPopAudio mute" onclick="togglePopAudio(this, 'assets/audios/info_audio.mp3')"></button>
                     <button class="introPopclose" data-tooltip="Close" onClick="closePopup('introPopup-1')"></button>
-                    <img src="assets/images/home_info.png" alt="">
+                    <img src="assets/images/popup_withText.png" alt="">
                 </div>
             </div>
         <div class="hideMain">
@@ -738,18 +738,22 @@ function togglePopAudio(el, src) {
 
 TweenMax.set([
     ".intro-bg",
-    "#intro-header",
     ".intro-header-container",
     "#intro-button"
 ], { opacity: 0 });
+TweenMax.set("#intro-header", {
+    opacity: 1,
+    clipPath: "inset(0 100% 0 0)"
+});
 
 const tl = new TimelineMax();
 
-tl.fromTo("#intro-header", 1,
-    { opacity: 0, y: 20 },
-    { opacity: 1, y: 0 })
+tl.to("#intro-header", 1, {
+      clipPath: "inset(0 0% 0 0)",
+      ease: Power2.easeOut
+    })
   .fromTo(".intro-header-container", 1,
-    { opacity: 0, y: 20 },
+    { opacity: 0, y: 60 },
     { opacity: 1, y: 0 })
   .fromTo("#intro-button", 1,
     { opacity: 0, scale: 0.8 },
