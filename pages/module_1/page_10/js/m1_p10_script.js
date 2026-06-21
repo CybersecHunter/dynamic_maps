@@ -72,7 +72,7 @@ function _pageLoaded() {
   $('.introInfo').on("click", function () {
     window.location.reload();
   });
-    // $('.introInfo').attr('data-popup', 'introPopup-7');
+  // $('.introInfo').attr('data-popup', 'introPopup-7');
   $("#f_header").css({ background: `#f4ede4` });
   $("#f_header").find("#f_courseTitle").css({ content: `Dynamic Maps` });
   $(".home_btn").css({ backgroundImage: `url(${_pageData.sections[0].backBtnSrc})` });
@@ -303,6 +303,15 @@ function initMapInteractions() {
     TweenMax.to(".phy-region", 0.3, { fillOpacity: 0.3, strokeWidth: 0.1 });
     $("#divInfoPanel").fadeOut();
     $("input[name='map_layer']").prop("checked", false);
+    activeLayerOrder = [];
+    layerOrder = _pageData.sections[0].content.mapLayers.map(l => l.value);
+    $("#layerPositionList").empty();
+    updateLayerOrderUI();
+
+    $("#layerContainer").empty();
+    $("#regionPathsGroup").empty();
+    $("#physicalLayerSVG").hide();
+
     $(this).fadeOut();
   });
 
@@ -456,6 +465,17 @@ function renderActiveLayers() {
     }
   });
   updateLayerPositionUI();
+  if (activeLayerOrder.length === 0) {
+    $("#regionPathsGroup").empty();
+    $("#physicalLayerSVG").hide();
+    $("#divInfoPanel").hide();
+    return;
+  }
+
+  // let topLayerKey = activeLayerOrder[activeLayerOrder.length - 1];
+  let topLayerKey = activeLayerOrder[0];
+
+  renderSVGForLayer(topLayerKey);
 }
 
 function updateLayerPositionUI() {
@@ -507,6 +527,47 @@ function initLayerSorting() {
   });
 }
 
+function renderSVGForLayer(layerKey) {
+
+  $("#regionPathsGroup").empty();
+
+  if (!layerKey) {
+    $("#physicalLayerSVG").hide();
+    return;
+  }
+
+  let layerData = _pageData.sections[0].content.layerData[layerKey];
+  $("#svgTopImg")
+    .attr("href", layerData.mapImage.src)
+    .hide();
+
+  if (!layerData || !layerData.regions) {
+    $("#physicalLayerSVG").hide();
+    return;
+  }
+
+  let svgHtml = "";
+
+  layerData.regions.forEach(region => {
+
+    svgHtml += `
+            <path
+                class="phy-region"
+                data-id="${region.id}"
+                d="${region.d}"
+                fill="${region.fill || '#ffffff00'}"
+                stroke="#fff"
+                stroke-width="0.3"
+                fill-opacity="0.25">
+            </path>`;
+  });
+
+  $("#regionPathsGroup").html(svgHtml);
+  $("#physicalLayerSVG").show();
+
+  bindRegionEvents(layerData.regions);
+}
+
 
 function bindRegionEvents(regions) {
   let regionMap = {};
@@ -515,6 +576,10 @@ function bindRegionEvents(regions) {
   $(document).off("mouseenter mouseleave click", ".phy-region");
 
   $(".phy-region").on("mouseenter", function () {
+    let bbox = this.getBBox();
+
+    let centerX = bbox.x + bbox.width / 2;
+    let centerY = bbox.y + bbox.height / 2;
     if (!$(this).hasClass("active")) {
       TweenMax.to(this, 0.3, { fillOpacity: 0.9, strokeWidth: 0.1 });
       $(this).css("cursor", "pointer");
