@@ -114,17 +114,17 @@
       "headerTitle": "Heavy - Light",
       "headerImg": "pages/module_1/page_10/images/header_bg.png",
       "headerText": "pages/module_1/page_10/images/header_title.png",
-      "infoAudio": "pages/module_1/page_10/audios/info_audio.mp3",
-      "replayBtnAudios": "pages/module_1/page_10/audios/ost_audio.mp3",
+      "infoAudio": "pages/module_1/page_10/audios/BG.mp3",
+      "replayBtnAudios": "pages/module_1/page_10/audios/BG.mp3",
       "ost": "",
       "iText": "",
       "endAudio": "",
       "homeBtnSrc": "pages/module_1/page_10/images/home.png",
       "backBtnSrc": "pages/module_1/page_10/images/back.png",
-      "introAudio": "pages/module_1/page_10/audios/intro_audio.mp3",
-      "correctAudio": "pages/module_1/page_10/audios/good_job.mp3",
-      "wrongAudio": "pages/module_1/page_10/audios/try_again.mp3",
-      "finalAudio": "pages/module_1/page_10/audios/final_audio.mp3",
+      "introAudio": "pages/module_1/page_10/audios/BG.mp3",
+      "correctAudio": "pages/module_1/page_10/audios/BG.mp3",
+      "wrongAudio": "pages/module_1/page_10/audios/BG.mp3",
+      "finalAudio": "pages/module_1/page_10/audios/BG.mp3",
       "content": {
         "mapLayers": [
           {

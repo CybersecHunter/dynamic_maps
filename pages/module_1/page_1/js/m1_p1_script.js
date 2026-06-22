@@ -170,6 +170,13 @@ function addSectionData() {
 
         }
         setCSS(sectionCnt);
+        
+        $('#box-2').attr("disabled", true);
+        $('#box-2').css({
+            pointerEvents: "none",
+            cursor: "default"
+        })
+
         backButton = $('.goback-btn')
 
         backButton.off('click').on('click', selectOption);
