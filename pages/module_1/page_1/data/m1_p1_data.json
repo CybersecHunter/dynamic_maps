@@ -28,7 +28,7 @@
 			"slideType": "overview",
 			"slideTitle": "overview",
 			"headerTitle": "pages/module_1/page_1/images/title.png",
-			"infoPopAudio":"pages/module_1/page_1/audios/info_audio.mp3",
+			"infoPopAudio":"pages/module_1/page_1/audios/BG.mp3",
 			"infoPopImage":"pages/module_1/page_1/images/home_info.png",
 			"infoBtnSrc": "assets/images/info.png",
 			"homeBtnSrc": "assets/images/home.png",
@@ -42,22 +42,22 @@
 					{
 						"sectionID": 10,
 						"sectionIndx": 1,
-						"infoAudio": "pages/module_1/page_1/audios/audio1.mp3",
+						"infoAudio": "pages/module_1/page_1/audios/BG.mp3",
 						"isEmptyAudio": false,
 						"audioIndex": 0,
 						"infoImg": "pages/module_1/page_1/images/Story_Time_Info.png",
 						"thumb": "pages/module_1/page_1/images/map1.png",
-						"title": "Physical Map of India"
+						"title": "Physical Map"
 					},
 					{
 						"sectionID": 11,
 						"sectionIndx": 2,
-						"infoAudio": "pages/module_1/page_1/audios/audio2.mp3",
+						"infoAudio": "pages/module_1/page_1/audios/BG.mp3",
 						"isEmptyAudio": false,
 						"audioIndex": 1,
 						"infoImg": "pages/module_1/page_1/images/Simulation_info.png",
 						"thumb": "pages/module_1/page_1/images/map2.png",
-						"title": "Political Map of India"
+						"title": "Political Map"
 					}
 				]
 			}

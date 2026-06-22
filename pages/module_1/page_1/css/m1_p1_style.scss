@@ -71,7 +71,8 @@
 				height: 100%;
 
 				.content-bg {
-					padding: clamp(40px, 8%, 100px) 0px;
+					padding: clamp(15px, 8%, 80px) 0px;
+					padding-bottom: 20px !important;
 					position: relative;
 					display: flex;
 					height: 100%;
@@ -167,7 +168,51 @@
 									padding: 10px 30px 15px 50px;
 									// font-family: Arial, Helvetica, sans-serif;
 								}
-								
+
+								.wrapTextaudio {
+									position: relative;
+									width: 25px;
+									height: 25px;
+									min-width: 25px;
+									max-width: 25px;
+									cursor: pointer;
+									top: 3px;
+									margin-left: 5px;
+									background-position: center !important;
+									background-size: contain !important;
+									background-repeat: no-repeat !important;
+
+									@include mobile-landscape {
+										width: 15px;
+										height: 15px;
+										min-width: 15px;
+										max-width: 15px;
+										top: 0px;
+									}
+
+									&:disabled {
+										pointer-events: none;
+									}
+
+									&.playing {
+										background: url(../images/speaker.png) no-repeat;
+										background-size: contain;
+
+										&:disabled {
+											// background: url("../images/audio_disabled.png");
+										}
+									}
+
+									&.paused {
+										background: url(../images/speaker.png) no-repeat;
+										background-size: contain;
+
+										&:disabled {
+											// background: url("../images/audio_mute_disabled.png");
+										}
+									}
+								}
+
 							}
 
 							&>ul {
@@ -211,12 +256,20 @@
 								gap: clamp(8px, 2vw, 20px);
 							}
 
+							.btn_holder:nth-child(1) {
+								margin-left: -25px;
+							}
+
+							.btn_holder:nth-child(2) {
+								margin-right: -25px;
+							}
+
 							.btn_holder {
 								// FIX: must be position:relative so the absolutely-positioned .btn_info
 								// is anchored to the card corner, not to a distant ancestor.
 								position: relative;
 								// Keep original fixed size so .box width/height work as before
-								width: 500px;
+								width: 600px;
 								height: 100%;
 								display: flex;
 								flex-direction: row;
@@ -275,7 +328,7 @@
 										flex-shrink: 0;
 										position: absolute;
 										width: 100%;
-										bottom: 10px;
+										bottom: 35px;
 									}
 								}
 
@@ -439,10 +492,10 @@
 
 				.introPopAudio {
 					position: absolute;
-					width: 40px;
-					height: 40px;
-					top: 30px;
-					right: 70px;
+					width: 35px;
+					height: 35px;
+					top: 38px;
+					right: 80px;
 					cursor: pointer;
 					transition: transform 0.5s ease-in-out;
 
@@ -458,12 +511,12 @@
 					}
 
 					&.playing {
-						background: url("../images/specker.png") no-repeat;
+						background: url("../images/speaker.png") no-repeat;
 						background-size: contain;
 					}
 
 					&.mute {
-						background: url("../images/pause.png") no-repeat;
+						background: url("../images/speaker.png") no-repeat;
 						background-size: contain;
 					}
 				}

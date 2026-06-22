@@ -677,6 +677,9 @@
 									align-items: center;
 									gap: 8px;
 									background: #3a6b4a;
+									width:80px;
+									border-top-right-radius: 10px;
+									border-bottom-right-radius: 10px;
 									color: #fff;
 									border: none;
 									cursor: pointer;
@@ -685,7 +688,7 @@
 									font-weight: 700;
 									letter-spacing: 0.08em;
 									text-transform: uppercase;
-									border-radius: 0;
+									// border-radius: 0;
 									flex-shrink: 0;
 									transition: background 0.2s ease;
 
@@ -713,6 +716,7 @@
 								gap: 5px;
 								background: #b9d9d8;
 								padding: 12px 10px 12px 10px;
+								border-radius: 10px;
 
 								.layers-info-icon {
 									width: 30px;

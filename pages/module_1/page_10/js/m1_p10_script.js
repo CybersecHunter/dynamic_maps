@@ -104,13 +104,13 @@ function addSectionData() {
     sectionCnt = n + 1;
     if (sectionCnt == 1) {
 
-      playBtnSounds(_pageData.sections[sectionCnt - 1].replayBtnAudios);
-      audioEnd(function () {
-        $(".dummy-patch").hide();
-        $(".wrapTextaudio").removeClass("playing");
-        $(".wrapTextaudio").addClass("paused");
-        resetSimulationAudio();
-      });
+      // playBtnSounds(_pageData.sections[sectionCnt - 1].replayBtnAudios);
+      // audioEnd(function () {
+      //   $(".dummy-patch").hide();
+      //   $(".wrapTextaudio").removeClass("playing");
+      //   $(".wrapTextaudio").addClass("paused");
+      //   resetSimulationAudio();
+      // });
 
       // ---- Instruction line ----
       const layerIcons = {
