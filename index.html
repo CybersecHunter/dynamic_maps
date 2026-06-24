@@ -75,8 +75,11 @@
                     <div id="intro-btns">
                         <button data-tooltip="Music" class="music mute"></button>
                         <button data-tooltip="Information" data-popup="introPopup-1" class="introInfo"></button>
-                        <!-- <button id="full-screen" class="full-screen fScreen fullScreen" onclick="toggleFullscreen(this)" data-tooltip="Fullscreen"></button> -->
+                        <button id="full-screen" class="full-screen fScreen fullScreen" onclick="toggleFullscreen(this)" data-tooltip="Fullscreen"></button>
                     </div>
+                    <span class="birds"></span>
+                    <span class="globe"></span>
+                    <span class="paper-plane"></span>
                     <div id="intro-header">
                         <!-- <div class="left-char"></div> -->
                         <div class="intro-text-content">                      
@@ -148,9 +151,17 @@
 				-->
                 <div id="introPopup-1">                
                 <div class="popup-content">
-                    <button class="introPopAudio mute" onclick="togglePopAudio(this, 'assets/audios/info_audio.mp3')"></button>
-                    <button class="introPopclose" data-tooltip="Close" onClick="closePopup('introPopup-1')"></button>
-                    <img src="assets/images/popup_withText.png" alt="">
+                    <button class="introPopAudio mute" onclick="togglePopAudio(this, 'assets/audios/intro_pop_audio.mp3')"></button>
+                    <button class="introPopclose" data-tooltip="Close" onclick="closePopup('introPopup-1')"></button>
+                    <img src="assets/images/popup.png" alt="">
+                    <div class="popup-info">
+                        <p> INFORMATION </p>
+                    </div>
+                    <div class="popup-text">
+                        <div class="section">
+                            Welcome to your DYNAMIC MAPS! Get ready to learn about India in a fun and exciting way.
+                        </div>
+                    </div>
                 </div>
             </div>
         <div class="hideMain">
@@ -506,9 +517,9 @@
             <audio id="customeAudio" aria-hidden="true"></audio>
             <audio id="landingPageAudio" aria-hidden="true"></audio>
         </div>
-           <!-- <footer>
+           <footer>
                 <p>Copyright @2026 Macmillan Education India Private Limited. All rights reserved.</p>
-            </footer>  -->
+            </footer> 
       
         <!-- <div id="resumePlayBlock">
 				<div class="outer">

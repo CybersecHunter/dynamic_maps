@@ -20,6 +20,7 @@ html {
      font-size: 1rem;
      font-style: normal;
      font-weight: lighter;
+     cursor: url("../assets/images/cursor.png"), auto;
 }
 
 @include ipad-landscape {
@@ -213,6 +214,131 @@ h2 {}
                     text-align: left;
                     justify-content: center;
                     align-items: center;
+
+                    .birds {
+                         position: absolute;
+                         width: 100px;
+                         height: 60px;
+                         top: 5%;
+                         right: 30%;
+                         background-image: url(../assets/images/birds.png);
+                         background-repeat: no-repeat;
+                         background-size: 100% 100%;
+                         background-position: center;
+                         z-index: 999;
+
+                         &:hover {
+                              animation: floatBird 1s infinite ease-in-out;
+                         }
+
+                         @keyframes floatBird {
+
+                              0%,
+                              100% {
+                                   transform: translateY(0);
+                              }
+
+                              50% {
+                                   transform: translateY(-10px);
+                              }
+                         }
+                    }
+
+                    .globe {
+                         position: absolute;
+                         width: 120px;
+                         height: 120px;
+                         top: 12%;
+                         left: 18%;
+                         background-image: url(../assets/images/globe.png);
+                         background-repeat: no-repeat;
+                         background-size: 100% 100%;
+                         background-position: center;
+                         z-index: 999;
+
+                         &:hover {
+                              animation: rotateGlobe 4s linear infinite;
+                         }
+
+                         @keyframes rotateGlobe {
+                              0% {
+                                   transform: rotate(0deg) translateY(0);
+                              }
+
+                              25% {
+                                   transform: rotate(90deg) translateY(-3px);
+                              }
+
+                              50% {
+                                   transform: rotate(180deg) translateY(-6px);
+                              }
+
+                              75% {
+                                   transform: rotate(270deg) translateY(-3px);
+                              }
+
+                              100% {
+                                   transform: rotate(360deg) translateY(0);
+                              }
+                         }
+                    }
+
+                    .paper-plane {
+                         position: absolute;
+                         width: 100px;
+                         height: 100px;
+                         background: url(../assets/images/paper-plane.png) no-repeat center;
+                         background-size: contain;
+                         z-index: 999;
+                         top:20%;
+
+                         &:hover {
+                              animation: glidePlane 3s ease-in-out infinite;
+                         }
+
+                         @keyframes glidePlane {
+                              0% {
+                                   transform: translate(0, 0) rotate(0deg);
+                              }
+
+                              25% {
+                                   transform: translate(10px, -10px) rotate(10deg);
+                              }
+
+                              50% {
+                                   transform: translate(20px, 0) rotate(0deg);
+                              }
+
+                              75% {
+                                   transform: translate(10px, 10px) rotate(-10deg);
+                              }
+
+                              100% {
+                                   transform: translate(0, 0) rotate(0deg);
+                              }
+                         }
+                    }
+
+                    @keyframes flyPlane {
+
+                         0%,
+                         100% {
+                              transform: translate(0, 0) rotate(0deg);
+                         }
+
+                         25% {
+                              transform: translate(5px, -5px) rotate(5deg);
+                         }
+
+                         50% {
+                              transform: translate(10px, -10px) rotate(0deg);
+                         }
+
+                         75% {
+                              transform: translate(5px, -5px) rotate(-5deg);
+                         }
+                    }
+
 
                     #intro-btns {
                          opacity: 0;
@@ -467,7 +593,7 @@ h2 {}
                          gap: 30px;
                          justify-content: center;
                          align-items: center;
-                         translate: 0% 100%;
+                         translate: 0% 120%;
                          // margin-top:30px;
                          position: relative;
 
@@ -896,9 +1022,10 @@ h2 {}
           .right-nav {
                display: flex;
                flex-direction: row;
-               justify-content: center;
+               justify-content: flex-start;
                align-items: center;
                gap: 10px;
+               width: 33%;
           }
      }
 
@@ -1117,6 +1244,7 @@ h2 {}
      position: relative;
      width: 100%;
      height: 100%;
+     padding-bottom: 20px !important;
 }
 
 footer {
@@ -1127,11 +1255,13 @@ footer {
      justify-content: center;
      align-items: center;
      z-index: 11111;
+     background-color: #f3ece3;
+     height: 20px !important;
 
      p {
           font-size: 14px;
           color: #000;
-          margin-bottom: 10px;
+          margin-bottom: 5px !important;
           // font-family: "Times New Roman", sans-serif;
 
           @include mobile-landscape {
@@ -1654,23 +1784,33 @@ footer {
           padding: 1%;
           background: transparent;
 
+
           .introPopclose {
                position: absolute;
-               top: 30px;
-               right: 30px;
+               top: 35px;
+               right: 35px;
                background: url("../assets/images/popup_close.png") no-repeat;
                background-size: contain;
-               width: 35px;
-               height: 35px;
+               width: 30px;
+               height: 30px;
                cursor: pointer;
                transition: transform 0.5s ease-in-out;
 
+               // @include mobile-landscape {
+               // 	top: 15px;
+               // 	right: 60px;
+               // 	width: 15px;
+               // 	height: 15px;
+               // }
+
+               &:hover {
+                    transform: scale(1.125);
+               }
+
                &::after {
                     content: attr(data-tooltip);
-                    /* tooltip text from attribute */
                     position: absolute;
                     top: 100%;
-                    /* below the button */
                     left: 50%;
                     transform: translateX(-50%);
                     background: rgba(0, 0, 0, 0.85);
@@ -1691,54 +1831,76 @@ footer {
                     z-index: 10;
                }
 
-               /* Show tooltip on hover */
                &:hover::after {
                     opacity: 1;
-               }
-
-               &:hover {
-                    transform: scale(1.125);
                }
           }
 
           .introPopAudio {
-               display: none !important;
                position: absolute;
-               width: 40px;
-               height: 40px;
-               top: 50px;
-               left: 100px;
+               width: 35px;
+               height: 35px;
+               top: 38px;
+               right: 80px;
                cursor: pointer;
                transition: transform 0.5s ease-in-out;
 
-               // @include tablet-landscape {
-               //      top: 30px;
-               //      left: 75px;
+               // @include mobile-landscape {
+               // 	width: 20px;
+               // 	height: 20px;
+               // 	top: 20px;
+               // 	left: 45px;
                // }
-
-               @include mobile-landscape {
-                    top: 30px;
-                    width: 20px;
-                    height: 20px;
-                    left: 60px;
-               }
 
                &:hover {
                     transform: scale(1.125);
                }
 
                &.playing {
-                    background: url(../assets/images/sound.png) no-repeat;
+                    background: url("../assets/images/speaker.png") no-repeat;
                     background-size: contain;
                }
 
                &.mute {
-                    background: url(../assets/images/sound_pause.png) no-repeat;
+                    background: url("../assets/images/speaker.png") no-repeat;
                     background-size: contain;
                }
           }
 
-          // border-radius: clamp(16px, 2vw, 24px);
+          .popup-info {
+               position: absolute;
+               top: 15%;
+               left: 3%;
+               background: url("../assets/images/popupinfotext.png") no-repeat;
+               text-align: center;
+               background-size: revert;
+               background-size: contain;
+               color: #fff;
+               /* font-size: 1.2rem; */
+               font-weight: bold;
+               height: 15%;
+               width: 50%;
+               padding: 10px;
+
+               p {
+                    margin-left: 15%;
+                    font-size: 1.6vw;
+                    color: #e0d06d;
+                    font-weight: normal;
+               }
+          }
+
+          .popup-text {
+               position: absolute;
+               right: 15px;
+               width: 70%;
+               height: 20%;
+               text-align: center;
+               color: #508588;
+               font-size: 2rem;
+               font-weight: normal;
+          }
+
           img {
                width: 100%;
                height: auto;

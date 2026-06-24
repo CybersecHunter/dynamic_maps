@@ -128,10 +128,18 @@ function addSectionData() {
                     <button class="layers-toggle-btn" id="layersToggleBtn">
                           LAYERS
                     </button>
-                    <div class="layers-info-pill">
-                        <span class="layers-info-icon"></span>
-                        <span class="layers-info-text">`+ _pageData.sections[0].content.uiText.layersTooltip + `</span>
-                    </div>
+                    <span class="layer-info-icon" id="layerInfoIcon"
+      title="Select layer(s) to add to your map."
+      aria-hidden="true"></span>
+
+<div class="layers-info-pill" id="layersInfoPill" style="display:none;">
+    <div class="layer-sections">
+      <span class="layers-info-icon"></span>
+      <span class="layers-info-text">
+         Select layer(s) to add to your map.
+      </span>
+    </div>
+</div>
                 </div>
                 <div class="layers-list" id="layersList" style="display:none;">`;
 
@@ -146,13 +154,16 @@ function addSectionData() {
                   <span class="checkmark"></span>
               </label>`;
       }
-      mapHtml += `<div class="layer-position-panel">
-                    <div class="layer-position-title">
-                      Layer Position
-                    </div>
-                  <div id="layerPositionList"></div>
+      mapHtml += `</div>
                 </div>
-                </div></div>
+                <div class="layer-position-tab">
+                    <button class="layer-position-toggle-btn" id="layerPositionToggleBtn" type="button">
+                      Layer Position
+                    </button>
+                    <div class="layer-position-panel" id="layerPositionPanel" style="display:none;">
+                      <div id="layerPositionList"></div>
+                    </div>
+                </div>
       
           
           <!-- Map Area -->
@@ -197,6 +208,8 @@ function addSectionData() {
           <!-- Information Panel -->
           <div class="div-info-panel" id="divInfoPanel" style="display:none;">
               <div class="info-content">
+                  <button class="wrapTextaudio playing" id="wrapTextaudio_1" data-src="${_pageData.sections[sectionCnt - 1].replayBtnAudios}" onClick="replayLastAudio(this)"></button>
+                  <button class="region-info-close" id="regionInfoClose" type="button" aria-label="Close region information" title="Close"></button>
                   <h2 id="infoTitle">Division Name</h2>
                   <p id="infoDesc">Description of the physical division goes here.</p>
                   <h4>`+ _pageData.sections[0].content.uiText.infoPanelKeyFeaturesLabel + `</h4>
@@ -255,6 +268,8 @@ function addSectionData() {
 
       initMapInteractions();
 
+      // $('.nav_btns').append('<button id="full-screen" class="full-screen fScreen fullScreen" onclick="toggleFullscreen(this)" data-tooltip="Fullscreen"></button>')
+
 
       /* ================= BUTTON EVENTS ================= */
 
@@ -282,6 +297,12 @@ window.appState = { pageCount: 0 };
 
 if (typeof currentZoomScale === 'undefined') {
   var currentZoomScale = 1;
+  var mapTranslateX = 0;
+  var mapTranslateY = 0;
+
+  var isDraggingMap = false;
+  var dragStartX = 0;
+  var dragStartY = 0;
 }
 function initMapInteractions() {
   $("input[name='map_layer']").on("change", function () {
@@ -291,26 +312,24 @@ function initMapInteractions() {
 
   $("#mapReset").on("click", function () {
     currentZoomScale = 1;
-    TweenMax.to("#mapWrapper", 1, {
-      scale: 1,
-      transformOrigin: "center center",
-      ease: Power2.easeInOut
-    });
-    TweenMax.to("#baseMapImg", 0.5, { filter: "blur(0px)" });
-    $("#svgTopImg").hide();
+    mapTranslateX = 0;
+    mapTranslateY = 0;
+    updateMapTransform();
+    // TweenMax.to("#baseMapImg", 0.5, { filter: "blur(0px)" });
+    // $("#svgTopImg").hide();
 
-    $(".phy-region").removeClass("active");
-    TweenMax.to(".phy-region", 0.3, { fillOpacity: 0.3, strokeWidth: 0.1 });
-    $("#divInfoPanel").fadeOut();
-    $("input[name='map_layer']").prop("checked", false);
-    activeLayerOrder = [];
-    layerOrder = _pageData.sections[0].content.mapLayers.map(l => l.value);
-    $("#layerPositionList").empty();
-    updateLayerOrderUI();
+    // $(".phy-region").removeClass("active");
+    // TweenMax.to(".phy-region", 0.3, { fillOpacity: 0.3, strokeWidth: 0.1 });
+    // $("#divInfoPanel").fadeOut();
+    // $("input[name='map_layer']").prop("checked", false);
+    // activeLayerOrder = [];
+    // layerOrder = _pageData.sections[0].content.mapLayers.map(l => l.value);
+    // $("#layerPositionList").empty();
+    // updateLayerOrderUI();
 
-    $("#layerContainer").empty();
-    $("#regionPathsGroup").empty();
-    $("#physicalLayerSVG").hide();
+    // $("#layerContainer").empty();
+    // $("#regionPathsGroup").empty();
+    // $("#physicalLayerSVG").hide();
 
     $(this).fadeOut();
   });
@@ -319,7 +338,8 @@ function initMapInteractions() {
     currentZoomScale += _pageData.sections[0].content.zoomSettings.step;
     if (currentZoomScale > _pageData.sections[0].content.zoomSettings.max)
       currentZoomScale = _pageData.sections[0].content.zoomSettings.max;
-    TweenMax.to("#mapWrapper", 0.5, { scale: currentZoomScale, ease: Power2.easeOut });
+    // TweenMax.to("#mapWrapper", 0.5, { scale: currentZoomScale, ease: Power2.easeOut });
+    updateMapTransform();
     $("#mapReset").fadeIn();
   });
 
@@ -327,25 +347,145 @@ function initMapInteractions() {
     currentZoomScale -= _pageData.sections[0].content.zoomSettings.step;
     if (currentZoomScale < _pageData.sections[0].content.zoomSettings.min)
       currentZoomScale = _pageData.sections[0].content.zoomSettings.min;
-    TweenMax.to("#mapWrapper", 0.5, { scale: currentZoomScale, ease: Power2.easeOut });
+    // TweenMax.to("#mapWrapper", 0.5, { scale: currentZoomScale, ease: Power2.easeOut });
+    updateMapTransform();
     if (currentZoomScale === _pageData.sections[0].content.zoomSettings.defaultScale)
       $("#mapReset").fadeOut();
   });
 
+  $("#regionInfoClose").off("click").on("click", closeRegionInfoPanel);
+
   $("#layersToggleBtn").on("click", function () {
     let $list = $("#layersList");
     if ($list.is(":visible")) {
+      $(".layer-position-tab").hide();
+      $(".layer-info-icon").hide();
+      $("#layersInfoPill").hide();
       $list.slideUp(200);
-      $(this).closest(".layers-sidebar").removeClass("open");
+      $(this).closest(".layers-sidebar").removeClass("layers-open");
     } else {
+      $(".layer-position-tab").show();
+      $(".layer-info-icon").show();
+      $("#layersInfoPill").show();
       $list.slideDown(200);
-      $(this).closest(".layers-sidebar").addClass("open");
+      $(this).closest(".layers-sidebar").addClass("layers-open");
     }
+  });
+  // $("#layerInfoIcon").on("click", function (e) {
+  //   e.stopPropagation();
+  //   $("#layersInfoPill").stop(true, true).fadeToggle(150);
+  // });
+  // if ($list.is(":visible")) {
+  //   $("#layersInfoPill").hide();
+  // }
+
+  $("#layerPositionToggleBtn").on("click", function () {
+    let $panel = $("#layerPositionPanel");
+    if ($panel.is(":visible")) {
+      $panel.slideUp(200);
+      $(this).closest(".layers-sidebar").removeClass("position-open");
+    } else {
+      $panel.slideDown(200);
+      $(this).closest(".layers-sidebar").addClass("position-open");
+    }
+  });
+
+  const mapWrapper = document.getElementById("mapWrapper");
+
+  $(mapWrapper).on("mousedown touchstart", function (e) {
+    if (currentZoomScale <= 1) return;
+    isDraggingMap = true;
+
+    const point = e.type === "touchstart"
+      ? e.originalEvent.touches[0]
+      : e;
+
+    dragStartX = point.pageX - mapTranslateX;
+    dragStartY = point.pageY - mapTranslateY;
+
+    $(this).css("cursor", "grabbing");
+  });
+
+  $(document).on("mousemove touchmove", function (e) {
+
+    if (!isDraggingMap) return;
+
+    const point = e.type === "touchmove"
+      ? e.originalEvent.touches[0]
+      : e;
+
+    mapTranslateX = point.pageX - dragStartX;
+    mapTranslateY = point.pageY - dragStartY;
+
+    updateMapTransform();
+  });
+
+  $(document).on("mouseup touchend touchcancel", function () {
+
+    isDraggingMap = false;
+
+        $("#mapWrapper").css(
+        "cursor",
+        currentZoomScale > 1 ? "grab" : "default"
+    );
   });
 
   layerOrder = _pageData.sections[0].content.mapLayers.map(l => l.value);
 
   updateLayerOrderUI();
+}
+
+function clampMapTranslate() {
+  const wrapper = document.getElementById("mapWrapper");
+  if (!wrapper || currentZoomScale <= 1) {
+    mapTranslateX = 0;
+    mapTranslateY = 0;
+    return;
+  }
+
+  const maxTranslateX = wrapper.offsetWidth * (currentZoomScale - 1) / 2;
+  const maxTranslateY = wrapper.offsetHeight * (currentZoomScale - 1) / 2;
+
+  mapTranslateX = Math.max(-maxTranslateX, Math.min(maxTranslateX, mapTranslateX));
+  mapTranslateY = Math.max(-maxTranslateY, Math.min(maxTranslateY, mapTranslateY));
+}
+
+function updateMapTransform() {
+  clampMapTranslate();
+
+  TweenMax.set("#mapWrapper", {
+    scale: currentZoomScale,
+    x: mapTranslateX,
+    y: mapTranslateY,
+    transformOrigin: "center center"
+  });
+}
+
+function focusMapOnRegion(regionPath, clickEvent) {
+  const wrapper = document.getElementById("mapWrapper");
+  const svg = document.getElementById("physicalLayerSVG");
+  if (!wrapper || !svg) return;
+
+  const wrapperWidth = wrapper.offsetWidth;
+  const wrapperHeight = wrapper.offsetHeight;
+  const viewBox = svg.viewBox.baseVal;
+  let targetX = wrapperWidth / 2;
+  let targetY = wrapperHeight / 2;
+
+  try {
+    const bbox = regionPath.getBBox();
+    targetX = ((bbox.x + bbox.width / 2) - viewBox.x) / viewBox.width * wrapperWidth;
+    targetY = ((bbox.y + bbox.height / 2) - viewBox.y) / viewBox.height * wrapperHeight;
+  } catch (err) {
+    if (clickEvent) {
+      const offset = $("#mapWrapper").offset();
+      targetX = clickEvent.pageX - offset.left;
+      targetY = clickEvent.pageY - offset.top;
+    }
+  }
+
+  mapTranslateX = -((targetX - wrapperWidth / 2) * currentZoomScale);
+  mapTranslateY = -((targetY - wrapperHeight / 2) * currentZoomScale);
 }
 
 function updateLayerOrderUI() {
@@ -555,10 +695,10 @@ function renderSVGForLayer(layerKey) {
                 class="phy-region"
                 data-id="${region.id}"
                 d="${region.d}"
-                fill="${region.fill || '#ffffff00'}"
+                fill="transparent"
                 stroke="#fff"
-                stroke-width="0.3"
-                fill-opacity="0.25">
+                stroke-width="0"
+                fill-opacity="0">
             </path>`;
   });
 
@@ -569,6 +709,12 @@ function renderSVGForLayer(layerKey) {
 }
 
 
+function closeRegionInfoPanel() {
+  $("#divInfoPanel").fadeOut(150);
+  $("#svgTopImg").hide();
+  $(".phy-region").removeClass("active");
+  TweenMax.to(".phy-region", 0.3, { fillOpacity: 0, strokeWidth: 0 });
+}
 function bindRegionEvents(regions) {
   let regionMap = {};
   regions.forEach(r => regionMap[r.id] = r);
@@ -581,7 +727,7 @@ function bindRegionEvents(regions) {
     let centerX = bbox.x + bbox.width / 2;
     let centerY = bbox.y + bbox.height / 2;
     if (!$(this).hasClass("active")) {
-      TweenMax.to(this, 0.3, { fillOpacity: 0.9, strokeWidth: 0.1 });
+      TweenMax.to(this, 0.3, { fillOpacity: 0, strokeWidth: 0 });
       $(this).css("cursor", "pointer");
       let regionId = $(this).data("id");
       let d = regionMap[regionId];
@@ -597,17 +743,17 @@ function bindRegionEvents(regions) {
     $("#mapTooltip").css({ left: x + "px", top: y + "px" });
   }).on("mouseleave", function () {
     if (!$(this).hasClass("active")) {
-      TweenMax.to(this, 0.3, { fillOpacity: 0.3, strokeWidth: 0.1 });
+      TweenMax.to(this, 0.1, { fillOpacity: 0, strokeWidth: 0 });
     }
     $("#mapTooltip").fadeOut(100);
-  }).on("click", function () {
+  }).on("click", function (e) {
     let regionId = $(this).data("id");
     let d = regionMap[regionId];
     if (!d) return;
 
-    TweenMax.to("#baseMapImg", 0.3, { filter: "blur(5px)" });
-    $("#activeRegionPath").attr("d", d.d);
-    $("#svgTopImg").show();
+    TweenMax.to("#baseMapImg", 0.1, { filter: "blur(0px)" });
+    // $("#activeRegionPath").attr("d", d.d);
+    $("#svgTopImg").hide();
 
     /* 
     if (d.highlightImg) {
@@ -618,16 +764,15 @@ function bindRegionEvents(regions) {
     */
 
     $(".phy-region").removeClass("active");
-    TweenMax.to(".phy-region", 0.3, { fillOpacity: 0.3, strokeWidth: 0.1 });
+    TweenMax.to(".phy-region", 0.3, { fillOpacity: 0, strokeWidth: 0 });
 
     $(this).addClass("active");
-    TweenMax.to(this, 0.3, { fillOpacity: 0.1, strokeWidth: 0.1 });
+    TweenMax.to(this, 0.3, { fillOpacity: 0, strokeWidth: 0 });
 
-    TweenMax.to("#mapWrapper", 1, {
-      scale: d.scale,
-      transformOrigin: d.cx + " " + d.cy,
-      ease: Power2.easeInOut
-    });
+    currentZoomScale = d.scale || _pageData.sections[0].content.zoomSettings.defaultScale;
+    focusMapOnRegion(this, e);
+
+    updateMapTransform();
 
     $("#infoTitle").text(d.name);
     $("#infoDesc").text(d.desc);

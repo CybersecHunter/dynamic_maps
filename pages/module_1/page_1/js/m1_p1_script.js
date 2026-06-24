@@ -121,7 +121,7 @@ function addSectionData() {
 
             if (_pageData.sections[sectionCnt - 1].content.sectionArray != "") {
                 for (let i = 0; i < _pageData.sections[sectionCnt - 1].content.sectionArray.length; i++) {
-                    imgObj += '<div class="btn_holder"><button class="box" id="box-' + (_pageData.sections[sectionCnt - 1].content.sectionArray[i].sectionIndx) + '">'
+                    imgObj += '<div class="btn_holder btn_'+ i +'"><button class="box" id="box-' + (_pageData.sections[sectionCnt - 1].content.sectionArray[i].sectionIndx) + '">'
 
                     if (_pageData.sections[sectionCnt - 1].content.sectionArray[i].thumb) {
                         imgObj += '<div class="card-thumb" style="background-image:url(\'' + _pageData.sections[sectionCnt - 1].content.sectionArray[i].thumb + '\');"></div>';
@@ -153,6 +153,7 @@ function addSectionData() {
         </div>
         <div class="popup-text">
             <div class="section">
+            Welcome to your DYNAMIC MAPS! Get ready to learn about India in a fun and exciting way.
             </div>
         </div>
     </div>
@@ -185,6 +186,7 @@ function addSectionData() {
 
         infoButton.off('click');
 
+        // $('.nav_btns').append('<button id="full-screen" class="full-screen fScreen fullScreen" onclick="toggleFullscreen(this)" data-tooltip="Fullscreen"></button>')
         // $('#section-' + sectionCnt)
         //     .find('.bg-img').append(`
         //     <img id="bgVideo" src="${_pageData.bgVid.imageSRC}" alt="" >
@@ -447,6 +449,8 @@ function withAudioSync() {
     _tweenTimeline.add(animateFadeIn($('h1'), 0.5).play(), 2)
     _tweenTimeline.add(animateFadeIn(body.find('.text-container'), 0.5).play(), 1)
     _tweenTimeline.add(animateFadeIn(body.find('.text-container').find('p'), 0.5).play(), 1.5)
+    _tweenTimeline.add(animateFromLeft($('.btn_0'), 0.5, 0).play(), 1.5)
+    _tweenTimeline.add(animateFromRight($('.btn_1'), 0.5, 0).play(), 2)
     // var iconTimings = [3];
     // var textTimings = [3,5,7];
     // for (var k = 0; k < iconTimings.length; k++) {
