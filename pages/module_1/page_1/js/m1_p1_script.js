@@ -193,7 +193,11 @@ function addSectionData() {
         infoButton = $('.introInfo')
 
         infoButton.off('click');
-
+        if ($('.nav_btns #full-screen').length === 0) {
+            $('.nav_btns').append(
+                '<button id="full-screen" class="full-screen fScreen fullScreen" onclick="toggleFullscreen(this)" data-tooltip="Fullscreen"></button>'
+            );
+        }
         // $('.nav_btns').append('<button id="full-screen" class="full-screen fScreen fullScreen" onclick="toggleFullscreen(this)" data-tooltip="Fullscreen"></button>')
         // $('#section-' + sectionCnt)
         //     .find('.bg-img').append(`
@@ -419,30 +423,30 @@ function loadAudio(aud) {
 var activeAudio = null;
 
 function playBtnSounds(soundFile) {
-  if (!soundFile) {
-    console.warn("Audio source missing!");
-    return;
-  }
+    if (!soundFile) {
+        console.warn("Audio source missing!");
+        return;
+    }
 
-  console.log("calling audios");
+    console.log("calling audios");
 
-  const audio = document.getElementById("simulationAudio");
+    const audio = document.getElementById("simulationAudio");
 
-  // Stop previous audio if it exists
-  if (activeAudio && !activeAudio.paused) {
-    activeAudio.pause();
-    // Do NOT reset src yet, let it finish
-  }
+    // Stop previous audio if it exists
+    if (activeAudio && !activeAudio.paused) {
+        activeAudio.pause();
+        // Do NOT reset src yet, let it finish
+    }
 
-  audio.loop = false;
-  audio.src = soundFile;
-  audio.load();
+    audio.loop = false;
+    audio.src = soundFile;
+    audio.load();
 
-  activeAudio = audio;
+    activeAudio = audio;
 
-  audio.play().catch((err) => {
-    console.warn("Audio play error:", err);
-  });
+    audio.play().catch((err) => {
+        console.warn("Audio play error:", err);
+    });
 
 }
 
