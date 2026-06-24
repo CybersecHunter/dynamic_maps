@@ -1,6 +1,6 @@
 {
 	"mainAudio": {
-		"audioSRC": "assets/audios/5sec.mp3",
+		"audioSRC": "pages/module_1/page_1/audios/intro_pop_audio.mp3",
 		"isEmptyAudio": false,
 		"audioIndex": 0
 	},
@@ -28,7 +28,9 @@
 			"slideType": "overview",
 			"slideTitle": "overview",
 			"headerTitle": "pages/module_1/page_1/images/title.png",
-			"infoPopAudio":"assets/audios/intro_pop_audio.mp3",
+			"infoPopAudio":"pages/module_1/page_1/audios/intro_pop_audio.mp3",
+			"replayBtnAudios":"pages/module_1/page_1/audios/intro_pop_audio.mp3",
+			"introAudio": "pages/module_1/page_1/audios/intro_pop_audio.mp3",
 			"infoPopImage":"pages/module_1/page_1/images/home_info.png",
 			"infoBtnSrc": "assets/images/info.png",
 			"homeBtnSrc": "assets/images/home.png",

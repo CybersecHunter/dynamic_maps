@@ -379,7 +379,7 @@ Controller.prototype.checkPreLoaderHide = function () {
                             document.querySelector(".fScreen").style.display = "none";
                         }
                         document.getElementById("audio_src").play();
-                        document.getElementById("audio_src").volume = 0.6;
+                        document.getElementById("audio_src").volume = 0.1;
                         if (!_controller._globalMusicPlaying) {
                             _controller._globalMusicPlaying = true;
                         }

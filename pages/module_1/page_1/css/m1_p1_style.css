@@ -231,7 +231,7 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  gap: 75px;
+  gap: 50px;
 }
 @media (max-width: 950px) and (orientation: landscape) {
   #section-1 .content-holder .col-left .content .content-bg > .body > .image-container {

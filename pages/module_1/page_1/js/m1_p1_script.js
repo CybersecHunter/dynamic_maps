@@ -27,7 +27,7 @@ var sectionCnt = 0;
 var totalSection = 0;
 var prevSectionCnt = -1;
 var sectionTopPos = []
-var playMainAudio = false;
+var playMainAudio = true;
 var totalVisited = 0;
 var _currentAudioIndex = 0;
 var _visitedArr = [];
@@ -91,6 +91,14 @@ function addSectionData() {
         let titleText = '', insText = '';
         if (sectionCnt == 1) {
 
+            playBtnSounds(_pageData.sections[sectionCnt - 1].replayBtnAudios);
+            // audioEnd(function () {
+            //     $(".dummy-patch").hide();
+            //     $(".wrapTextaudio").removeClass("playing");
+            //     $(".wrapTextaudio").addClass("paused");
+            //     resetSimulationAudio();
+            // });
+
 
             /*     $("#section-" + sectionCnt).find(".content-holder").find(".col-left").find(".content").find(".content-bg").append('<div class="main-text"><h1 aria-label="' + removeTags(_pageData.sections[sectionCnt - 1].headerTitle) + '" tabindex="0">' + _pageData.sections[sectionCnt - 1].headerTitle + '</h1></div>'); */
 
@@ -121,7 +129,7 @@ function addSectionData() {
 
             if (_pageData.sections[sectionCnt - 1].content.sectionArray != "") {
                 for (let i = 0; i < _pageData.sections[sectionCnt - 1].content.sectionArray.length; i++) {
-                    imgObj += '<div class="btn_holder btn_'+ i +'"><button class="box" id="box-' + (_pageData.sections[sectionCnt - 1].content.sectionArray[i].sectionIndx) + '">'
+                    imgObj += '<div class="btn_holder btn_' + i + '"><button class="box" id="box-' + (_pageData.sections[sectionCnt - 1].content.sectionArray[i].sectionIndx) + '">'
 
                     if (_pageData.sections[sectionCnt - 1].content.sectionArray[i].thumb) {
                         imgObj += '<div class="card-thumb" style="background-image:url(\'' + _pageData.sections[sectionCnt - 1].content.sectionArray[i].thumb + '\');"></div>';
@@ -153,7 +161,7 @@ function addSectionData() {
         </div>
         <div class="popup-text">
             <div class="section">
-            Welcome to your DYNAMIC MAPS! Get ready to learn about India in a fun and exciting way.
+                Choose one of the map to explore further.
             </div>
         </div>
     </div>
@@ -171,7 +179,7 @@ function addSectionData() {
 
         }
         setCSS(sectionCnt);
-        
+
         $('#box-2').attr("disabled", true);
         $('#box-2').css({
             pointerEvents: "none",
@@ -401,13 +409,91 @@ function onClickHandler(evt) {
 function loadAudio(aud) {
     _audioId = aud.audioSRC;
     _audioIndex = aud.audioIndex;
-    // console.log(_audioIndex)
+    console.log(_audioIndex)
     _currentAudioIndex = _audioIndex
 
     assignAudio(_audioId, _audioIndex, _pageAudioSync, _forceNavigation, _videoId, _popupAudio, _reloadRequired);
 
 }
 
+var activeAudio = null;
+
+function playBtnSounds(soundFile) {
+  if (!soundFile) {
+    console.warn("Audio source missing!");
+    return;
+  }
+
+  console.log("calling audios");
+
+  const audio = document.getElementById("simulationAudio");
+
+  // Stop previous audio if it exists
+  if (activeAudio && !activeAudio.paused) {
+    activeAudio.pause();
+    // Do NOT reset src yet, let it finish
+  }
+
+  audio.loop = false;
+  audio.src = soundFile;
+  audio.load();
+
+  activeAudio = audio;
+
+  audio.play().catch((err) => {
+    console.warn("Audio play error:", err);
+  });
+
+}
+
+
+function replayLastAudio(btn) {
+    const audio = document.getElementById("simulationAudio");
+    const audioSource = btn.getAttribute('data-src') || window.replayBtnAudio;
+
+    console.log("Replay/Toggle triggered");
+
+    // 1. RESTART: If audio has finished or isn't loaded
+    if (audio.ended || !audio.src || audio.src === "") {
+        console.log("Starting Audio Fresh");
+
+        // Reset Mute to False (Play with sound)
+        audio.muted = false;
+
+        // SHOW patch on start
+        $(".dummy-patch").show();
+
+        playBtnSounds(audioSource);
+        setButtonState(btn, "playing");
+
+        // Attach completion listener
+        audioEnd(() => {
+            setButtonState(btn, "paused");
+            $(".dummy-patch").hide(); // Always hide when done
+            console.log("Audio completed");
+        });
+        return;
+    }
+
+    // 2. TOGGLE Logic (While Playing)
+    if (audio.muted) {
+        // --- RESUME (UNMUTE) ---
+        console.log("Resuming Sound");
+        audio.muted = false;
+        setButtonState(btn, "playing");
+
+        // SHOW patch because audio is audible now
+        $(".dummy-patch").show();
+    } else {
+        // --- MUTE (SILENT PLAY) ---
+        console.log("Muting Sound");
+        audio.muted = true;
+        setButtonState(btn, "paused");
+
+        // HIDE patch because audio is silent (user wants to interact)
+        $(".dummy-patch").hide();
+    }
+}
 
 function removeTags(str) {
     if ((str === null) || (str === '')) {

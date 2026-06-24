@@ -118,6 +118,7 @@ var Controller = function () {
             //containment: "parent"
         });
     }
+    
     currentMedia = document.getElementById('courseAudio');
     document.addEventListener("visibilitychange", function () {
         if (document.hidden) {
@@ -393,7 +394,7 @@ Controller.prototype.checkPreLoaderHide = function () {
                             document.querySelector(".fScreen").style.display = "none";
                         }
                         document.getElementById("audio_src").play();
-                        document.getElementById("audio_src").volume = 0.6;
+                        document.getElementById("audio_src").volume = 0.1;
                         if (!_controller._globalMusicPlaying) {
                             _controller._globalMusicPlaying = true;
                         }
@@ -2696,7 +2697,6 @@ $(".popup-continue").on("click", function () {
         _controller.updateViewNow();
     }
 });
-
 
 let simulationWasPlaying = false;
 let isManuallyPaused = false; // Track if audio was manually paused
