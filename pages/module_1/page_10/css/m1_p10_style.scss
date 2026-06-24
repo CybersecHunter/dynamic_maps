@@ -405,7 +405,7 @@
 							height: 100%;
 							position: relative;
 							overflow: hidden;
-							padding-top: 5%;
+							padding-top: 4.5vw;
 							box-sizing: border-box; // ← ADD: so padding doesn't cause overflow
 
 							@include tablet-landscape-height {
@@ -548,7 +548,7 @@
 								touch-action: none;
 								position: relative;
 								width: 100%;
-								max-width: 85%;
+								max-width: 82%;
 								transition: transform 0.3s ease;
 
 								.map-img-layer {

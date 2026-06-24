@@ -371,7 +371,7 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   height: 100%;
   position: relative;
   overflow: hidden;
-  padding-top: 5%;
+  padding-top: 4.5vw;
   box-sizing: border-box;
 }
 @media screen and (orientation: landscape) and (min-width: 951px) and (max-height: 550px) {
@@ -483,7 +483,7 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   touch-action: none;
   position: relative;
   width: 100%;
-  max-width: 85%;
+  max-width: 82%;
   transition: transform 0.3s ease;
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style .map-view-area .map-wrapper .map-img-layer {
