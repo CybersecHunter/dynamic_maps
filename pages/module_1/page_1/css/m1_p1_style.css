@@ -199,7 +199,7 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   background-size: contain;
 }
 #section-1 .content-holder .col-left .content .content-bg > .body > .text-container .ins-txt .wrapTextaudio.paused {
-  background: url(../images/speaker.png) no-repeat;
+  background: url(../images/sound_pause.png) no-repeat;
   background-size: contain;
 }
 #section-1 .content-holder .col-left .content .content-bg > .body > .text-container > ul {
@@ -458,7 +458,7 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   background-size: contain;
 }
 #section-1 .content-holder #introPopup-2 .popup-content .introPopAudio.mute {
-  background: url("../images/speaker.png") no-repeat;
+  background: url("../images/sound_pause.png") no-repeat;
   background-size: contain;
 }
 #section-1 .content-holder #introPopup-2 .popup-content .popup-info {

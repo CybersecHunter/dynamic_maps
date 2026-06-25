@@ -68,7 +68,7 @@
             </div> 
             <!-- <button id="full-screen" class="full-screen fullScreen" onclick="toggleFullscreen(this)" data-tooltip="Fullscreen"></button> -->
             </div>
-            <div id="intro">
+            <div id="intro" style='cursor: url("../assets/images/cursor.png"), auto;'>
                   <!-- <video autoplay muted loop playsinline src="assets/video/video_1.mp4"></video> -->
                    <img class="intro-bg" src="./assets/images/intro_bg.png" alt="Intro Background" />
                 <div id="intro-text">
@@ -153,13 +153,33 @@
                 <div class="popup-content">
                     <button class="introPopAudio mute" onclick="togglePopAudio(this, 'assets/audios/intro_pop_audio.mp3')"></button>
                     <button class="introPopclose" data-tooltip="Close" onclick="closePopup('introPopup-1')"></button>
-                    <img src="assets/images/popup.png" alt="">
+                    <img src="assets/images/popup.png" alt="" style="height: 400px; width: auto;">
                     <div class="popup-info">
                         <p> INFORMATION </p>
                     </div>
                     <div class="popup-text">
-                        <div class="section">
-                            Welcome to your DYNAMIC MAPS! Get ready to learn about India in a fun and exciting way.
+                        <div class="section" style="font-size: 14px;">
+                            <p>Welcome to your DYNAMIC MAPS! Get ready to learn about India in a fun and exciting way.</p>
+                            <ul>
+                                <li>
+                                    Start by choosing a map type: Physical or Political. 
+                                </li>
+                                <li>
+                                    Then turn on different layers to see them appear on the map. 
+                                </li>
+                                <li>
+                                    You can select more than one layer at a time to understand how different features fit together. 
+                                </li>
+                                </ul>
+                                
+                                <span>For example, see how rivers flow through mountains and plains!</span>
+                                <ul>
+                                <li>
+                                    Click on any feature on the map to learn interesting facts about it. 
+                                </li> 
+                                </ul>
+                                <i>Explore, experiment and enjoy learning geography like never before!</i>
+                            
                         </div>
                     </div>
                 </div>

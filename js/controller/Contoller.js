@@ -2613,7 +2613,7 @@ function toggleFullscreen(btn) {
             doc.webkitExitFullscreen ||
             doc.msExitFullscreen).call(doc);
     }
-
+        console.log("fullscreen", isFullscreen);
     // Immediately update button state
     setButtonState(btn, !isFullscreen);
 }

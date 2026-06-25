@@ -68,7 +68,6 @@ function _pageLoaded() {
     $("#f_courseTitle").css("background", `url(${_pageData.sections[0].headerTitle}) no-repeat center center`);
     $(".home_btn").css({ backgroundImage: `url(${_pageData.sections[0].homeBtnSrc})` });
     $(".home_btn").attr("data-tooltip", "Home");
-
     addSectionData();
     //assignAudio(_audioId, _audioIndex, _pageAudioSync, _forceNavigation, _videoId, _popupAudio, _reloadRequired);
     pagePreLoad();

@@ -205,7 +205,7 @@
 									}
 
 									&.paused {
-										background: url(../images/speaker.png) no-repeat;
+										background: url(../images/sound_pause.png) no-repeat;
 										background-size: contain;
 
 										&:disabled {
@@ -528,7 +528,7 @@
 					}
 
 					&.mute {
-						background: url("../images/speaker.png") no-repeat;
+						background: url("../images/sound_pause.png") no-repeat;
 						background-size: contain;
 					}
 				}

@@ -70,7 +70,8 @@ function _pageLoaded() {
   $(".introInfo").css({ backgroundImage: `url(${_pageData.sections[0].homeBtnSrc})` });
   $(".introInfo").attr("data-tooltip", "Home");
   $('.introInfo').on("click", function () {
-    window.location.reload();
+    // window.location.reload();
+    onLaunchCourse();
   });
   // $('.introInfo').attr('data-popup', 'introPopup-7');
   $("#f_header").css({ background: `#f4ede4` });
@@ -121,59 +122,58 @@ function addSectionData() {
         parks: `<img src="${_pageData.sections[sectionCnt - 1].content.layerIcons.parks}" alt="Icon">`
       };
       let mapHtml = `
-        <div class="dynamic-map-container">
-            <!-- Layers Sidebar -->
-            <div class="layers-sidebar">
-                <div class="layers-toggle-bar">
-                    <button class="layers-toggle-btn" id="layersToggleBtn">
-                          LAYERS
-                    </button>
-                    <span class="layer-info-icon" id="layerInfoIcon"
-      title="Select layer(s) to add to your map."
-      aria-hidden="true"></span>
+  <div class="dynamic-map-container">
 
-<div class="layers-info-pill" id="layersInfoPill" style="display:none;">
-    <div class="layer-sections">
-      <span class="layers-info-icon"></span>
-      <span class="layers-info-text">
-         Select layer(s) to add to your map.
-      </span>
-    </div>
-</div>
-                </div>
-                <div class="layers-list" id="layersList" style="display:none;">`;
+    <!-- Layers Sidebar with Tabs -->
+    <div class="layers-sidebar">
+      <div class="layers-tab-bar">
+        <button class="layers-tab-btn active" data-tab="layers" id="tabBtnLayers">
+          LAYERS
+          <span class="layer-info-icon" id="layerInfoIcon">
+            <span class="layers-info-tooltip">Select layer(s) to add to your map.</span>
+          </span>
+        </button>
+        <button class="layers-tab-btn" data-tab="position" id="tabBtnPosition">
+          LAYER POSITION
+        </button>
+      </div>
+
+      <!-- Layers Tab Panel -->
+      <div class="layers-tab-panel active" id="layersTabPanel">
+        <div class="layers-list" id="layersList">`;
 
       for (let i = 0; i < _pageData.sections[0].content.mapLayers.length; i++) {
         let layer = _pageData.sections[0].content.mapLayers[i];
         let icon = layerIcons[layer.value] || layerIcons.physical;
         mapHtml += `
-              <label class="layer-option">
-                  <input type="checkbox" name="map_layer" value="${layer.value}">
-                  <span class="layer-icon-wrap">${icon}</span>
-                  <span class="layer-label-text">${layer.label}</span>
-                  <span class="checkmark"></span>
-              </label>`;
+    <label class="layer-option">
+      <input type="checkbox" name="map_layer" value="${layer.value}">
+      <span class="layer-icon-wrap">${icon}</span>
+      <span class="layer-label-text">${layer.label}</span>
+    </label>`;
       }
-      mapHtml += `</div>
-                </div>
-                <div class="layer-position-tab">
-                    <button class="layer-position-toggle-btn" id="layerPositionToggleBtn" type="button">
-                      Layer Position
-                    </button>
-                    <div class="layer-position-panel" id="layerPositionPanel" style="display:none;">
-                      <div id="layerPositionList"></div>
-                    </div>
-                </div>
-      
-          
-          <!-- Map Area -->
+
+      mapHtml += `
+        </div>
+      </div>
+
+      <!-- Layer Position Tab Panel -->
+      <div class="layers-tab-panel" id="positionTabPanel">
+        <div id="layerPositionList"></div>
+      </div>
+    </div>
+    <!-- end .layers-sidebar -->
+`;
+
+
+      mapHtml += `<!-- Map Area -->
           <div class="map-view-area">
               <div class="zoom-controls">
                   <div class="zoomButtons">
                     <button class="zoom-btn" id="mapZoomIn" title="Zoom In"></button>
                     <button class="zoom-btn" id="mapZoomOut" title="Zoom Out"></button>
                   </div>
-                  <button class="reset-view-btn" id="mapReset" style="display:none;"></button>
+                  <button class="reset-view-btn" title="Reset" data-tooltip="Reset" id="mapReset" style="display:none;"></button>
               </div>
               
               <div class="map-wrapper" id="mapWrapper">
@@ -208,8 +208,8 @@ function addSectionData() {
           <!-- Information Panel -->
           <div class="div-info-panel" id="divInfoPanel" style="display:none;">
               <div class="info-content">
-                  <button class="wrapTextaudio playing" id="wrapTextaudio_1" data-src="${_pageData.sections[sectionCnt - 1].replayBtnAudios}" onClick="replayLastAudio(this)"></button>
-                  <button class="region-info-close" id="regionInfoClose" type="button" aria-label="Close region information" title="Close"></button>
+                  <button class="wrapTextaudio playing" id="wrapTextaudio_1" title="audio" data-tooltip="audio" data-src="${_pageData.sections[sectionCnt - 1].replayBtnAudios}" onClick="replayLastAudio(this)"></button>
+                  <button class="region-info-close" id="regionInfoClose" type="button" data-tooltip="close" aria-label="Close region information" title="Close"></button>
                   <h2 id="infoTitle">Division Name</h2>
                   <p id="infoDesc">Description of the physical division goes here.</p>
                   <h4>`+ _pageData.sections[0].content.uiText.infoPanelKeyFeaturesLabel + `</h4>
@@ -310,6 +310,20 @@ function initMapInteractions() {
     currentZoomScale = 1;
   });
 
+  // Tab switching
+  $(".layers-tab-btn").off("click").on("click", function () {
+    let tab = $(this).data("tab");
+    $(".layers-tab-btn").removeClass("active");
+    $(".layers-tab-panel").removeClass("active");
+    $(this).addClass("active");
+    if (tab === "layers") {
+      $("#layersTabPanel").addClass("active");
+    } else {
+      $("#positionTabPanel").addClass("active");
+      updateLayerPositionUI();
+    }
+  });
+
   $("#mapReset").on("click", function () {
     currentZoomScale = 1;
     mapTranslateX = 0;
@@ -355,22 +369,22 @@ function initMapInteractions() {
 
   $("#regionInfoClose").off("click").on("click", closeRegionInfoPanel);
 
-  $("#layersToggleBtn").on("click", function () {
-    let $list = $("#layersList");
-    if ($list.is(":visible")) {
-      $(".layer-position-tab").hide();
-      $(".layer-info-icon").hide();
-      $("#layersInfoPill").hide();
-      $list.slideUp(200);
-      $(this).closest(".layers-sidebar").removeClass("layers-open");
-    } else {
-      $(".layer-position-tab").show();
-      $(".layer-info-icon").show();
-      $("#layersInfoPill").show();
-      $list.slideDown(200);
-      $(this).closest(".layers-sidebar").addClass("layers-open");
-    }
-  });
+  // $("#layersToggleBtn").on("click", function () {
+  //   let $list = $("#layersList");
+  //   if ($list.is(":visible")) {
+  //     $(".layer-position-tab").hide();
+  //     $(".layer-info-icon").hide();
+  //     $("#layersInfoPill").hide();
+  //     $list.slideUp(200);
+  //     $(this).closest(".layers-sidebar").removeClass("layers-open");
+  //   } else {
+  //     $(".layer-position-tab").show();
+  //     $(".layer-info-icon").show();
+  //     $("#layersInfoPill").show();
+  //     $list.slideDown(200);
+  //     $(this).closest(".layers-sidebar").addClass("layers-open");
+  //   }
+  // });
   // $("#layerInfoIcon").on("click", function (e) {
   //   e.stopPropagation();
   //   $("#layersInfoPill").stop(true, true).fadeToggle(150);
@@ -424,9 +438,9 @@ function initMapInteractions() {
 
     isDraggingMap = false;
 
-        $("#mapWrapper").css(
-        "cursor",
-        currentZoomScale > 1 ? "grab" : "default"
+    $("#mapWrapper").css(
+      "cursor",
+      currentZoomScale > 1 ? "grab" : "default"
     );
   });
 
@@ -780,6 +794,10 @@ function bindRegionEvents(regions) {
     d.features.forEach(f => fHtml += "<li>" + f + "</li>");
     $("#infoFeatures").html(fHtml);
     $("#divInfoPanel").fadeIn();
+    const audio = $("#simulationAudio")[0];
+    audio.src = _pageData.sections[0].nplain;
+    audio.load();
+    audio.play();
     $("#mapReset").fadeIn();
   });
 }

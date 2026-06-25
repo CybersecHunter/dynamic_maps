@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="x-ua-compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Time</title>
+    <title>Dynamic Maps</title>
     <!-- <link rel="shortcut icon" href="favicon.ico" /> -->
     <link rel="stylesheet" type="text/css" href="css/line-awesome.css" />
     <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
@@ -66,22 +66,27 @@
                   <div id="f_companyLogo_main">
                <a href="https://macmillaneducation.in/" target="_blank"><img tabindex="-1" alt="e y logo" src="./assets/images/logo.png" /></a> 
             </div> 
-            <button id="full-screen" class="full-screen fullScreen" onclick="toggleFullscreen(this)" data-tooltip="Fullscreen"></button>
+            <!-- <button id="full-screen" class="full-screen fullScreen" onclick="toggleFullscreen(this)" data-tooltip="Fullscreen"></button> -->
             </div>
-            <div id="intro">
-                  <video autoplay muted loop playsinline src="assets/video/video_1.mp4"></video>
+            <div id="intro" style='cursor: url("../assets/images/cursor.png"), auto;'>
+                  <!-- <video autoplay muted loop playsinline src="assets/video/video_1.mp4"></video> -->
+                   <img class="intro-bg" src="./assets/images/intro_bg.png" alt="Intro Background" />
                 <div id="intro-text">
                     <div id="intro-btns">
                         <button data-tooltip="Music" class="music mute"></button>
                         <button data-tooltip="Information" data-popup="introPopup-1" class="introInfo"></button>
+                        <button id="full-screen" class="full-screen fScreen fullScreen" onclick="toggleFullscreen(this)" data-tooltip="Fullscreen"></button>
                     </div>
+                    <span class="birds"></span>
+                    <span class="globe"></span>
+                    <span class="paper-plane"></span>
                     <div id="intro-header">
                         <!-- <div class="left-char"></div> -->
                         <div class="intro-text-content">                      
-								 <h1 class="intro-header-container" tabindex="-1" aria-label="Course Title goes here">
-                                Numeracy<br/><span>Simulation</span>
-                            </h1>
-                       <div class='instruction'></div>
+								 <div class="intro-header-container" tabindex="-1" aria-label="Dynamic Maps">
+                                    <img src="./assets/images/intro_header.png" alt="Dynamic Maps" />
+                                 </div>
+                       <!-- <div class='instruction'></div> -->
 
                         <div id="intro-button">
                             <button type="button" id="f_launchBtn" data-tooltip="Play"></button>
@@ -146,9 +151,37 @@
 				-->
                 <div id="introPopup-1">                
                 <div class="popup-content">
-                    <button class="introPopAudio mute" onclick="togglePopAudio(this, 'assets/audios/info_audio.mp3')"></button>
-                    <button class="introPopclose" data-tooltip="Close" onClick="closePopup('introPopup-1')"></button>
-                    <img src="assets/images/home_info.png" alt="">
+                    <button class="introPopAudio mute" onclick="togglePopAudio(this, 'assets/audios/intro_pop_audio.mp3')"></button>
+                    <button class="introPopclose" data-tooltip="Close" onclick="closePopup('introPopup-1')"></button>
+                    <img src="assets/images/popup.png" alt="" style="height: 400px; width: auto;">
+                    <div class="popup-info">
+                        <p> INFORMATION </p>
+                    </div>
+                    <div class="popup-text">
+                        <div class="section" style="font-size: 14px;">
+                            <p>Welcome to your DYNAMIC MAPS! Get ready to learn about India in a fun and exciting way.</p>
+                            <ul>
+                                <li>
+                                    Start by choosing a map type: Physical or Political. 
+                                </li>
+                                <li>
+                                    Then turn on different layers to see them appear on the map. 
+                                </li>
+                                <li>
+                                    You can select more than one layer at a time to understand how different features fit together. 
+                                </li>
+                                </ul>
+                                
+                                <span>For example, see how rivers flow through mountains and plains!</span>
+                                <ul>
+                                <li>
+                                    Click on any feature on the map to learn interesting facts about it. 
+                                </li> 
+                                </ul>
+                                <i>Explore, experiment and enjoy learning geography like never before!</i>
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         <div class="hideMain">
@@ -156,23 +189,23 @@
             <!-- header start -->
             <div id="f_header">
                 <div class="header-container">
-                 <div class="nav_btns">
-                <button onClick="goHome(appState.pageCount)" class="home_btn" data-tooltip="Home"></button>
-                <button class="music playing" data-tooltip="Music"></button>
-                <button class="introInfo" data-tooltip="Information"></button>
-                <button class="playPause" data-tooltip="Pause" onClick="playPauseSimulation(this)"></button>
-                </div>
-                 <div id="f_courseTitle">
-                    <p tabindex="0"></p>
-                </div>
                 <div class="right-nav">
                 <div id="f_companyLogo">
                     <div class="logo-bg-patch">
                         <a href="https://macmillaneducation.in/" target="_blank"><img tabindex="0" alt="e y logo" src="./assets/images/logo.png" /></a>
                     </div>
                 </div>
-                <button id="full-screen" class="full-screen fScreen fullScreen" onclick="toggleFullscreen(this)" data-tooltip="Fullscreen"></button>
                 </div>
+                <div id="f_courseTitle">
+                    <p tabindex="0"></p>
+                </div>
+                <div class="nav_btns">
+                <button onClick="goHome(appState.pageCount)" class="home_btn" data-tooltip="Home"></button>
+                <button class="music playing" data-tooltip="Music"></button>
+                <button class="introInfo" data-tooltip="Information"></button>
+                <button class="playPause" data-tooltip="Pause" onClick="playPauseSimulation(this)"></button>
+                </div>
+                
                </div>
             </div>
             <!-- header end -->
@@ -734,6 +767,32 @@ function togglePopAudio(el, src) {
     }
 }
 
+TweenMax.set([
+    ".intro-bg",
+    ".intro-header-container",
+    "#intro-button"
+], { opacity: 0 });
+TweenMax.set("#intro-header", {
+    opacity: 1,
+    clipPath: "inset(0 100% 0 0)"
+});
+
+const tl = new TimelineMax();
+
+tl.to("#intro-header", 1, {
+      clipPath: "inset(0 0% 0 0)",
+      ease: Power2.easeOut
+    })
+  .fromTo(".intro-header-container", 1,
+    { opacity: 0, y: 60 },
+    { opacity: 1, y: 0 })
+  .fromTo("#intro-button", 1,
+    { opacity: 0, scale: 0.8 },
+    { opacity: 1, scale: 1 })
+  .fromTo("#intro-btns", 0.1,
+    { opacity: 0, scale: 0.8 },
+    { opacity: 1, scale: 1 });
+
 function playClickThen() {
     clickSound.currentTime = 0;
     clickSound.play().catch(() => {});
@@ -742,7 +801,7 @@ const audio = document.getElementById("audio_src");
 audio.pause(); 
 function toggleAudio(el) {
     const audio = document.getElementById("audio_src");
-    audio.volume = 0.6;
+    audio.volume = 0.1;
 
     if (audio.paused) {
         audio.muted = false;
@@ -756,6 +815,7 @@ function toggleAudio(el) {
         
     }
 }
+
 
 // function closeIntroPop(selector) {
 //     console.log(selector, "slector")

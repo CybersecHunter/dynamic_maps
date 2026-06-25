@@ -125,6 +125,7 @@
       "correctAudio": "pages/module_1/page_10/audios/BG.mp3",
       "wrongAudio": "pages/module_1/page_10/audios/BG.mp3",
       "finalAudio": "pages/module_1/page_10/audios/BG.mp3",
+      "nplain": "pages/module_1/page_10/audios/n_plains.mp3",
       "content": {
         "mapLayers": [
           {
