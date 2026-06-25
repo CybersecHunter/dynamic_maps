@@ -104,7 +104,7 @@ function addSectionData() {
 
             let textObject = '', listObject = '';
             if (_pageData.sections[sectionCnt - 1].insText != "") {
-                insText += '<div class="ins-txt"><p aria-label="' + removeTags(_pageData.sections[sectionCnt - 1].insText) + '" tabindex="0">' + _pageData.sections[sectionCnt - 1].insText + '<button class="wrapTextaudio playing" id="wrapTextaudio_1" data-src="' + _pageData.sections[sectionCnt - 1].replayBtnAudios + '" onClick="replayLastAudio(this)"></button></p></div>';
+                insText += '<div class="ins-txt"><p aria-label="' + removeTags(_pageData.sections[sectionCnt - 1].insText) + '" tabindex="0">' + _pageData.sections[sectionCnt - 1].insText + '<button class="wrapTextaudio playing" id="wrapTextaudio_1" data-src="' +_pageData.sections[sectionCnt - 1].replayBtnAudios +'" onClick="replayLastAudio(this)"></button></p></div>';
             }
             if (_pageData.sections[sectionCnt - 1].content.text != "") {
                 for (let i = 0; i < _pageData.sections[sectionCnt - 1].content.text.length; i++) {
@@ -472,12 +472,9 @@ function replayLastAudio(btn) {
 
         // Attach completion listener
         audio.addEventListener("ended", function () {
-            // setButtonState(btn, "paused");
+            setButtonState(btn, "paused");
             $(".dummy-patch").hide(); // Always hide when done
             console.log("Audio completed");
-            $(btn)
-                .removeClass("playing")
-                .addClass("paused");
         });
         return;
     }
