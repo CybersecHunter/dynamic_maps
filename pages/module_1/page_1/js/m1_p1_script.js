@@ -92,19 +92,21 @@ function addSectionData() {
         if (sectionCnt == 1) {
 
             playBtnSounds(_pageData.sections[sectionCnt - 1].replayBtnAudios);
-            // audioEnd(function () {
-            //     $(".dummy-patch").hide();
-            //     $(".wrapTextaudio").removeClass("playing");
-            //     $(".wrapTextaudio").addClass("paused");
-            //     resetSimulationAudio();
-            // });
+            // const audio = document.getElementById("simulationAudio");
+            audioEnd(() => {
+                console.log("Audio completed instruction");
+                $(".dummy-patch").hide();
+                $(".wrapTextaudio").removeClass("playing");
+                $(".wrapTextaudio").addClass("paused");
+                resetSimulationAudio();
+            });
 
 
             /*     $("#section-" + sectionCnt).find(".content-holder").find(".col-left").find(".content").find(".content-bg").append('<div class="main-text"><h1 aria-label="' + removeTags(_pageData.sections[sectionCnt - 1].headerTitle) + '" tabindex="0">' + _pageData.sections[sectionCnt - 1].headerTitle + '</h1></div>'); */
 
             let textObject = '', listObject = '';
             if (_pageData.sections[sectionCnt - 1].insText != "") {
-                insText += '<div class="ins-txt"><p aria-label="' + removeTags(_pageData.sections[sectionCnt - 1].insText) + '" tabindex="0">' + _pageData.sections[sectionCnt - 1].insText + '<button class="wrapTextaudio playing" id="wrapTextaudio_1" data-src="' +_pageData.sections[sectionCnt - 1].replayBtnAudios +'" onClick="replayLastAudio(this)"></button></p></div>';
+                insText += '<div class="ins-txt"><p aria-label="' + removeTags(_pageData.sections[sectionCnt - 1].insText) + '" tabindex="0">' + _pageData.sections[sectionCnt - 1].insText + '<button class="wrapTextaudio playing" id="wrapTextaudio_1" data-src="' + _pageData.sections[sectionCnt - 1].replayBtnAudios + '" onClick="replayLastAudio(this)"></button></p></div>';
             }
             if (_pageData.sections[sectionCnt - 1].content.text != "") {
                 for (let i = 0; i < _pageData.sections[sectionCnt - 1].content.text.length; i++) {
@@ -239,6 +241,15 @@ function setCSS($sectionCnt) {
         }
     }
 }
+
+function audioEnd(callback) {
+    const audio = document.getElementById("simulationAudio");
+    audio.onended = null;
+    audio.onended = () => {
+        if (typeof callback === "function") callback();
+    };
+}
+
 
 function showVisitedModule() {
     getModuleLevelpageVisited();
@@ -420,6 +431,26 @@ function loadAudio(aud) {
 
 }
 
+function resetSimulationAudio() {
+
+    $("dummy-patch").hide();
+
+    const audioElement = document.getElementById("simulationAudio");
+    if (!audioElement) return;
+
+    audioElement.pause();
+
+    audioElement.src = "";
+    audioElement.removeAttribute("src");
+
+    const source = audioElement.querySelector("source");
+    if (source) source.src = "";
+
+    audioElement.load();
+    audioElement.onended = null;
+    // ✅ ensure button enabled
+
+}
 var activeAudio = null;
 
 function playBtnSounds(soundFile) {
@@ -460,6 +491,8 @@ function replayLastAudio(btn) {
     // 1. RESTART: If audio has finished or isn't loaded
     if (audio.ended || !audio.src || audio.src === "") {
         console.log("Starting Audio Fresh");
+        $(".wrapTextaudio").removeClass("paused");
+        $(".wrapTextaudio").addClass("playing");
 
         // Reset Mute to False (Play with sound)
         audio.muted = false;
@@ -468,11 +501,12 @@ function replayLastAudio(btn) {
         $(".dummy-patch").show();
 
         playBtnSounds(audioSource);
-        setButtonState(btn, "playing");
+        // setButtonState(btn, "playing");
 
         // Attach completion listener
-        audio.addEventListener("ended", function () {
-            setButtonState(btn, "paused");
+        audioEnd(() => {
+            $(".wrapTextaudio").removeClass("playing");
+            $(".wrapTextaudio").addClass("paused");
             $(".dummy-patch").hide(); // Always hide when done
             console.log("Audio completed");
         });
