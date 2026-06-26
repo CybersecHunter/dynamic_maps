@@ -518,7 +518,9 @@ function replayLastAudio(btn) {
         // --- RESUME (UNMUTE) ---
         console.log("Resuming Sound");
         audio.muted = false;
-        setButtonState(btn, "playing");
+        $(".wrapTextaudio").removeClass("paused");
+        $(".wrapTextaudio").addClass("playing");
+        // setButtonState(btn, "playing");
 
         // SHOW patch because audio is audible now
         $(".dummy-patch").show();
@@ -526,7 +528,9 @@ function replayLastAudio(btn) {
         // --- MUTE (SILENT PLAY) ---
         console.log("Muting Sound");
         audio.muted = true;
-        setButtonState(btn, "paused");
+        $(".wrapTextaudio").removeClass("playing");
+        $(".wrapTextaudio").addClass("paused");
+        // setButtonState(btn, "paused");
 
         // HIDE patch because audio is silent (user wants to interact)
         $(".dummy-patch").hide();
