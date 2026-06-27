@@ -1258,9 +1258,10 @@ footer {
      height: 20px !important;
 
      p {
-          font-size: 14px;
+          font-size: 12px;
           color: #000;
-          margin-bottom: 5px !important;
+          margin: 5px !important;
+          font-weight: normal !important;
           // font-family: "Times New Roman", sans-serif;
 
           @include mobile-landscape {

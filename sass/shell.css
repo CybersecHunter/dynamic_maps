@@ -1484,9 +1484,10 @@ footer {
   height: 20px !important;
 }
 footer p {
-  font-size: 14px;
+  font-size: 12px;
   color: #000;
-  margin-bottom: 5px !important;
+  margin: 5px !important;
+  font-weight: normal !important;
 }
 @media (max-width: 950px) and (orientation: landscape) {
   footer p {

@@ -725,6 +725,10 @@ function renderSVGForLayer(layerKey) {
 
 function closeRegionInfoPanel() {
   $("#divInfoPanel").fadeOut(150);
+  console.log("popup closed");
+  const audio = document.getElementById('simulationAudio');
+  audio.pause();
+  audio.currentTime = 0;
   $("#svgTopImg").hide();
   $(".phy-region").removeClass("active");
   TweenMax.to(".phy-region", 0.3, { fillOpacity: 0, strokeWidth: 0 });
@@ -769,14 +773,6 @@ function bindRegionEvents(regions) {
     // $("#activeRegionPath").attr("d", d.d);
     $("#svgTopImg").hide();
 
-    /* 
-    if (d.highlightImg) {
-      $("#baseMapImg").fadeOut(200, function () {
-        $(this).attr("src", d.highlightImg).fadeIn(300);
-      });
-    }
-    */
-
     $(".phy-region").removeClass("active");
     TweenMax.to(".phy-region", 0.3, { fillOpacity: 0, strokeWidth: 0 });
 
@@ -789,13 +785,14 @@ function bindRegionEvents(regions) {
     updateMapTransform();
 
     $("#infoTitle").text(d.name);
+
     $("#infoDesc").text(d.desc);
     let fHtml = "";
     d.features.forEach(f => fHtml += "<li>" + f + "</li>");
     $("#infoFeatures").html(fHtml);
     $("#divInfoPanel").fadeIn();
     const audio = $("#simulationAudio")[0];
-    audio.src = _pageData.sections[0].nplain;
+    audio.src = d.audio;
     audio.load();
     audio.play();
     $("#mapReset").fadeIn();
