@@ -36,6 +36,7 @@ var dataValue = []; var currentPattern = null; var currentIndex = 0;
 var patterns = [];
 var layerOrder = [];
 var activeLayerOrder = [];
+var activeLayerKey = null;
 // ---------- Memory Game State ----------
 var memCards = [];
 var memFlipped = [];
@@ -71,7 +72,7 @@ function _pageLoaded() {
   $(".introInfo").attr("data-tooltip", "Home");
   $('.introInfo').on("click", function () {
     // window.location.reload();
-    onLaunchCourse();
+    goToMainScreen();
   });
   // $('.introInfo').attr('data-popup', 'introPopup-7');
   $("#f_header").css({ background: `#f4ede4` });
@@ -123,22 +124,18 @@ function addSectionData() {
       };
       let mapHtml = `
   <div class="dynamic-map-container">
-
-    <!-- Layers Sidebar with Tabs -->
-    <div class="layers-sidebar">
-      <div class="layers-tab-bar">
-        <button class="layers-tab-btn active" data-tab="layers" id="tabBtnLayers">
-          LAYERS
-          <span class="layer-info-icon" id="layerInfoIcon">
-            <span class="layers-info-tooltip">Select layer(s) to add to your map.</span>
-          </span>
-        </button>
-        <button class="layers-tab-btn" data-tab="position" id="tabBtnPosition">
-          LAYER POSITION
-        </button>
+    <button type="button" id="layersToggleBtn" class="layers-vertical-btn">
+      LAYERS
+    </button>
+    <div class="layers-sidebar" id="layersSidebar" style="display:none;">
+      <div class="layers-header">
+        <span>LAYERS</span>
+        <span class="layer-info-icon" id="layerInfoIcon">
+          <span class="layers-info-tooltip">Select layer(s) to add to your map.</span>
+        </span>
+        <button class="introPopclose" data-tooltip="Close" onClick="closeLayerBtnInfoPopup()"></button>
       </div>
 
-      <!-- Layers Tab Panel -->
       <div class="layers-tab-panel active" id="layersTabPanel">
         <div class="layers-list" id="layersList">`;
 
@@ -146,11 +143,21 @@ function addSectionData() {
         let layer = _pageData.sections[0].content.mapLayers[i];
         let icon = layerIcons[layer.value] || layerIcons.physical;
         mapHtml += `
-    <label class="layer-option">
-      <input type="checkbox" name="map_layer" value="${layer.value}">
-      <span class="layer-icon-wrap">${icon}</span>
-      <span class="layer-label-text">${layer.label}</span>
-    </label>`;
+  <label class="layer-option" data-layer="${layer.value}">
+    <input type="checkbox" name="map_layer" value="${layer.value}">
+    <span class="layer-icon-wrap">${icon}</span>
+    <span class="layer-label-text">${layer.label}</span>
+    <button type="button" class="layer-info-icon layerPopupIcon" data-layer="${layer.value}" data-tooltip="Info"></button>
+    <button type="button"
+            class="layer-active-toggle"
+            data-layer="${layer.value}"
+            aria-pressed="false"
+            aria-label="Activate ${layer.label} layer"
+            style="width:34px;height:18px;border:1px solid #7c8794;border-radius:999px;background:#d7dce2;position:relative;cursor:pointer;flex:0 0 auto;padding:0;">
+      <span class="layer-active-toggle-knob"
+            style="position:absolute;width:14px;height:14px;border-radius:50%;background:#fff;left:1px;top:1px;transition:transform 0.15s ease;"></span>
+    </button>
+  </label>`;
       }
 
       mapHtml += `
@@ -257,6 +264,17 @@ function addSectionData() {
             </div>
           </div>
         </div>`;
+      popupDiv += `
+  <div id="layerInfoPopup" class="layer-info-popup">
+    <div class="popup-content">
+      <button class="introPopclose" data-tooltip="Close" onClick="closeLayerInfoPopup()"></button>
+
+      <div class="layer-popup-text">
+        <h2 id="layerPopupTitle"></h2>
+        <p id="layerPopupDesc"></p>
+      </div>
+    </div>
+  </div>`;
 
       $("#section-" + sectionCnt)
         .find(".content-holder")
@@ -304,11 +322,14 @@ if (typeof currentZoomScale === 'undefined') {
   var dragStartX = 0;
   var dragStartY = 0;
 }
+
 function initMapInteractions() {
   $("input[name='map_layer']").on("change", function () {
     renderActiveLayers();
     currentZoomScale = 1;
   });
+
+  initLayerActiveToggle();
 
   // Tab switching
   $(".layers-tab-btn").off("click").on("click", function () {
@@ -447,6 +468,60 @@ function initMapInteractions() {
   layerOrder = _pageData.sections[0].content.mapLayers.map(l => l.value);
 
   updateLayerOrderUI();
+
+  $("#layersToggleBtn").off("click").on("click", function () {
+    playClickThen();
+
+    const $sidebar = $("#layersSidebar");
+    const isOpen = $sidebar.is(":visible");
+
+    if (isOpen) {
+      $sidebar.hide();
+      $(this).removeClass("active").attr("aria-expanded", "false");
+    } else {
+      $sidebar.show();
+      $(this).addClass("active").attr("aria-expanded", "true");
+    }
+  });
+
+  $(".layerPopupIcon").off("click").on("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (typeof playClickThen === "function") {
+      playClickThen();
+    }
+
+    const layerKey = $(this).data("layer");
+    const layerData = _pageData.sections[0].content.mapLayers.find(function (layer) {
+      return layer.value === layerKey;
+    });
+
+    if (!layerData) return;
+
+    $("#layerPopupTitle").text(layerData.label);
+    $("#layerPopupDesc").text(layerData.desc);
+
+    $("#layerInfoPopup").css({
+      display: "flex",
+      visibility: "visible",
+      opacity: "1"
+    });
+  });
+}
+function closeLayerInfoPopup() {
+  playClickThen();
+
+  $("#layerInfoPopup").css({
+    display: "none",
+    opacity: "0"
+  });
+}
+function closeLayerBtnInfoPopup() {
+  playClickThen();
+  $("#layersSidebar").css({
+    display: "none"
+  });
 }
 
 function clampMapTranslate() {
@@ -585,40 +660,50 @@ function initLayerDrag() {
 //   bindRegionEvents(allRegions);
 // }
 function renderActiveLayers() {
-  // Add newly checked layers
   $("input[name='map_layer']:checked").each(function () {
     let key = $(this).val();
+
     if (!activeLayerOrder.includes(key)) {
       activeLayerOrder.push(key);
     }
   });
-  // Remove unchecked layers
+
   activeLayerOrder = activeLayerOrder.filter(key =>
     $(`input[value="${key}"]`).prop("checked")
   );
-  // Render images
+
+  if (!activeLayerOrder.includes(activeLayerKey)) {
+    activeLayerKey = activeLayerOrder[0] || null;
+  }
+
+  moveActiveLayerToTop();
+
   $("#layerContainer").empty();
-  activeLayerOrder.forEach(function (key) {
+
+  activeLayerOrder.slice().reverse().forEach(function (key) {
     let layer = _pageData.sections[0].content.mapLayers.find(
       x => x.value === key
     );
+
     if (layer && layer.image) {
       $("#layerContainer").append(`
-                <img
-                    src="${layer.image}"
-                    class="map-layer-img"
-                    data-layer="${key}"
-                    style="
-                        position:absolute;
-                        left:0;
-                        top:0;
-                        width:100%;
-                        height:100%;
-                    ">
-            `);
+        <img
+          src="${layer.image}"
+          class="map-layer-img"
+          data-layer="${key}"
+          style="
+            position:absolute;
+            left:0;
+            top:0;
+            width:100%;
+            height:100%;
+          ">
+      `);
     }
   });
-  updateLayerPositionUI();
+
+  updateLayerActiveToggleUI();
+
   if (activeLayerOrder.length === 0) {
     $("#regionPathsGroup").empty();
     $("#physicalLayerSVG").hide();
@@ -626,10 +711,7 @@ function renderActiveLayers() {
     return;
   }
 
-  // let topLayerKey = activeLayerOrder[activeLayerOrder.length - 1];
-  let topLayerKey = activeLayerOrder[0];
-
-  renderSVGForLayer(topLayerKey);
+  renderSVGForLayer(activeLayerKey);
 }
 
 function updateLayerPositionUI() {
@@ -648,6 +730,58 @@ function updateLayerPositionUI() {
   });
   $("#layerPositionList").html(html);
   initLayerSorting();
+}
+
+function updateLayerActiveToggleUI() {
+  $(".layer-active-toggle").each(function () {
+    let key = $(this).data("layer");
+    let isActive =
+      key === activeLayerKey &&
+      $(`input[name="map_layer"][value="${key}"]`).prop("checked");
+
+    $(this)
+      .toggleClass("active", isActive)
+      .attr("aria-pressed", isActive)
+      .css({
+        background: isActive ? "#2e7d32" : "#d7dce2",
+        borderColor: isActive ? "#2e7d32" : "#7c8794"
+      })
+      .find(".layer-active-toggle-knob")
+      .css("transform", isActive ? "translateX(16px)" : "translateX(0)");
+  });
+}
+
+function moveActiveLayerToTop() {
+  if (!activeLayerKey) return;
+
+  activeLayerOrder = activeLayerOrder.filter(key => key !== activeLayerKey);
+  activeLayerOrder.unshift(activeLayerKey);
+}
+
+function setActiveLayer(key) {
+  let $checkbox = $(`input[name="map_layer"][value="${key}"]`);
+  if (!$checkbox.length) return;
+
+  if (!$checkbox.prop("checked")) {
+    $checkbox.prop("checked", true);
+  }
+
+  if (!activeLayerOrder.includes(key)) {
+    activeLayerOrder.push(key);
+  }
+
+  activeLayerKey = key;
+  moveActiveLayerToTop();
+  renderActiveLayers();
+}
+
+function initLayerActiveToggle() {
+  $(".layer-active-toggle").off("click").on("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    setActiveLayer($(this).data("layer"));
+  });
 }
 
 function initLayerSorting() {
@@ -1088,6 +1222,22 @@ function showEndAnimations() {
     }
 
   });
+}
+
+function goToMainScreen() {
+  const simulationAudio = document.getElementById("simulationAudio");
+  if (simulationAudio) {
+    simulationAudio.pause();
+    simulationAudio.currentTime = 0;
+  }
+
+  const bgAudio = document.getElementById("audio_src");
+  if (bgAudio) {
+    bgAudio.pause();
+    bgAudio.currentTime = 0;
+  }
+
+  window.location.href = window.location.pathname;
 }
 
 // function closeIntroPop(ldx) {

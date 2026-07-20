@@ -91,15 +91,17 @@ function addSectionData() {
         let titleText = '', insText = '';
         if (sectionCnt == 1) {
 
-            playBtnSounds(_pageData.sections[sectionCnt - 1].replayBtnAudios);
-            // const audio = document.getElementById("simulationAudio");
-            audioEnd(() => {
-                console.log("Audio completed instruction");
-                $(".dummy-patch").hide();
-                $(".wrapTextaudio").removeClass("playing");
-                $(".wrapTextaudio").addClass("paused");
-                resetSimulationAudio();
-            });
+            setTimeout(function () {
+                playBtnSounds(_pageData.sections[sectionCnt - 1].replayBtnAudios);
+                // const audio = document.getElementById("simulationAudio");
+                audioEnd(() => {
+                    console.log("Audio completed instruction");
+                    $(".dummy-patch").hide();
+                    $(".wrapTextaudio").removeClass("playing");
+                    $(".wrapTextaudio").addClass("paused");
+                    resetSimulationAudio();
+                });
+            }, 3000)
 
 
             /*     $("#section-" + sectionCnt).find(".content-holder").find(".col-left").find(".content").find(".content-bg").append('<div class="main-text"><h1 aria-label="' + removeTags(_pageData.sections[sectionCnt - 1].headerTitle) + '" tabindex="0">' + _pageData.sections[sectionCnt - 1].headerTitle + '</h1></div>'); */

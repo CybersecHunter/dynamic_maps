@@ -49,7 +49,7 @@
 						"audioIndex": 0,
 						"infoImg": "pages/module_1/page_1/images/Story_Time_Info.png",
 						"thumb": "pages/module_1/page_1/images/map1.png",
-						"title": "Physical Map"
+						"title": ""
 					},
 					{
 						"sectionID": 11,
@@ -59,7 +59,7 @@
 						"audioIndex": 1,
 						"infoImg": "pages/module_1/page_1/images/Simulation_info.png",
 						"thumb": "pages/module_1/page_1/images/map2.png",
-						"title": "Political Map"
+						"title": ""
 					}
 				]
 			}

@@ -2015,9 +2015,8 @@ footer p {
 }
 #introPopup-1 .popup-content .popup-info {
   position: absolute;
-  top: 15%;
+  top: 10%;
   left: 3%;
-  background: url("../assets/images/popupinfotext.png") no-repeat;
   text-align: center;
   background-size: revert;
   background-size: contain;
@@ -2029,16 +2028,16 @@ footer p {
   padding: 10px;
 }
 #introPopup-1 .popup-content .popup-info p {
-  margin-left: 15%;
+  margin-left: 3%;
   font-size: 1.6vw;
   color: #e0d06d;
   font-weight: normal;
 }
 #introPopup-1 .popup-content .popup-text {
   position: absolute;
-  right: 15px;
-  width: 70%;
-  margin-top: 6vw;
+  padding: 0px 30px;
+  width: 100%;
+  margin-top: 3vw;
   text-align: left;
   color: #508588;
   font-size: 2rem;
