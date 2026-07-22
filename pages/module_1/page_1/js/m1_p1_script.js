@@ -91,7 +91,7 @@ function addSectionData() {
         let titleText = '', insText = '';
         if (sectionCnt == 1) {
 
-            setTimeout(function () {
+            const instTimer = setTimeout(function () {
                 playBtnSounds(_pageData.sections[sectionCnt - 1].replayBtnAudios);
                 // const audio = document.getElementById("simulationAudio");
                 audioEnd(() => {
@@ -101,7 +101,7 @@ function addSectionData() {
                     $(".wrapTextaudio").addClass("paused");
                     resetSimulationAudio();
                 });
-            }, 3000)
+            }, 2500)
 
 
             /*     $("#section-" + sectionCnt).find(".content-holder").find(".col-left").find(".content").find(".content-bg").append('<div class="main-text"><h1 aria-label="' + removeTags(_pageData.sections[sectionCnt - 1].headerTitle) + '" tabindex="0">' + _pageData.sections[sectionCnt - 1].headerTitle + '</h1></div>'); */
@@ -189,6 +189,18 @@ function addSectionData() {
             pointerEvents: "none",
             cursor: "default"
         })
+        // $('#box-1').attr("disabled", true);
+        // $('#box-1').css({
+        //     pointerEvents: "none",
+        //     cursor: "default"
+        // })
+        // setTimeout(function () {
+        //     $('#box-1').attr("disabled", false);
+        //     $('#box-1').css({
+        //         pointerEvents: "auto",
+        //         cursor: "pointer"
+        //     })
+        // }, 6000)
 
         backButton = $('.goback-btn')
 
@@ -371,6 +383,7 @@ function onClickinfoHandler(evt) {
     var num = Number(arr[arr.length - 1]);
     console.log("helo", num)
     var body = $('#section-' + sectionCnt).find('.content-holder')
+    clearTimeout(instTimer);
     switch (eventType) {
         case "click":
             playClickThen();

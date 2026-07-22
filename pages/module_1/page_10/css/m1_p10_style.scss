@@ -422,8 +422,8 @@
 							right: 15px;
 							background: url("../images/close.png") no-repeat;
 							background-size: contain;
-							width: 20px;
-							height: 20px;
+							width: 25px;
+							height: 25px;
 							cursor: pointer;
 							transition: transform 0.5s ease-in-out;
 
@@ -475,13 +475,59 @@
 							}
 						}
 
+						.wrapTextaudio {
+							position: absolute;
+							width: 25px;
+							height: 25px;
+							min-width: 25px;
+							max-width: 25px;
+							cursor: pointer;
+							top: 15px;
+							right: 50px;
+							margin-left: 5px;
+							background-position: center !important;
+							background-size: contain !important;
+							background-repeat: no-repeat !important;
+
+							@include mobile-landscape {
+								width: 15px;
+								height: 15px;
+								min-width: 15px;
+								max-width: 15px;
+								top: 0px;
+							}
+
+							&:disabled {
+								pointer-events: none;
+							}
+
+							&.playing {
+								background: url(../images/speaker.png) no-repeat;
+								background-size: contain;
+
+								&:disabled {
+									// background: url("../images/audio_disabled.png");
+								}
+							}
+
+							&.paused {
+								background: url(../images/sound_pause.png) no-repeat;
+								background-size: contain;
+
+								&:disabled {
+									// background: url("../images/audio_mute_disabled.png");
+								}
+							}
+						}
+
 						.layer-popup-text h2 {
 							margin: 0 0 14px;
+							font-size: 18px;
 						}
 
 						.layer-popup-text p {
 							margin: 0;
-							font-size: 18px;
+							font-size: 16px;
 						}
 
 						/* Map styling replaces memory game styling */
@@ -910,10 +956,6 @@
 								}
 
 								.layer-option:nth-child(4) {
-									pointer-events: none;
-								}
-
-								.layer-option:nth-child(6) {
 									pointer-events: none;
 								}
 
@@ -1958,13 +2000,13 @@
 									}
 
 									&.modal-box {
-										background-color: #e0e0e0;
-										border-radius: 10px;
+										background: url(../images/popup.png) no-repeat center;
+										background-size: 100% 100%;
 										padding: 25px;
 										min-width: 400px;
 										max-width: 600px;
 										width: 500px;
-										box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+										// box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 										text-align: center;
 
 										@include mobile-landscape-height {
@@ -2004,7 +2046,7 @@
 
 										.modal-btn {
 											// font-family: "Alphakind", Arial, sans-serif;
-											background-color: #0066ff;
+											background-color: #508588;
 											color: #ffffff;
 											border: none;
 											border-radius: 8px;
@@ -2205,13 +2247,17 @@
 	color: #fff;
 	letter-spacing: 1px;
 	cursor: pointer;
-	writing-mode: vertical-rl;
-	transform: rotate(180deg);
-	border-radius: 8px 0 0 8px;
+	border-radius: 0 8px 8px 0;
 	z-index: 20;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	writing-mode: initial;
+	transform: none;
 }
 
 .layers-vertical-btn.active {
 	background: #508588;
 }
-

@@ -485,7 +485,6 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 #section-1 .content-holder #introPopup-2 .popup-content .popup-text {
   position: absolute;
   right: 15px;
-  width: 70%;
   height: 20%;
   text-align: center;
   color: #508588;

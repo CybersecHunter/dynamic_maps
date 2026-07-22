@@ -120,12 +120,18 @@ function addSectionData() {
         rivers: `<img src="${_pageData.sections[sectionCnt - 1].content.layerIcons.rivers}" alt="Icon">`,
         vegetation: `<img src="${_pageData.sections[sectionCnt - 1].content.layerIcons.vegetation}" alt="Icon">`,
         population: `<img src="${_pageData.sections[sectionCnt - 1].content.layerIcons.population}" alt="Icon">`,
-        parks: `<img src="${_pageData.sections[sectionCnt - 1].content.layerIcons.parks}" alt="Icon">`
+        parks: `<img src="${_pageData.sections[sectionCnt - 1].content.layerIcons.parks}" alt="Icon">`,
+        wildlife: `<img src="${_pageData.sections[sectionCnt - 1].content.layerIcons.wildlife}" alt="Icon">`
       };
       let mapHtml = `
   <div class="dynamic-map-container">
     <button type="button" id="layersToggleBtn" class="layers-vertical-btn">
-      LAYERS
+        <span>L</span>
+  <span>A</span>
+  <span>Y</span>
+  <span>E</span>
+  <span>R</span>
+  <span>S</span>
     </button>
     <div class="layers-sidebar" id="layersSidebar" style="display:none;">
       <div class="layers-header">
@@ -268,7 +274,7 @@ function addSectionData() {
   <div id="layerInfoPopup" class="layer-info-popup">
     <div class="popup-content">
       <button class="introPopclose" data-tooltip="Close" onClick="closeLayerInfoPopup()"></button>
-
+      <button class="wrapTextaudio playing" id="wrapTextaudio_1" title="audio" data-tooltip="audio" data-src="${_pageData.sections[sectionCnt - 1].infoAudio}" onClick="replayLastAudio(this)"></button>
       <div class="layer-popup-text">
         <h2 id="layerPopupTitle"></h2>
         <p id="layerPopupDesc"></p>

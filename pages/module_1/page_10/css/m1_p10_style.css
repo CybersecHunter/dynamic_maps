@@ -384,8 +384,8 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   right: 15px;
   background: url("../images/close.png") no-repeat;
   background-size: contain;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
   transition: transform 0.5s ease-in-out;
 }
@@ -436,12 +436,47 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 #section-1 .content-holder .col-left .content .content-bg .content-style .introPopclose:hover {
   transform: scale(1.125);
 }
+#section-1 .content-holder .col-left .content .content-bg .content-style .wrapTextaudio {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  min-width: 25px;
+  max-width: 25px;
+  cursor: pointer;
+  top: 15px;
+  right: 50px;
+  margin-left: 5px;
+  background-position: center !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}
+@media (max-width: 950px) and (orientation: landscape) {
+  #section-1 .content-holder .col-left .content .content-bg .content-style .wrapTextaudio {
+    width: 15px;
+    height: 15px;
+    min-width: 15px;
+    max-width: 15px;
+    top: 0px;
+  }
+}
+#section-1 .content-holder .col-left .content .content-bg .content-style .wrapTextaudio:disabled {
+  pointer-events: none;
+}
+#section-1 .content-holder .col-left .content .content-bg .content-style .wrapTextaudio.playing {
+  background: url(../images/speaker.png) no-repeat;
+  background-size: contain;
+}
+#section-1 .content-holder .col-left .content .content-bg .content-style .wrapTextaudio.paused {
+  background: url(../images/sound_pause.png) no-repeat;
+  background-size: contain;
+}
 #section-1 .content-holder .col-left .content .content-bg .content-style .layer-popup-text h2 {
   margin: 0 0 14px;
+  font-size: 18px;
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style .layer-popup-text p {
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style {
   /* Map styling replaces memory game styling */
@@ -764,9 +799,6 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   pointer-events: none;
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style .layers-sidebar .layers-list .layer-option:nth-child(4) {
-  pointer-events: none;
-}
-#section-1 .content-holder .col-left .content .content-bg .content-style .layers-sidebar .layers-list .layer-option:nth-child(6) {
   pointer-events: none;
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style .layers-sidebar .layers-list .layer-option {
@@ -1646,13 +1678,12 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   margin-top: 0;
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style #home-popup.popup-home .popup-content.modal-box {
-  background-color: #e0e0e0;
-  border-radius: 10px;
+  background: url(../images/popup.png) no-repeat center;
+  background-size: 100% 100%;
   padding: 25px;
   min-width: 400px;
   max-width: 600px;
   width: 500px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   text-align: center;
 }
 @media screen and (orientation: landscape) and (max-height: 299px) {
@@ -1684,7 +1715,7 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   flex-wrap: wrap;
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style #home-popup.popup-home .popup-content .modal-buttons .modal-btn {
-  background-color: #0066ff;
+  background-color: #508588;
   color: #ffffff;
   border: none;
   border-radius: 8px;
@@ -1830,10 +1861,15 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   color: #fff;
   letter-spacing: 1px;
   cursor: pointer;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  border-radius: 8px 0 0 8px;
+  border-radius: 0 8px 8px 0;
   z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  writing-mode: initial;
+  transform: none;
 }
 
 .layers-vertical-btn.active {

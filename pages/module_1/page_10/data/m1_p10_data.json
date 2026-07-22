@@ -176,11 +176,12 @@
           "infoPanelKeyFeaturesLabel": "Key Features:"
         },
         "layerIcons": {
-          "physical": "pages/module_1/page_10/images/india_division.png",
-          "rivers": "pages/module_1/page_10/images/river.png",
-          "vegetation": "pages/module_1/page_10/images/vegetation.png",
-          "population": "pages/module_1/page_10/images/density.png",
-          "parks": "pages/module_1/page_10/images/park.png"
+          "physical": "pages/module_1/page_10/images/india_division_icon.png",
+          "rivers": "pages/module_1/page_10/images/river_icon.png",
+          "vegetation": "pages/module_1/page_10/images/vegetation_icon.png",
+          "population": "pages/module_1/page_10/images/density_icon.png",
+          "parks": "pages/module_1/page_10/images/park_icon.png",
+          "wildlife": "pages/module_1/page_10/images/wildlife_icon.png"
         },
         "zoomSettings": {
           "step": 0.5,
