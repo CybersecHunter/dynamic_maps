@@ -14,10 +14,6 @@
 </head>
 
 <body onload="">
-    <!--initialLaunch -->
-    <!--div id="splashContainer" class="ShellOverlay"> <div class="comonTable"> <div class="comonTableCell"> <div class="Intro_button" id="initLaunchBtn"> <img src="./images/shell/launch_btn.png" alt="launch"> </div> <p class="intro_txt" id="intro_txt">
-			Click the icon to launch the course. </p> </div> </div> </div-->
-    <!--//initialLaunch -->
 <div class="deviceChange">   
 <div class="rotate-message-content">
     <div class="rotate-icon">📱</div>
@@ -29,23 +25,6 @@
         <!-- preloader start -->
         <div id="f_preloader_wrapper">
            <div class="f_loaderImage" id="f_pageLoaderImg">
-                        <!-- <div class='loading'>
-                            <div class='ball'></div>
-                            <div class='ball'></div>
-                            <div class='ball'></div>
-                            <div class='ball'></div>
-                            <svg viewBox="0 0 180 180" class="loading-text" width="180" height="180">
-                                <defs>
-                                    <path id="circlePath" d="M90,90 m-70,0 a70,70 0 1,1 140,0 a70,70 0 1,1 -140,0" />
-                                </defs>
-                                <text fill="#195855" font-size="15" font-family="cursive" letter-spacing="2">
-                                    <textPath href="#circlePath" startOffset="0%">
-                                        LOADING ••••••••••••••••LOADING ••••••••••••••••••••
-                                    </textPath>
-                                </text>
-                            </svg>
-                        </div> -->
-
                         <span class="loader"></span>
                     </div>
         </div>
@@ -53,7 +32,7 @@
         <!-- preloade image start -->
         <div id="f_preload_main_images">
             <img id="preload1" src="./assets/images/Main_BG.png" alt="preloadImage" />
-            <img id="preload2" src="./assets/images/intro_bg.png" alt="preloadImage" />
+            <img id="preload2" src="./assets/images/intro_bg.gif" alt="preloadImage" />
             <img id="preload3" src="./assets/images/preload_sprites.png" alt="preloadImage" />
         </div>
         <!-- preloade image end -->
@@ -61,7 +40,7 @@
         <div id="f_start_course">
             <div id="f_header_main">
                  <!--  <div class="copyright">
-                    <p>Copyright © 2026 Macmillan Education India Private Limited. All rights reserved.</p>
+                    <p>Copyright © 2027 Macmillan Education India Private Limited. All rights reserved.</p>
                 </div> -->
                   <div id="f_companyLogo_main">
                <a href="https://macmillaneducation.in/" target="_blank"><img tabindex="-1" alt="e y logo" src="./assets/images/logo.png" /></a> 
@@ -70,7 +49,7 @@
             </div>
             <div id="intro" style='cursor: url("../assets/images/cursor.png"), auto;'>
                   <!-- <video autoplay muted loop playsinline src="assets/video/video_1.mp4"></video> -->
-                   <img class="intro-bg" src="./assets/images/intro_bg.png" alt="Intro Background" />
+                   <img class="intro-bg" src="./assets/images/intro_bg.gif" alt="Intro Background" />
                 <div id="intro-text">
                     <div id="intro-btns">
                         <button data-tooltip="Music" class="music mute"></button>
@@ -81,13 +60,21 @@
                     <span class="globe"></span>
                     <span class="paper-plane"></span>
 
+                    <span class="nav1-head">
+                        <span class="nav1"></span>
+                    </span>
+                    <span class="nav2-head">
+                        <span class="nav2"></span>
+                    </span>
+                    
                     <div id="intro-header">
+                        
                         <!-- <div class="left-char"></div> -->
-                        <div class="intro-text-content">                      
+                        <div class="intro-text-content">   
+                            <span class="globe-gif"></span>                   
 								 <div class="intro-header-container" tabindex="-1" aria-label="Dynamic Maps">
                                     <img src="./assets/images/intro_header.png" alt="Dynamic Maps" />
                                  </div>
-                                
                        <!-- <div class='instruction'></div> -->
 
                         <div id="intro-button">
@@ -153,14 +140,15 @@
 				-->
                 <div id="introPopup-1">                
                 <div class="popup-content">
-                    <button class="introPopAudio mute" onclick="togglePopAudio(this, 'assets/audios/intro_pop_audio.mp3')"></button>
+                    <button class="introPopAudio" onclick="togglePopAudio(this, 'assets/audios/intro_pop_audio.mp3')"></button>
                     <button class="introPopclose" data-tooltip="Close" onclick="closePopup('introPopup-1')"></button>
                     <img src="assets/images/popup.png" alt="" style="height: 400px; width: auto;">
                     <div class="popup-info">
+                        <span class="info"><img src="assets/images/info.png" alt="Information"></span>
                         <p> INFORMATION </p>
                     </div>
                     <div class="popup-text">
-                        <div class="section" style="font-size: 14px;">
+                        <div class="section" style="font-size: 18px;">
                             <p>Welcome to your DYNAMIC MAPS! Get ready to learn about India in a fun and exciting way.</p>
                             <ul>
                                 <li>
@@ -229,22 +217,6 @@
                 <div id="f_preloader_page">
                     <div class="f_loaderImage" id="f_pageLoaderImg">
                         <span class="loader"></span>
-                        <!-- <div class='loading'>
-                            <div class='ball'></div>
-                            <div class='ball'></div>
-                            <div class='ball'></div>
-                            <div class='ball'></div>
-                            <svg viewBox="0 0 180 180" class="loading-text" width="180" height="180">
-                                <defs>
-                                    <path id="circlePath" d="M90,90 m-70,0 a70,70 0 1,1 140,0 a70,70 0 1,1 -140,0" />
-                                </defs>
-                                <text fill="white" font-size="15" font-family="cursive" letter-spacing="2">
-                                    <textPath href="#circlePath" startOffset="0%">
-                                        LOADING ••••••••••••••••LOADING ••••••••••••••••••••
-                                    </textPath>
-                                </text>
-                            </svg>
-                        </div> -->
                     </div>
                 </div>
                 <!-- menu end -->
@@ -314,20 +286,6 @@
                     <div id="f_glossaryFooter">
                         <button type="button" id="f_glossaryClose" class="la la-times" aria-label="close" tabindex="0"></button>
                     </div>
-                    <!--<div id="f_glossaryHeader">
-							<div id="f_glossaryTitle">GLOSSARY</div>
-							<button type="button" id="f_glossaryClose" class="la la-times
-							"></button>
-							</div>
-							<div class="clearFix"></div>
-							<div id="f_glossaryContent">
-							<div id="f_glossaryCol1"></div>
-							<div id="f_glossaryCol2"></div>
-							<div id="f_glossaryCol3">
-							   <div id="f_g_heading"></div>
-							   <div id="f_g_description"></div>
-							</div>
-							</div>-->
                 </div>
             </div>
             <!-- glossary end -->
@@ -540,7 +498,8 @@
             <audio id="landingPageAudio" aria-hidden="true"></audio>
         </div>
            <footer>
-                <p>Copyright @2026 Macmillan Education India Private Limited. All rights reserved.</p>
+                <p style="position: absolute; left: 10px;">Map not to scale</p>
+                <p>Copyright @2027 Macmillan Education India Private Limited. All rights reserved.</p>
             </footer> 
       
         <!-- <div id="resumePlayBlock">
@@ -686,11 +645,39 @@ document.addEventListener('DOMContentLoaded', function() {
             // Reset audio buttons
             $(".introPopAudio").removeClass('playing').addClass('mute');
 
+            if (popupId === 'introPopup-1') {
+    playIntroPopupAudio();
+}
+
             // Optional click sound
             if (typeof playClickThen === 'function') playClickThen();
         });
     });
 });
+
+function playIntroPopupAudio() {
+    const audioBtn = document.querySelector('#introPopup-1 .introPopAudio');
+    const audio = document.getElementById("popupAudio");
+
+    if (!audioBtn || !audio) return;
+
+    audio.pause();
+    audio.currentTime = 0;
+    audio.onended = null;
+    audio.src = 'assets/audios/intro_pop_audio.mp3';
+    audio.load();
+    audio.muted = false;
+    audio.play();
+
+    $(".introPopAudio").removeClass('playing').addClass('mute');
+    audioBtn.classList.remove("mute");
+    audioBtn.classList.add("playing");
+
+    audio.onended = () => {
+        audioBtn.classList.remove("playing");
+        audioBtn.classList.add("mute");
+    };
+}
 
 //simulation Audio part
  
