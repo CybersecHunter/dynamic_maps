@@ -159,8 +159,9 @@ function addSectionData() {
     <div class="popup-content">
         <button class="introPopAudio mute" onclick="togglePopAudio(this, '${_pageData.sections[sectionCnt - 1].infoPopAudio}')"></button>
         <button class="introPopclose" data-tooltip="Close" onclick="closePopup('introPopup-2')"></button>
-        <img src="assets/images/popup.png" alt="">
+        <img src="assets/images/popup_2.png" alt="">
         <div class="popup-info">
+        <span class="info"><img src="assets/images/info.png" alt="Information"></span>
             <p> INFORMATION </p>
         </div>
         <div class="popup-text">

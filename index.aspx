@@ -80,12 +80,14 @@
                     <span class="birds"></span>
                     <span class="globe"></span>
                     <span class="paper-plane"></span>
+
                     <div id="intro-header">
                         <!-- <div class="left-char"></div> -->
                         <div class="intro-text-content">                      
 								 <div class="intro-header-container" tabindex="-1" aria-label="Dynamic Maps">
                                     <img src="./assets/images/intro_header.png" alt="Dynamic Maps" />
                                  </div>
+                                
                        <!-- <div class='instruction'></div> -->
 
                         <div id="intro-button">

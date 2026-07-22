@@ -132,37 +132,43 @@
             "value": "physical",
             "label": "Physical Division of India",
             "image":"pages/module_1/page_10/images/physical_division.png",
-            "desc": "India is divided into 4 physical divisions: Northern Mountains, Northern Plains, Peninsular Plateau and Coastal Plains. The Northern Mountains are the highest mountain ranges in the world. The Northern Plains are formed by the Indus, Ganga and Brahmaputra rivers. The Peninsular Plateau is a large area of high land that is made up of old, hard rocks. The Coastal Plains are narrow strips of land that lie between the mountains and the sea."
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
           },
           {
             "value": "rivers",
             "label": "Major Rivers",
             "image":"pages/module_1/page_10/images/rivers.png",
-            "desc": "India has many rivers, but the major ones are the Ganga, Yamuna, Brahmaputra, Godavari, Krishna and Kaveri. The Ganga is the longest river in India and is considered sacred by Hindus. The Yamuna is a tributary of the Ganga and flows through Delhi. The Brahmaputra flows through Assam and Bangladesh. The Godavari is the second longest river in India and flows through Maharashtra and Andhra Pradesh. The Krishna flows through Maharashtra, Karnataka and Andhra Pradesh. The Kaveri flows through Karnataka and Tamil Nadu."
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
           },
           {
             "value": "vegetation",
             "label": "Vegetation",
             "image":"pages/module_1/page_10/images/rivers.png",
-            "desc": "India has diverse vegetation, including tropical rainforests, deciduous forests, and thorn forests. The tropical rainforests are found in the western and northeastern regions, while the deciduous forests are common in the central and southern parts. The thorn forests are located in the arid and semi-arid regions."
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
           },
           {
             "value": "population",
             "label": "Population Density",
             "image":"pages/module_1/page_10/images/rivers.png",
-            "desc": "India has a diverse population with varying densities across different regions. The northern and western parts of the country have higher population densities, while the eastern and central regions have more moderate densities."
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
           },
           {
             "value": "parks",
             "label": "National Parks",
             "image": "pages/module_1/page_10/images/park_map.png",
-            "desc": "India has several national parks that are home to a variety of wildlife. These parks provide protected habitats for endangered species and help preserve the country's natural heritage."
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
           },
           {
             "value": "wildlife",
             "label": "Wildlife Sanctuaries",
             "image":"pages/module_1/page_10/images/wildlife_map.png",
-            "desc": "India has numerous wildlife sanctuaries that serve as safe havens for various animal species. These protected areas help in the conservation of biodiversity and support eco-tourism initiatives."
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
           }
         ],
         "mapImage": {

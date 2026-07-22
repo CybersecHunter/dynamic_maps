@@ -404,7 +404,7 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 }
 #section-1 .content-holder #introPopup-2 .popup-content .introPopclose {
   position: absolute;
-  top: 35px;
+  top: 40px;
   right: 35px;
   background: url("../images/popup_close.png") no-repeat;
   background-size: contain;
@@ -463,28 +463,37 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 }
 #section-1 .content-holder #introPopup-2 .popup-content .popup-info {
   position: absolute;
-  top: 15%;
-  left: 3%;
-  background: url(../images/popupinfotext.png) no-repeat;
+  display: flex;
+  top: 40px;
+  left: 20px;
+  background-color: #508588;
+  border-radius: 0px 25px 26px 0px;
   text-align: center;
   background-size: revert;
   background-size: contain;
   color: #fff;
   /* font-size: 1.2rem; */
   font-weight: bold;
-  height: 15%;
-  width: 50%;
+  height: 50px;
+  width: 250px;
   padding: 10px;
 }
+#section-1 .content-holder #introPopup-2 .popup-content .popup-info .info {
+  display: block;
+  height: 35px;
+  width: 35px;
+}
 #section-1 .content-holder #introPopup-2 .popup-content .popup-info p {
-  margin-left: 15%;
+  margin-left: 3%;
   font-size: 1.6vw;
   color: #e0d06d;
+  margin-bottom: 0px !important;
   font-weight: normal;
 }
 #section-1 .content-holder #introPopup-2 .popup-content .popup-text {
   position: absolute;
   right: 15px;
+  margin-top: 30px;
   height: 20%;
   text-align: center;
   color: #508588;

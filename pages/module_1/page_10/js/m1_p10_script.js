@@ -274,7 +274,7 @@ function addSectionData() {
   <div id="layerInfoPopup" class="layer-info-popup">
     <div class="popup-content">
       <button class="introPopclose" data-tooltip="Close" onClick="closeLayerInfoPopup()"></button>
-      <button class="wrapTextaudio playing" id="wrapTextaudio_1" title="audio" data-tooltip="audio" data-src="${_pageData.sections[sectionCnt - 1].infoAudio}" onClick="replayLastAudio(this)"></button>
+      <button class="wrapTextaudio playing" id="wrapTextaudio_1" title="audio" data-tooltip="audio" data-src="${_pageData.sections[sectionCnt - 1].replayBtnAudios}" onClick="replayLastAudio(this)"></button>
       <div class="layer-popup-text">
         <h2 id="layerPopupTitle"></h2>
         <p id="layerPopupDesc"></p>
@@ -513,6 +513,17 @@ function initMapInteractions() {
       visibility: "visible",
       opacity: "1"
     });
+
+    if (layerData.audio) { // replace 'audio' with your actual property name if different
+      const audio = $("#simulationAudio")[0];
+      audio.pause();
+      audio.currentTime = 0;
+      audio.src = layerData.audio;
+      audio.load();
+      audio.play();
+      const audioElement = document.querySelector("#wrapTextaudio_1");
+      audioElement.classList.add("playing");
+    }
   });
 }
 function closeLayerInfoPopup() {
@@ -522,6 +533,11 @@ function closeLayerInfoPopup() {
     display: "none",
     opacity: "0"
   });
+  let audio = document.getElementById("simulationAudio");
+  if (audio.src) {
+    audio.pause();
+    audio.currentTime = 0;
+  }
 }
 function closeLayerBtnInfoPopup() {
   playClickThen();
