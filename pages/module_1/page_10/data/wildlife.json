@@ -1,0 +1,122 @@
+{
+    "mapImage": {
+        "src": "pages/module_1/page_10/images/parks_map.jpg",
+        "alt": "National Parks Map of India"
+    },
+    "regions": [
+        {
+            "type": "rect",
+            "id": "Kugti",
+            "x": 90,
+            "y": 55,
+            "width": 35,
+            "height": 20,
+            "name": "Kugti",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Kugti Wildlife Sanctuary is located in the Chambal district of Himachal Pradesh.",
+                "It was established in 1962, spanning an area of about 379 sq km.",
+                "Since it is situated at a high-altitude terrain, it is home to the endangered Himalayan Tahr."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Abohar",
+            "x": 80,
+            "y": 95,
+            "width": 35,
+            "height": 20,
+            "name": "Abohar",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Abohar Wildlife Sanctuary is located in the Fazilka district in Punjab.",
+                "It is unique because it is an open sanctuary comprising farmlands of 13 Bishnoi villages.",
+                "It is famous for the conservation of the blackbuck ( Indian antelope) and other wildlife found here are the blue bull (nilgai), hare, porcupine, and various bird species."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Bhimbandh",
+            "x": 215,
+            "y": 155,
+            "width": 40,
+            "height": 15,
+            "name": "Bhimbandh",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Bhimbandh Wildlife Sanctuary is located in Bihar and has several hot water springs of which Bhimbandh is the most famous.",
+                "Its rich biodiversity includes  tigers, leopards, wild boar, nilgai, and several bird species",
+                "It covers an area of 681.99 sq km."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Radhanagari",
+            "x": 30,
+            "y": 294,
+            "width": 50,
+            "height": 15,
+            "name": "Radhanagari",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Radhanagari Wildlife Sanctuary is located in the state of Maharashtra and occupies an area of 351.16 sq km.",
+                "It is one of the few remaining habitats for the Indian Bison (Gaur), which is an endangered animal."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Mount Abu",
+            "x": 30,
+            "y": 166,
+            "width": 50,
+            "height": 15,
+            "name": "Mount Abu",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Mount Abu Wildlife Sanctuary is located in Rajasthan and covers an area of 288 sq km.",
+                "It was established in 1980.",
+                "It is home to a variety of animals, including the Indian Leopard, sloth bear, Sambar deer, wild boar and chinkara.",
+                "Mount Abu is the only place in Rajasthan where one can see a variety of orchids."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Hazaribagh",
+            "x": 228,
+            "y": 184,
+            "width": 40,
+            "height": 15,
+            "name": "Hazaribagh",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Hazaribagh Wildlife Sanctuary is located in Jharkhand and is about 186 sq km.",
+                "It was accorded the status of a wildlife sanctuary in 1954.",
+                "The Hazaribagh Wildlife Sanctuary has a rich biodiversity. The habitat is also shared by chital, wild boars, black bears, jackals, porcupines, hyenas, pangolins, hares, etc."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        }
+    ]
+}

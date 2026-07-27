@@ -37,6 +37,7 @@ var patterns = [];
 var layerOrder = [];
 var activeLayerOrder = [];
 var activeLayerKey = null;
+var layerDataCache = {};
 // ---------- Memory Game State ----------
 var memCards = [];
 var memFlipped = [];
@@ -329,7 +330,42 @@ if (typeof currentZoomScale === 'undefined') {
   var dragStartY = 0;
 }
 
+function getLayerData(layerKey) {
+  const layerData = _pageData.sections[0].content.layerData[layerKey];
+
+  if (!layerData) {
+    return $.Deferred().resolve(null).promise();
+  }
+
+  if (layerData.regions) {
+    return $.Deferred().resolve(layerData).promise();
+  }
+
+  if (layerDataCache[layerKey]) {
+    return $.Deferred().resolve(layerDataCache[layerKey]).promise();
+  }
+
+  if (!layerData.dataSrc) {
+    return $.Deferred().resolve(null).promise();
+  }
+
+  return $.getJSON(layerData.dataSrc + "?v=" + new Date().getTime())
+    .then(function (json) {
+      layerDataCache[layerKey] = json;
+      _pageData.sections[0].content.layerData[layerKey] = json;
+      return json;
+    });
+}
+
 function initMapInteractions() {
+  const $mapTooltip = $("#mapTooltip");
+  // Create a fixed wrapper that acts as viewport anchor (immune to ancestor transforms)
+  if (!$("#tooltipRoot").length) {
+    $("body").append('<div id="tooltipRoot" style="position:fixed;inset:0;pointer-events:none;z-index:99999"></div>');
+  }
+  if (!$mapTooltip.parent().is("#tooltipRoot")) {
+    $mapTooltip.appendTo("#tooltipRoot");
+  }
   $("input[name='map_layer']").on("change", function () {
     renderActiveLayers();
     currentZoomScale = 1;
@@ -356,22 +392,6 @@ function initMapInteractions() {
     mapTranslateX = 0;
     mapTranslateY = 0;
     updateMapTransform();
-    // TweenMax.to("#baseMapImg", 0.5, { filter: "blur(0px)" });
-    // $("#svgTopImg").hide();
-
-    // $(".phy-region").removeClass("active");
-    // TweenMax.to(".phy-region", 0.3, { fillOpacity: 0.3, strokeWidth: 0.1 });
-    // $("#divInfoPanel").fadeOut();
-    // $("input[name='map_layer']").prop("checked", false);
-    // activeLayerOrder = [];
-    // layerOrder = _pageData.sections[0].content.mapLayers.map(l => l.value);
-    // $("#layerPositionList").empty();
-    // updateLayerOrderUI();
-
-    // $("#layerContainer").empty();
-    // $("#regionPathsGroup").empty();
-    // $("#physicalLayerSVG").hide();
-
     $(this).fadeOut();
   });
 
@@ -395,30 +415,6 @@ function initMapInteractions() {
   });
 
   $("#regionInfoClose").off("click").on("click", closeRegionInfoPanel);
-
-  // $("#layersToggleBtn").on("click", function () {
-  //   let $list = $("#layersList");
-  //   if ($list.is(":visible")) {
-  //     $(".layer-position-tab").hide();
-  //     $(".layer-info-icon").hide();
-  //     $("#layersInfoPill").hide();
-  //     $list.slideUp(200);
-  //     $(this).closest(".layers-sidebar").removeClass("layers-open");
-  //   } else {
-  //     $(".layer-position-tab").show();
-  //     $(".layer-info-icon").show();
-  //     $("#layersInfoPill").show();
-  //     $list.slideDown(200);
-  //     $(this).closest(".layers-sidebar").addClass("layers-open");
-  //   }
-  // });
-  // $("#layerInfoIcon").on("click", function (e) {
-  //   e.stopPropagation();
-  //   $("#layersInfoPill").stop(true, true).fadeToggle(150);
-  // });
-  // if ($list.is(":visible")) {
-  //   $("#layersInfoPill").hide();
-  // }
 
   $("#layerPositionToggleBtn").on("click", function () {
     let $panel = $("#layerPositionPanel");
@@ -646,41 +642,6 @@ function initLayerDrag() {
   });
 }
 
-// ── Renders image + SVG regions for the selected layer ──
-// function renderActiveLayers() {
-//   // Collect all checked layer keys
-//   let activeKeys = [];
-//   $("input[name='map_layer']:checked").each(function () {
-//     activeKeys.push($(this).val());
-//   });
-//   // Nothing checked — clear the SVG overlay and info panel
-//   if (activeKeys.length === 0) {
-//     $("#regionPathsGroup").empty();
-//     $("#physicalLayerSVG").fadeOut();
-//     $("#divInfoPanel").hide();
-//     return;
-//   }
-//   // Merge all active layers' regions into one SVG group
-//   let svgHtml = "";
-//   let allRegions = [];
-//   activeKeys.forEach(function (key) {
-//     let layerData = _pageData.sections[0].content.layerData[key];
-//     if (!layerData) return;
-//     layerData.regions.forEach(function (r) {
-//       svgHtml += `<path class="phy-region"
-//         data-id="${r.id}"
-//         d="${r.d}"
-//         fill="${r.fill}"
-//         stroke="#fff"
-//         stroke-width="0.1"/>`;
-//       allRegions.push(r);
-//     });
-//   });
-//   $("#regionPathsGroup").html(svgHtml);
-//   $("#physicalLayerSVG").fadeIn();
-//   $("#divInfoPanel").hide();
-//   bindRegionEvents(allRegions);
-// }
 function renderActiveLayers() {
   $("input[name='map_layer']:checked").each(function () {
     let key = $(this).val();
@@ -846,21 +807,52 @@ function renderSVGForLayer(layerKey) {
     return;
   }
 
-  let layerData = _pageData.sections[0].content.layerData[layerKey];
-  $("#svgTopImg")
-    .attr("href", layerData.mapImage.src)
-    .hide();
+  // let layerData = _pageData.sections[0].content.layerData[layerKey];
+  getLayerData(layerKey).done(function (layerData) {
+    if (layerKey !== activeLayerKey) return;
 
-  if (!layerData || !layerData.regions) {
-    $("#physicalLayerSVG").hide();
-    return;
-  }
+    if (!layerData || !layerData.regions) {
+      $("#physicalLayerSVG").hide();
+      return;
+    }
+    $("#svgTopImg")
+      .attr("href", layerData.mapImage.src)
+      .hide();
 
-  let svgHtml = "";
+    if (!layerData || !layerData.regions) {
+      $("#physicalLayerSVG").hide();
+      return;
+    }
 
-  layerData.regions.forEach(region => {
+    let svgHtml = "";
 
-    svgHtml += `
+    layerData.regions.forEach(region => {
+
+      if (region.type === "rect") {
+        svgHtml += `
+            <rect
+              class="phy-region"
+              data-id="${region.id}"
+              x="${region.x}"
+              y="${region.y}"
+              width="${region.width}"
+              height="${region.height}"
+              fill="transparent">
+            </rect>`;
+      } else if (region.type === "rotate") {
+        svgHtml += `
+            <rect
+              class="phy-region"
+              data-id="${region.id}"
+              x="${region.x}"
+              y="${region.y}"
+              width="${region.width}"
+              height="${region.height}"
+              transform="${region.rotate ? `rotate(${region.rotate} ${region.x + region.width / 2} ${region.y + region.height / 2})` : ''}"
+              fill="transparent">
+            </rect>`;
+      } else {
+        svgHtml += `
             <path
                 class="phy-region"
                 data-id="${region.id}"
@@ -870,12 +862,14 @@ function renderSVGForLayer(layerKey) {
                 stroke-width="0"
                 fill-opacity="0">
             </path>`;
+      }
+    });
+
+    $("#regionPathsGroup").html(svgHtml);
+    $("#physicalLayerSVG").show();
+
+    bindRegionEvents(layerData.regions);
   });
-
-  $("#regionPathsGroup").html(svgHtml);
-  $("#physicalLayerSVG").show();
-
-  bindRegionEvents(layerData.regions);
 }
 
 
@@ -889,13 +883,60 @@ function closeRegionInfoPanel() {
   $(".phy-region").removeClass("active");
   TweenMax.to(".phy-region", 0.3, { fillOpacity: 0, strokeWidth: 0 });
 }
+
+// Run ONCE on page load to detect any global scale factor
+var gScale = detectGlobalScale();
+function detectGlobalScale() {
+  var d = document.createElement("div");
+  d.style.cssText = "position:fixed;left:100px;top:100px;width:1px;height:1px;opacity:0;pointer-events:none;z-index:-1";
+  document.body.appendChild(d);
+  var r = d.getBoundingClientRect();
+  document.body.removeChild(d);
+  return (r.left / 100) || 1;
+}
+
+// Re-detect on resize/orientation change
+$(window).on("resize orientationchange", function() {
+  gScale = detectGlobalScale();
+});
+
+function positionMapTooltip(e) {
+  var $tooltip = $("#mapTooltip");
+  var gap = 12;
+
+  // Compensate for global scale
+  var x = (e.clientX + gap) / gScale;
+  var y = (e.clientY + gap) / gScale;
+
+  var tw = $tooltip.outerWidth() / gScale;
+  var th = $tooltip.outerHeight() / gScale;
+  var ww = window.innerWidth / gScale;
+  var wh = window.innerHeight / gScale;
+
+  if (x + tw > ww) {
+    x = (e.clientX - ($tooltip.outerWidth() / gScale) - gap) / gScale;
+  }
+
+  if (y + th > wh) {
+    y = (e.clientY - ($tooltip.outerHeight() / gScale) - gap) / gScale;
+  }
+
+  if (x < 0) x = gap / gScale;
+  if (y < 0) y = gap / gScale;
+
+  $tooltip[0].style.setProperty("left", x + "px", "important");
+  $tooltip[0].style.setProperty("top", y + "px", "important");
+  $tooltip[0].style.setProperty("right", "auto", "important");
+  $tooltip[0].style.setProperty("bottom", "auto", "important");
+}
+
 function bindRegionEvents(regions) {
   let regionMap = {};
   regions.forEach(r => regionMap[r.id] = r);
 
   $(document).off("mouseenter mouseleave click", ".phy-region");
 
-  $(".phy-region").on("mouseenter", function () {
+  $(".phy-region").on("mouseenter", function (e) {
     let bbox = this.getBBox();
 
     let centerX = bbox.x + bbox.width / 2;
@@ -906,20 +947,17 @@ function bindRegionEvents(regions) {
       let regionId = $(this).data("id");
       let d = regionMap[regionId];
       if (d) {
-        $("#mapTooltip").text(d.name).fadeIn(150);
+        $("#mapTooltip").stop(true, true).text(d.name).show();
+        positionMapTooltip(e);
       }
     }
   }).on("mousemove", function (e) {
-    // ✅ Follow cursor
-    let offset = $("#mapWrapper").offset();
-    let x = e.pageX - offset.left + 12;
-    let y = e.pageY - offset.top + 12;
-    $("#mapTooltip").css({ left: x + "px", top: y + "px" });
+    positionMapTooltip(e);
   }).on("mouseleave", function () {
     if (!$(this).hasClass("active")) {
       TweenMax.to(this, 0.1, { fillOpacity: 0, strokeWidth: 0 });
     }
-    $("#mapTooltip").fadeOut(100);
+    $("#mapTooltip").stop(true, true).fadeOut(100);
   }).on("click", function (e) {
     let regionId = $(this).data("id");
     let d = regionMap[regionId];

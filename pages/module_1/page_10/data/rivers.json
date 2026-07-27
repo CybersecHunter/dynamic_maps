@@ -1,0 +1,378 @@
+{
+    "mapImage": {
+        "src": "pages/module_1/page_10/images/river_map.png",
+        "alt": "Major Rivers of India"
+    },
+    "regions": [
+        {
+            "type": "rotate",
+            "id": "Indus",
+            "x": 0,
+            "y": 110,
+            "width": 40,
+            "height": 20,
+            "rotate": -40,
+            "name": "Indus",
+            "audio": "pages/module_1/page_10/audios/rivers/indus.mp3",
+            "desc": "",
+            "features": [
+                "The Indus River originates in Tibet.",
+                "It flows into the Arabian Sea.",
+                "The river has five tributaries—the Satluj, the Ravi, the Beas, the Chenab and the Jhelum."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rotate",
+            "id": "Kaveri",
+            "x": 100,
+            "y": 365,
+            "width": 60,
+            "height": 20,
+            "rotate": 30,
+            "name": "Kaveri",
+            "audio": "pages/module_1/page_10/audios/rivers/kaveri.mp3",
+            "desc": "",
+            "features": [
+                "The Kaveri River originates in the Western Ghats in southwestern Karnataka.",
+                "Before flowing into the Bay of Bengal, the river splits into many smaller streams, creating a large delta known as the ‘Garden of the Southern India.’"
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rotate",
+            "id": "Krishna",
+            "x": 60,
+            "y": 285,
+            "width": 70,
+            "height": 20,
+            "rotate": 20,
+            "name": "Krishna",
+            "audio": "pages/module_1/page_10/audios/rivers/krishna.mp3",
+            "desc": "",
+            "features": [
+                "The Krishna River has its origin in the Western Ghats in Maharashtra.",
+                "The Nagarjuna Sagar Dam, on this river, supplies water and power to the neighbouring areas."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rotate",
+            "id": "Godavari",
+            "x": 70,
+            "y": 245,
+            "width": 70,
+            "height": 20,
+            "rotate": 10,
+            "name": "Godavari",
+            "audio": "pages/module_1/page_10/audios/rivers/godavari.mp3",
+            "desc": "",
+            "features": [
+                "The Godavari, originating at Trimbakeshwar in Maharashtra, is considered a sacred river.",
+                "It is the second-longest river in India.",
+                "The length of this river is approximately 1,465 km."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rotate",
+            "id": "Tapi",
+            "x": 72,
+            "y": 222,
+            "width": 55,
+            "height": 12,
+            "rotate": -5,
+            "name": "Tapi",
+            "audio": "pages/module_1/page_10/audios/rivers/tapi.mp3",
+            "desc": "",
+            "features": [
+                "The Tapi River rises in the Central Highlands and flows westwards into the Arabian Sea.",
+                "The length of this river is approximately 724 km.",
+                "The three major tributaries are—the Purna, Girna, and Panjhra."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rotate",
+            "id": "Narmada",
+            "x": 70,
+            "y": 205,
+            "width": 80,
+            "height": 15,
+            "rotate": -5,
+            "name": "Narmada",
+            "audio": "pages/module_1/page_10/audios/rivers/narmada.mp3",
+            "desc": "",
+            "features": [
+                "The Narmada River originates in Madhya Pradesh in the Maikal Range.",
+                "It drains into the Arabian Sea.",
+                "The river was called Narmadus by the 2nd-century-CE Greek geographer Ptolemy."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rotate",
+            "id": "Mahanadi",
+            "x": 165,
+            "y": 215,
+            "width": 70,
+            "height": 35,
+            "rotate": 0,
+            "name": "Mahanadi",
+            "audio": "pages/module_1/page_10/audios/rivers/mahanadi.mp3",
+            "desc": "",
+            "features": [
+                "The Mahanadi River originates in the Eastern Ghats in Chhattisgarh.",
+                "It drains into the Bay of Bengal.",
+                "The length of this river is approximately 900 km."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rotate",
+            "id": "Brahmaputra ",
+            "x": 285,
+            "y": 138,
+            "width": 70,
+            "height": 25,
+            "rotate": -10,
+            "name": "Brahmaputra ",
+            "audio": "pages/module_1/page_10/audios/rivers/brahmaputra.mp3",
+            "desc": "",
+            "features": [
+                "The Brahmaputra originates in Tibet where it is called the Tsangpo.",
+                "It enters India through Arunachal Pradesh.",
+                "The river flows into the Bay of Bengal."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rotate",
+            "id": "Indus",
+            "x": 75,
+            "y": 25,
+            "width": 70,
+            "height": 20,
+            "rotate": 30,
+            "name": "Indus",
+            "audio": "pages/module_1/page_10/audios/rivers/indus.mp3",
+            "desc": "",
+            "features": [
+                "The Indus River originates in Tibet.",
+                "It flows into the Arabian Sea.",
+                "The river has five tributaries—the Satluj, the Ravi, the Beas, the Chenab and the Jhelum."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rotate",
+            "id": "Jhelum ",
+            "x": 45,
+            "y": 60,
+            "width": 40,
+            "height": 15,
+            "rotate": -40,
+            "name": "Jhelum ",
+            "audio": "pages/module_1/page_10/audios/rivers/jhelum.mp3",
+            "desc": "",
+            "features": [
+                "Tributary of the Indus River.",
+                "Main waterway of the Kashmir valley.",
+                "Originates from a spring named Chashma Verinag."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rotate",
+            "id": "Ravi ",
+            "x": 65,
+            "y": 80,
+            "width": 30,
+            "height": 10,
+            "rotate": -40,
+            "name": "Ravi ",
+            "audio": "pages/module_1/page_10/audios/rivers/ravi.mp3",
+            "desc": "",
+            "features": [
+                "Tributary of the Indus River",
+                "Its total length is 720 km"
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rotate",
+            "id": "Satluj ",
+            "x": 80,
+            "y": 90,
+            "width": 30,
+            "height": 15,
+            "rotate": 0,
+            "name": "Satluj ",
+            "audio": "pages/module_1/page_10/audios/rivers/satluj.mp3",
+            "desc": "",
+            "features": [
+                "Tributary of the Indus River",
+                "Known as  Langqen Zagbo inside Tibet/China"
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rotate",
+            "id": "Chenab",
+            "x": 100,
+            "y": 60,
+            "width": 30,
+            "height": 12,
+            "rotate": 30,
+            "name": "Chenab",
+            "audio": "pages/module_1/page_10/audios/rivers/chenab.mp3",
+            "desc": "",
+            "features": [
+                "Tributary of the Indus River",
+                "Originates from the Lahaul valley of Himachal Pradesh"
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rotate",
+            "id": "Beas",
+            "x": 105,
+            "y": 80,
+            "width": 25,
+            "height": 10,
+            "rotate": 0,
+            "name": "Beas",
+            "audio": "pages/module_1/page_10/audios/rivers/beas.mp3",
+            "desc": "",
+            "features": [
+                "Tributary of the Indus River"
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rotate",
+            "id": "Bhagirathi ",
+            "x": 125,
+            "y": 80,
+            "width": 50,
+            "height": 10,
+            "rotate": -30,
+            "name": "Bhagirathi",
+            "audio": "pages/module_1/page_10/audios/rivers/bhagirathi.mp3",
+            "desc": "",
+            "features": [
+                "Originates from Gaumukh Glacier",
+                "After flowing for 193 km, merges with Alaknanda to form River Ganga at Devprayag"
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rotate",
+            "id": "Alaknanda",
+            "x": 135,
+            "y": 88,
+            "width": 50,
+            "height": 10,
+            "rotate": -30,
+            "name": "Alaknanda",
+            "audio": "pages/module_1/page_10/audios/rivers/alaknanda.mp3",
+            "desc": "",
+            "features": [
+                "Lies in the Garhwal region of Uttarakhand",
+                "It is 195 km long.",
+                "Its basin area is about 10,882 square kilometres."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rotate",
+            "id": "Yamuna",
+            "x": 110,
+            "y": 145,
+            "width": 50,
+            "height": 15,
+            "rotate": 40,
+            "name": "Yamuna",
+            "audio": "pages/module_1/page_10/audios/rivers/yamuna.mp3",
+            "desc": "",
+            "features": [
+                "The Yamuna River originates from the Yamunotri glacier.",
+                "The Ganga and the Yamuna meet at Prayagraj.",
+                "Taj Mahal, one of the seven wonders of the world, is situated on the banks of the river Yamuna."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rotate",
+            "id": "Ganga",
+            "x": 120,
+            "y": 130,
+            "width": 50,
+            "height": 15,
+            "rotate": 40,
+            "name": "Ganga",
+            "audio": "pages/module_1/page_10/audios/rivers/ganga.mp3",
+            "desc": "",
+            "features": [
+                "The Ganga River originates from the Gangotri glacier.",
+                "The Ganga is the longest river in India.",
+                "The Ganga-Brahmaputra Delta is the largest river delta in the world."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rotate",
+            "id": "Ganga",
+            "x": 210,
+            "y": 160,
+            "width": 30,
+            "height": 15,
+            "rotate": 10,
+            "name": "Ganga",
+            "audio": "pages/module_1/page_10/audios/rivers/ganga.mp3",
+            "desc": "",
+            "features": [
+                "The Ganga River originates from the Gangotri glacier.",
+                "The Ganga is the longest river in India.",
+                "The Ganga-Brahmaputra Delta is the largest river delta in the world."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        }
+    ]
+}

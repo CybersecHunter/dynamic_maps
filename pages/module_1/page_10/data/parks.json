@@ -1,0 +1,762 @@
+{
+    "mapImage": {
+        "src": "pages/module_1/page_10/images/parks_map.jpg",
+        "alt": "National Parks Map of India"
+    },
+    "regions": [
+        {
+            "type": "rect",
+            "id": "Dachigam",
+            "x": 65,
+            "y": 30,
+            "width": 40,
+            "height": 20,
+            "name": "Dachigam",
+            "audio": "pages/module_1/page_10/audios/parks/dachigam.mp3",
+            "desc": "",
+            "features": [
+                "Dachigam National Park is located about 22 km from Srinagar, Jammu & Kashmir",
+                "It is about 141 square kilometres and though it was a protected site, it was declared a national park in 1981. The word Dachigam means ‘ten villages’, referring to the villages relocated to create the park.",
+                "It is famous for the Hangul (Kashmir Stag), which is an endangered species found only here.",
+                "Dachigam has a rich biodiversity, which includes the Himalayan black bear, leopard, musk deer, and numerous bird species."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Hemis",
+            "x": 115,
+            "y": 45,
+            "width": 35,
+            "height": 20,
+            "name": "Hemis",
+            "audio": "pages/module_1/page_10/audios/parks/hemis.mp3",
+            "desc": "",
+            "features": [
+                "Located in Ladakh(Jammu and Kashmir), the Hemis National Park is famous for snow leopards.",
+                "It is the only national park in India which is located in the northern regions of the Himalayas.",
+                "It has the distinction of being the largest national park in India."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Guindy",
+            "x": 155,
+            "y": 335,
+            "width": 35,
+            "height": 20,
+            "name": "Guindy",
+            "audio": "pages/module_1/page_10/audios/parks/guindy.mp3",
+            "desc": "",
+            "features": [
+                "Guindy National Park is one of the smallest national parks, spanning an area of just 2.70 sq km.",
+                "It is located in Chennai in Tamil Nadu.",
+                "It is a green oasis in the heart of Chennai."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Corbett",
+            "x": 140,
+            "y": 110,
+            "width": 35,
+            "height": 15,
+            "name": "Corbett",
+            "audio": "pages/module_1/page_10/audios/parks/corbett.mp3",
+            "desc": "",
+            "features": [
+                "Jim Corbett National Park is located in the Nainital district in Uttarakhand and is considered to be the first national park established in 1936. ",
+                "It is named after Jim Corbett, who played a main role in its creation.",
+                "It was the first park which was included by the government under Project Tiger in 1973.",
+                "The national park is home to the Bengal tiger, leopard, elephant, gharial, wild boar, and over 600 bird species."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Kaziranga",
+            "x": 320,
+            "y": 140,
+            "width": 40,
+            "height": 15,
+            "name": "Kaziranga",
+            "audio": "pages/module_1/page_10/audios/parks/kaziranga.mp3",
+            "desc": "",
+            "features": [
+                "Kaziranga National Park in Assam was established as a reserve forest in 1905 and declared a national park in 1974.",
+                "It was declared a World Heritage Site by UNESCO in 1985.",
+                "It has about two-thirds of the world’s population of the one-horned rhinoceros.",
+                "It has also been declared as a Tiger Reserve in 2006.",
+                "Kaziranga has tigers, elephants, swamp deer, wild water buffalo, and hundreds of bird species, too."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Nam Dhapa",
+            "x": 330,
+            "y": 124,
+            "width": 45,
+            "height": 15,
+            "name": "Nam Dhapa",
+            "audio": "pages/module_1/page_10/audios/parks/nam_dhapa.mp3",
+            "desc": "",
+            "features": [
+                "Nam Dapha National Park lies in the international border between India and Myanmar (Burma) within Changlang District in the state of Arunachal Pradesh in northeast India.",
+                "It covers an area of 1985.23 square kilometres and is considered one of the largest protected areas in India.",
+                "It is famous for being the only national park in India which hosts four big cats. They are the tiger, the leopard, the snow leopard and the clouded leopard.",
+                "It was declared a national park in 1983 and also a Tiger Reserve."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Gir",
+            "x": 25,
+            "y": 210,
+            "width": 25,
+            "height": 15,
+            "name": "Gir",
+            "audio": "pages/module_1/page_10/audios/parks/gir.mp3",
+            "desc": "",
+            "features": [
+                "Gir National Park was declared a wildlife sanctuary in 1965 and a national park in 1975.",
+                "It is located in the state of Gujarat and is the last refuge of the Asiatic lion.",
+                "It is roughly about 1412 square kilometres.",
+                "Gir is the only natural habitat in the world for Asiatic lions."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Sanjay Gandhi",
+            "x": 15,
+            "y": 250,
+            "width": 50,
+            "height": 15,
+            "name": "Sanjay Gandhi",
+            "audio": "pages/module_1/page_10/audios/parks/sanjay_gandhi.mp3",
+            "desc": "",
+            "features": [
+                "Sanjay Gandhi National Park is located in Mumbai, Maharashtra.",
+                "It is around 87 square kilometres and was established in 1996. It was earlier known as Borivali National Park.",
+                "The Kanheri Caves, which are a 2400-year-old Buddhist cave complex, are located in the national park.",
+                "The national park boasts a rich biodiversity with leopards, spotted deer, macaques, and over 250 bird species."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Periyar",
+            "x": 85,
+            "y": 398,
+            "width": 40,
+            "height": 15,
+            "name": "Periyar",
+            "audio": "pages/module_1/page_10/audios/parks/periyar.mp3",
+            "desc": "",
+            "features": [
+                "Periyar National Park is situated in the state of Kerala, and its core zone is about 350 square kilometres.",
+                "Periyar National Park was declared a sanctuary in 1934, and then it was declared a National Park in the year 1982.",
+                "It was declared a Tiger Reserve in 1978 under the Project Tiger.",
+                "It is famous for its large population of elephants."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Rajaji",
+            "x": 120,
+            "y": 90,
+            "width": 35,
+            "height": 15,
+            "name": "Rajaji",
+            "audio": "pages/module_1/page_10/audios/parks/rajaji.mp3",
+            "desc": "",
+            "features": [
+                "Rajaji Tiger Reserve spreads across Haridwar and Dehradun in the state of Uttarakhand.",
+                "This National Park boasts of more than 50 species of mammals including the highly  endangered Asian Elephant and Tiger."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Nanda Devi",
+            "x": 165,
+            "y": 95,
+            "width": 40,
+            "height": 15,
+            "name": "Nanda Devi",
+            "audio": "pages/module_1/page_10/audios/parks/nanda_devi.mp3",
+            "desc": "",
+            "features": [
+                "The Nanda Devi National Park is located in the upper reaches of the Himalayas in the state of Uttarakhand.",
+                "It is a part of the UNESCO World Heritage List",
+                "The snow leopard, the Himalayan musk deer and a diverse variety of plants are found in this national park."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+         {
+            "type": "rect",
+            "id": "Dudhwa",
+            "x": 140,
+            "y": 130,
+            "width": 35,
+            "height": 15,
+            "name": "Dudhwa",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "The Dudhwa national park is situated in the state of Uttar Pradesh and is home to a diverse range of wildlife.",
+                "It is also known for its unique ecosystem with grasslands, swamps and dense forests."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+         {
+            "type": "rect",
+            "id": "Sariska",
+            "x": 85,
+            "y": 130,
+            "width": 35,
+            "height": 15,
+            "name": "Sariska",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Sariska Tiger Reserve is a national park situated in Alwar in the state of Rajasthan.",
+                "The national park spans over 800 square kilometres and is home to many animals apart from tigers."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+         {
+            "type": "rect",
+            "id": "Desert Sanctuary",
+            "x": 25,
+            "y": 130,
+            "width": 35,
+            "height": 25,
+            "name": "Desert Sanctuary",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "The Desert National Park spans about 3000 square kilometres  between Jaisalmer and Barmer districts of Rajasthan.",
+                "The national park features rolling sand dunes, jagged rocks and salt lakes.",
+                "The camel, black buck, chinkara and desert fox are all a part of the fauna of the national park."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Vansada",
+            "x": 60,
+            "y": 225,
+            "width": 30,
+            "height": 15,
+            "name": "Vansada",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Vansada national park is situated in the state of Gujarat.",
+                "It spans over an area of 24 square kilometres and has a variety of animals such as leopards, hyenas, bison, sambar deer, and four-horned antelopes, among others.",
+                "The national park is home to about 450 species of plants and over 200 species of birds."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Silent Valley",
+            "x": 75,
+            "y": 385,
+            "width": 40,
+            "height": 15,
+            "name": "Silent Valley",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Silent Valley National Park is located in the state of Kerala.",
+                "It was declared a National Park in 1984 and formally inaugurated in 1985.",
+                "41 mammals, 211 birds, 49 reptiles, 47 amphibians, 12 fishes, 164 butterflies and 400 species of moths are found here."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Bandipur",
+            "x": 75,
+            "y": 365,
+            "width": 40,
+            "height": 12,
+            "name": "Bandipur",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Bandipur National Park is located in the southern part of Karnataka.",
+                "It has the second highest population of tigers in India.",
+                "It has a rich diversity of flora and fauna. Tigers, Indian Elephants, Leopard, Dhole, Sambar, Sloth bear, Chital are a few of the animals found here."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Nagarhole",
+            "x": 65,
+            "y": 354,
+            "width": 40,
+            "height": 12,
+            "name": "Nagarhole",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Nagarahole Tiger Reserve was previously known as Rajiv Gandhi (Nagarahole) National Park.",
+                "It is named after the river Nagarahole  which literally means ‘Serpent River’.",
+                "It is spread over Mysore and Kodagu and covers an area of 843.96 square kilometres.",
+                "It is acclaimed as a high-density tiger population area."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Bannerghatta",
+            "x": 112,
+            "y": 342,
+            "width": 40,
+            "height": 12,
+            "name": "Bannerghatta",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "The Bannerghatta National Park is located in the state of Karnataka.",
+                "It spans an area of 260.51 square kilometres and has a lion and tiger safari."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Ranthambore",
+            "x": 75,
+            "y": 160,
+            "width": 40,
+            "height": 15,
+            "name": "Ranthambore",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Ranthambore National park is one of the biggest national parks in northern India.",
+                "It is situated in the state of Rajasthan.",
+                "The national park has 40 species of mammals such as the  royal Bengal tiger, leopards, sloth bears, several species of deer etc"
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Madhav",
+            "x": 115,
+            "y": 160,
+            "width": 35,
+            "height": 15,
+            "name": "Madhav",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "The Madhav Tiger Reserve is situated in the northern parts of Madhya Pradesh.",
+                "This national park has a lake, meadow and forest ecosystems.",
+                "It spans an area of almost 355 square kilometres."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Panna",
+            "x": 135,
+            "y": 175,
+            "width": 25,
+            "height": 15,
+            "name": "Panna",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Panna Tiger Reserve is a tiger habitat located in Madhya Pradesh.",
+                "There are more than 200 species of birds other than wild animals such as leopards, wild dogs, hyaenas, sloth bears etc."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Sanjay",
+            "x": 175,
+            "y": 190,
+            "width": 30,
+            "height": 15,
+            "name": "Sanjay",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "The Sanjay Tiger Reserve is located in the Sidhi district of Madhya Pradesh.",
+                "It has a rich diversity of flora and fauna with many critically endangered species."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Palamau",
+            "x": 208,
+            "y": 195,
+            "width": 30,
+            "height": 15,
+            "name": "Palamau",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "The Palamau Tiger Reserve is located in the state of Jharkhand.",
+                "It was established when Project Tiger was introduced in 1973.",
+                "The Tiger Reserve has mainly of Sal forests, mixed deciduous forests and bamboo groves."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Similipal",
+            "x": 210,
+            "y": 215,
+            "width": 30,
+            "height": 15,
+            "name": "Similipal",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Similipal National Park is located in the state of Odisha.",
+                "The Park is a UNESCO World Heritage Site",
+                "It is home to many endangered species such as the Royal Bengal tiger and the Indian Elephant"
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Kanha",
+            "x": 162,
+            "y": 208,
+            "width": 30,
+            "height": 15,
+            "name": "Kanha",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "The Kanha Tiger Reserve is located in the state of Madhya Pradesh.",
+                "The state animal of Madhya Pradesh - Hard Ground Barasingha is exclusively found here. It is a species of deer.",
+                "The forests of Kanha has Sal and other mixed forest trees."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Pench",
+            "x": 135,
+            "y": 218,
+            "width": 30,
+            "height": 15,
+            "name": "Pench",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "The Pench National Park was established in 1975 and got the status of a Tiger Reserve in 1999.",
+                "It is located in the state of Maharashtra and has its name from the Pench River.",
+                "It is spread over 742 square kilometres."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Nawegaon",
+            "x": 132,
+            "y": 235,
+            "width": 35,
+            "height": 15,
+            "name": "Nawegaon",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "The Nawegaon National Park is situated in the state of Maharashtra.",
+                "There are low hills surrounded by forests and this is considered a key biodiversity area."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Indravati ",
+            "x": 158,
+            "y": 256,
+            "width": 35,
+            "height": 10,
+            "name": "Indravati ",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Indravati National Park is located in the state of Chhattisgarh and gets its name from the nearby Indravati River.",
+                "It is home to rare wild buffaloes and is a Tiger Reserve from 1983."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Indravati ",
+            "x": 158,
+            "y": 258,
+            "width": 10,
+            "height": 15,
+            "name": "Indravati ",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Indravati National Park is located in the state of Chhattisgarh and gets its name from the nearby Indravati River.",
+                "It is home to rare wild buffaloes and is a Tiger Reserve from 1983."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Kinnerasaniavati",
+            "x": 158,
+            "y": 287,
+            "width": 35,
+            "height": 6,
+            "name": "Kinnerasani",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Kinnerasani is located in the state of Telangana.",
+                "It is named after the river Kinnerasani which flows through it.",
+                "Panthers, tigers and wild boar abound here."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Kinnerasaniavati",
+            "x": 158,
+            "y": 276,
+            "width": 10,
+            "height": 15,
+            "name": "Kinnerasani",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Kinnerasani is located in the state of Telangana.",
+                "It is named after the river Kinnerasani which flows through it.",
+                "Panthers, tigers and wild boar abound here."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Kanger Valley",
+            "x": 174,
+            "y": 268,
+            "width": 45,
+            "height": 10,
+            "name": "Kanger Valley",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "The Kanger Valley National Park is located in the state of Chhattisgarh.",
+                "It encompasses an area of 200 square kilometres and has remarkable geological formations.",
+                "It has 49 species of mammals and 201 species of avian population."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Papikonda",
+            "x": 170,
+            "y": 278,
+            "width": 45,
+            "height": 10,
+            "name": "Papikonda",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Papikonda National Park is located in the states of Andhra Pradesh and Telangana.",
+                "It covers an area of 1068 square kilometres and is situated along the banks of the Godavari River.",
+                "There are dense forests and grasslands with abundant wildlife."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Coringa",
+            "x": 175,
+            "y": 292,
+            "width": 45,
+            "height": 10,
+            "name": "Coringa",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Coringa Sanctuary is situated in the state of Andhra Pradesh.",
+                "It is named after a tiny village  Coringa situated in  the east Godavari district of Andhra Pradesh.",
+                "It has 24 species of mangroves and numerous species of wildlife."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Sundarbans",
+            "x": 255,
+            "y": 212,
+            "width": 45,
+            "height": 10,
+            "name": "Sundarbans",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "The Sundarbans National Park covers 10,000 square kilometres of land and water. More than half of it is in India and the rest in Bangladesh.",
+                "It has the world’s largest area of mangrove forests and single largest population of tigers."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Parmadan",
+            "x": 262,
+            "y": 202,
+            "width": 45,
+            "height": 10,
+            "name": "Parmadan",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Parmadan is officially known as Bibhutibhushan Wildlife Sanctuary.",
+                "It is located in the state of West Bengal.",
+                "It is situated on the banks of the Ichamati River."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Bethuadhar",
+            "x": 262,
+            "y": 192,
+            "width": 45,
+            "height": 10,
+            "name": "Bethuadhar",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Bethuadahari Wildlife Sanctuary is located in the state of West Bengal.",
+                "It has about 50 species of birds and is home to diverse fauna such as Chital, Jungle cat, Civet cat, Jackal, Mongoose, Porcupine, Langur, Monitor lizard, Python, Cobra, Krait etc."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Nokrek",
+            "x": 268,
+            "y": 166,
+            "width": 35,
+            "height": 15,
+            "name": "Nokrek",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Nokrek Biosphere Reserve  is located in the state of Meghalaya.",
+                "It has evergreen forests covering 90% of its area.",
+                "It is home to unique and endangered species of animals."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Keibul Lamjao",
+            "x": 325,
+            "y": 175,
+            "width": 45,
+            "height": 15,
+            "name": "Keibul Lamjao",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "The Keibul Lamjao National Park is located in the state of Manipur.",
+                "It is the only floating National park in the world.",
+                "It is a wetland ecosystem."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },{
+            "type": "rect",
+            "id": "Manas",
+            "x": 280,
+            "y": 145,
+            "width": 35,
+            "height": 15,
+            "name": "Manas",
+            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "desc": "",
+            "features": [
+                "Manas National Park is located in the state of Assam.",
+                "It was declared as a National Park in 1990.",
+                "It covers an area of 2837 Square Kilometres and has dense forests and grasslands.",
+                "It has the largest number of protected species in India."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        }
+    ]
+}

@@ -724,19 +724,19 @@
 									}
 								}
 
-								.map-region-tooltip {
-									position: absolute;
-									background: rgba(0, 0, 0, 0.75);
-									color: #fff;
-									padding: 5px 10px;
-									border-radius: 5px;
-									font-size: 13px;
-									font-weight: bold;
-									pointer-events: none;
-									z-index: 10;
-									white-space: nowrap;
-									box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-								}
+								// .map-region-tooltip {
+								// 	position: absolute;
+								// 	background: rgba(0, 0, 0, 0.75);
+								// 	color: #fff;
+								// 	padding: 5px 10px;
+								// 	border-radius: 5px;
+								// 	font-size: 13px;
+								// 	font-weight: bold;
+								// 	pointer-events: none;
+								// 	z-index: 10;
+								// 	white-space: nowrap;
+								// 	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+								// }
 							}
 						}
 
@@ -951,9 +951,9 @@
 								// max-height: 220px;
 								// overflow-y: auto;
 
-								.layer-option:nth-child(3) {
-									pointer-events: none;
-								}
+								// .layer-option:nth-child(3) {
+								// 	pointer-events: none;
+								// }
 
 								.layer-option:nth-child(4) {
 									pointer-events: none;
@@ -2260,4 +2260,20 @@
 
 .layers-vertical-btn.active {
 	background: #508588;
+}
+
+#mapTooltip.map-region-tooltip {
+	position: absolute !important;
+	transform: none !important;
+	margin: 0 !important;
+	padding: 5px 10px;
+	pointer-events: none;
+	z-index: 99999;
+	background: rgba(0, 0, 0, 0.75);
+	color: #fff;
+	border-radius: 5px;
+	font-size: 13px;
+	font-weight: bold;
+	white-space: nowrap;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }

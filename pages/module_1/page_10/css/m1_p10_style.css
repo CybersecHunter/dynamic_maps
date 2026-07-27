@@ -631,19 +631,6 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 #section-1 .content-holder .col-left .content .content-bg .content-style .map-view-area .map-wrapper .map-svg-overlay .phy-region {
   cursor: pointer;
 }
-#section-1 .content-holder .col-left .content .content-bg .content-style .map-view-area .map-wrapper .map-region-tooltip {
-  position: absolute;
-  background: rgba(0, 0, 0, 0.75);
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 13px;
-  font-weight: bold;
-  pointer-events: none;
-  z-index: 10;
-  white-space: nowrap;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
 #section-1 .content-holder .col-left .content .content-bg .content-style .top-nav-icons {
   position: absolute;
   top: 10px;
@@ -792,9 +779,6 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   display: flex;
   flex-direction: column;
   gap: 2px;
-}
-#section-1 .content-holder .col-left .content .content-bg .content-style .layers-sidebar .layers-list .layer-option:nth-child(3) {
-  pointer-events: none;
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style .layers-sidebar .layers-list .layer-option:nth-child(4) {
   pointer-events: none;
@@ -1868,4 +1852,20 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 
 .layers-vertical-btn.active {
   background: #508588;
+}
+
+#mapTooltip.map-region-tooltip {
+  position: absolute !important;
+  transform: none !important;
+  margin: 0 !important;
+  padding: 5px 10px;
+  pointer-events: none;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bold;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }/*# sourceMappingURL=m1_p10_style.css.map */
