@@ -238,6 +238,7 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   left: 50%;
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.85);
+  font-weight: normal;
   white-space: nowrap;
   box-shadow: 0 2px 19px rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -411,6 +412,7 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   left: 50%;
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.85);
+  font-weight: normal;
   white-space: nowrap;
   box-shadow: 0 2px 19px rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -665,6 +667,7 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style .top-nav-icons .nav-icon::after {
   content: attr(data-tooltip);
+  font-weight: normal;
   position: absolute;
   bottom: -25px;
   left: 50%;
@@ -1369,6 +1372,7 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style .popup .popup-wrap .popBtns #refresh::after {
   content: attr(data-tooltip);
+  font-weight: normal;
   /* tooltip text from attribute */
   position: absolute;
   top: 100%;
@@ -1400,6 +1404,7 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style .popup .popup-wrap .popBtns #homeBack::after {
   content: attr(data-tooltip);
+  font-weight: normal;
   /* tooltip text from attribute */
   position: absolute;
   top: 100%;
@@ -1556,6 +1561,7 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style #introPopup-7 .popup-content .introPopclose::after {
   content: attr(data-tooltip);
+  font-weight: normal;
   /* tooltip text from attribute */
   position: absolute;
   top: 100%;
@@ -1828,6 +1834,7 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 .tooltip {
   position: absolute;
   z-index: 999999;
+  font-weight: normal;
 }
 
 .layers-vertical-btn {

@@ -250,6 +250,7 @@
 										left: 50%;
 										transform: translateX(-50%);
 										background: rgba(0, 0, 0, 0.85);
+										    font-weight: normal;
 										// font-weight: bold;
 										white-space: nowrap;
 										box-shadow: 0 2px 19px rgba(0, 0, 0, 0.6);
@@ -448,6 +449,7 @@
 								left: 50%;
 								transform: translateX(-50%);
 								background: rgba(0, 0, 0, 0.85);
+								    font-weight: normal;
 								// font-weight: bold;
 								white-space: nowrap;
 								box-shadow: 0 2px 19px rgba(0, 0, 0, 0.6);
@@ -779,6 +781,7 @@
 								&::after {
 									// Tooltip
 									content: attr(data-tooltip);
+									    font-weight: normal;
 									position: absolute;
 									bottom: -25px;
 									left: 50%;
@@ -1682,6 +1685,7 @@
 
 										&::after {
 											content: attr(data-tooltip);
+											    font-weight: normal;
 											/* tooltip text from attribute */
 											position: absolute;
 											top: 100%;
@@ -1718,6 +1722,7 @@
 
 										&::after {
 											content: attr(data-tooltip);
+											    font-weight: normal;
 											/* tooltip text from attribute */
 											position: absolute;
 											top: 100%;
@@ -1887,6 +1892,7 @@
 
 									&::after {
 										content: attr(data-tooltip);
+										    font-weight: normal;
 										/* tooltip text from attribute */
 										position: absolute;
 										top: 100%;
@@ -2236,6 +2242,7 @@
 .tooltip {
 	position: absolute;
 	z-index: 999999;
+	font-weight: normal;
 }
 
 .layers-vertical-btn {
