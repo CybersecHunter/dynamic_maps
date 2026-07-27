@@ -231,27 +231,20 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style .header .navBtns button::after {
   content: attr(data-tooltip);
-  /* tooltip text from attribute */
+  font-weight: normal;
   position: absolute;
-  top: 100%;
-  /* below the button */
+  bottom: -25px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.85);
-  font-weight: normal;
-  white-space: nowrap;
-  box-shadow: 0 2px 19px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.8);
   color: #fff;
-  font-size: 10px;
-  padding: 3px 5px;
+  padding: 3px 8px;
   border-radius: 4px;
+  font-size: 11px;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s;
-  margin-top: 4px;
-  z-index: 10;
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style .header .navBtns button {
   /* Show tooltip on hover */
@@ -321,6 +314,26 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 #section-1 .content-holder .col-left .content .content-bg .content-style .inst .wrapTextaudio.paused {
   background: url(../images/pause.png) no-repeat;
   background-size: contain;
+}
+#section-1 .content-holder .col-left .content .content-bg .content-style .inst .wrapTextaudio::after {
+  content: attr(data-tooltip);
+  font-weight: normal;
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+#section-1 .content-holder .col-left .content .content-bg .content-style .inst .wrapTextaudio:hover::after {
+  opacity: 1;
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style .inst p {
   color: #000;
@@ -405,27 +418,20 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style .introPopclose::after {
   content: attr(data-tooltip);
-  /* tooltip text from attribute */
+  font-weight: normal;
   position: absolute;
-  top: 100%;
-  /* below the button */
+  bottom: -25px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.85);
-  font-weight: normal;
-  white-space: nowrap;
-  box-shadow: 0 2px 19px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.8);
   color: #fff;
-  font-size: 10px;
-  padding: 3px 5px;
+  padding: 3px 8px;
   border-radius: 4px;
+  font-size: 11px;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s;
-  margin-top: 4px;
-  z-index: 10;
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style .introPopclose {
   /* Show tooltip on hover */
@@ -469,6 +475,26 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 #section-1 .content-holder .col-left .content .content-bg .content-style .wrapTextaudio.paused {
   background: url(../images/sound_pause.png) no-repeat;
   background-size: contain;
+}
+#section-1 .content-holder .col-left .content .content-bg .content-style .wrapTextaudio::after {
+  content: attr(data-tooltip);
+  font-weight: normal;
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+#section-1 .content-holder .col-left .content .content-bg .content-style .wrapTextaudio:hover::after {
+  opacity: 1;
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style .layer-popup-text h2 {
   margin: 0 0 14px;
@@ -1010,7 +1036,27 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   z-index: 1;
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style .div-info-panel .region-info-close:hover {
-  opacity: 0.8;
+  opacity: 1;
+}
+#section-1 .content-holder .col-left .content .content-bg .content-style .div-info-panel .region-info-close::after {
+  content: attr(data-tooltip);
+  font-weight: normal;
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+#section-1 .content-holder .col-left .content .content-bg .content-style .div-info-panel .region-info-close:hover::after {
+  opacity: 1;
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style .div-info-panel .info-content .wrapTextaudio {
   position: absolute;
@@ -1045,6 +1091,26 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 #section-1 .content-holder .col-left .content .content-bg .content-style .div-info-panel .info-content .wrapTextaudio.paused {
   background: url(../images/sound_pause.png) no-repeat;
   background-size: contain;
+}
+#section-1 .content-holder .col-left .content .content-bg .content-style .div-info-panel .info-content .wrapTextaudio::after {
+  content: attr(data-tooltip);
+  font-weight: normal;
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+#section-1 .content-holder .col-left .content .content-bg .content-style .div-info-panel .info-content .wrapTextaudio:hover::after {
+  opacity: 1;
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style .div-info-panel .info-content h2 {
   margin-top: 0;
@@ -1373,26 +1439,19 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 #section-1 .content-holder .col-left .content .content-bg .content-style .popup .popup-wrap .popBtns #refresh::after {
   content: attr(data-tooltip);
   font-weight: normal;
-  /* tooltip text from attribute */
   position: absolute;
-  top: 100%;
-  /* below the button */
+  bottom: -25px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.85);
-  white-space: nowrap;
-  box-shadow: 0 2px 19px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.8);
   color: #fff;
-  font-size: 10px;
-  padding: 3px 5px;
+  padding: 3px 8px;
   border-radius: 4px;
+  font-size: 11px;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s;
-  margin-top: 4px;
-  z-index: 10;
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style .popup .popup-wrap .popBtns #refresh:hover::after {
   opacity: 1;
@@ -1405,26 +1464,19 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 #section-1 .content-holder .col-left .content .content-bg .content-style .popup .popup-wrap .popBtns #homeBack::after {
   content: attr(data-tooltip);
   font-weight: normal;
-  /* tooltip text from attribute */
   position: absolute;
-  top: 100%;
-  /* below the button */
+  bottom: -25px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.85);
-  white-space: nowrap;
-  box-shadow: 0 2px 19px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.8);
   color: #fff;
-  font-size: 10px;
-  padding: 3px 5px;
+  padding: 3px 8px;
   border-radius: 4px;
+  font-size: 11px;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s;
-  margin-top: 4px;
-  z-index: 10;
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style .popup .popup-wrap .popBtns #homeBack:hover::after {
   opacity: 1;
@@ -1562,26 +1614,19 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
 #section-1 .content-holder .col-left .content .content-bg .content-style #introPopup-7 .popup-content .introPopclose::after {
   content: attr(data-tooltip);
   font-weight: normal;
-  /* tooltip text from attribute */
   position: absolute;
-  top: 100%;
-  /* below the button */
+  bottom: -25px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.85);
-  white-space: nowrap;
-  box-shadow: 0 2px 19px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.8);
   color: #fff;
-  font-size: 10px;
-  padding: 3px 5px;
+  padding: 3px 8px;
   border-radius: 4px;
+  font-size: 11px;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s;
-  margin-top: 4px;
-  z-index: 10;
 }
 #section-1 .content-holder .col-left .content .content-bg .content-style #introPopup-7 .popup-content .introPopclose {
   /* Show tooltip on hover */
@@ -1872,7 +1917,7 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   color: #fff;
   border-radius: 5px;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: normal !important;
   white-space: nowrap;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }/*# sourceMappingURL=m1_p10_style.css.map */

@@ -222,8 +222,8 @@ function addSectionData() {
           <!-- Information Panel -->
           <div class="div-info-panel" id="divInfoPanel" style="display:none;">
               <div class="info-content">
-                  <button class="wrapTextaudio playing" id="wrapTextaudio_1" title="audio" data-tooltip="audio" data-src="${_pageData.sections[sectionCnt - 1].replayBtnAudios}" onClick="replayLastAudio(this)"></button>
-                  <button class="region-info-close" id="regionInfoClose" type="button" data-tooltip="close" aria-label="Close region information" title="Close"></button>
+                  <button class="wrapTextaudio playing" id="wrapTextaudio_1" data-tooltip="audio" data-src="${_pageData.sections[sectionCnt - 1].replayBtnAudios}" onClick="replayLastAudio(this)"></button>
+                  <button class="region-info-close" data-tooltip="close" id="regionInfoClose" type="button"  aria-label="Close region information"></button>
                   <h2 id="infoTitle">Division Name</h2>
                   <p id="infoDesc">Description of the physical division goes here.</p>
                   <h4>`+ _pageData.sections[0].content.uiText.infoPanelKeyFeaturesLabel + `</h4>
@@ -275,7 +275,7 @@ function addSectionData() {
   <div id="layerInfoPopup" class="layer-info-popup">
     <div class="popup-content">
       <button class="introPopclose" data-tooltip="Close" onClick="closeLayerInfoPopup()"></button>
-      <button class="wrapTextaudio playing" id="wrapTextaudio_1" title="audio" data-tooltip="audio" data-src="${_pageData.sections[sectionCnt - 1].replayBtnAudios}" onClick="replayLastAudio(this)"></button>
+      <button class="wrapTextaudio playing" id="wrapTextaudio_1" data-tooltip="audio" data-src="${_pageData.sections[sectionCnt - 1].replayBtnAudios}" onClick="replayLastAudio(this)"></button>
       <div class="layer-popup-text">
         <h2 id="layerPopupTitle"></h2>
         <p id="layerPopupDesc"></p>
@@ -518,7 +518,9 @@ function initMapInteractions() {
       audio.load();
       audio.play();
       const audioElement = document.querySelector("#wrapTextaudio_1");
+      audioElement.classList.remove("mute");
       audioElement.classList.add("playing");
+
     }
   });
 }

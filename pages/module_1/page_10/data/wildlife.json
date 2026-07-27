@@ -12,7 +12,7 @@
             "width": 35,
             "height": 20,
             "name": "Kugti",
-            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "audio": "pages/module_1/page_10/audios/wildlife/kugti.mp3",
             "desc": "",
             "features": [
                 "Kugti Wildlife Sanctuary is located in the Chambal district of Himachal Pradesh.",
@@ -31,7 +31,7 @@
             "width": 35,
             "height": 20,
             "name": "Abohar",
-            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "audio": "pages/module_1/page_10/audios/wildlife/abohar.mp3",
             "desc": "",
             "features": [
                 "Abohar Wildlife Sanctuary is located in the Fazilka district in Punjab.",
@@ -50,7 +50,7 @@
             "width": 40,
             "height": 15,
             "name": "Bhimbandh",
-            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "audio": "pages/module_1/page_10/audios/wildlife/bhimbandh.mp3",
             "desc": "",
             "features": [
                 "Bhimbandh Wildlife Sanctuary is located in Bihar and has several hot water springs of which Bhimbandh is the most famous.",
@@ -69,7 +69,7 @@
             "width": 50,
             "height": 15,
             "name": "Radhanagari",
-            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "audio": "pages/module_1/page_10/audios/wildlife/radhanagari.mp3",
             "desc": "",
             "features": [
                 "Radhanagari Wildlife Sanctuary is located in the state of Maharashtra and occupies an area of 351.16 sq km.",
@@ -87,7 +87,7 @@
             "width": 50,
             "height": 15,
             "name": "Mount Abu",
-            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "audio": "pages/module_1/page_10/audios/wildlife/mount_abu.mp3",
             "desc": "",
             "features": [
                 "Mount Abu Wildlife Sanctuary is located in Rajasthan and covers an area of 288 sq km.",
@@ -107,12 +107,298 @@
             "width": 40,
             "height": 15,
             "name": "Hazaribagh",
-            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "audio": "pages/module_1/page_10/audios/wildlife/hazaribagh.mp3",
             "desc": "",
             "features": [
                 "Hazaribagh Wildlife Sanctuary is located in Jharkhand and is about 186 sq km.",
                 "It was accorded the status of a wildlife sanctuary in 1954.",
                 "The Hazaribagh Wildlife Sanctuary has a rich biodiversity. The habitat is also shared by chital, wild boars, black bears, jackals, porcupines, hyenas, pangolins, hares, etc."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Rupi Bhaba",
+            "x": 125,
+            "y": 80,
+            "width": 40,
+            "height": 15,
+            "name": "Rupi Bhaba",
+            "audio": "pages/module_1/page_10/audios/wildlife/rupi_bhaba.mp3",
+            "desc": "",
+            "features": [
+                "Rupi Bhaba is located in the state of Himachal Pradesh.",
+                "The sanctuary is named after Rupi and Bhawa valleys and spans about 503 square kilometres.",
+                "The Hazaribagh Wildlife Sanctuary has a rich biodiversity. The habitat is also shared by chital, wild boars, black bears, jackals, porcupines, hyenas, pangolins, hares, etc."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Gandhi sagar",
+            "x": 65,
+            "y": 182,
+            "width": 40,
+            "height": 15,
+            "name": "Gandhi sagar",
+            "audio": "pages/module_1/page_10/audios/wildlife/gandhi_sagar.mp3",
+            "desc": "",
+            "features": [
+                "Gandhi Sagar Wildlife Sanctuary is located in the state of Madhya Pradesh.",
+                "It is located along the banks of the River Chambal and has dense forests and grasslands.",
+                "It is a crucial habitat for many animals and bird species."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Yaval",
+            "x": 78,
+            "y": 228,
+            "width": 30,
+            "height": 15,
+            "name": "Yaval",
+            "audio": "pages/module_1/page_10/audios/wildlife/yaval.mp3",
+            "desc": "",
+            "features": [
+                "The Yawal Wildlife Sanctuary is located inb the state of Maharashtra.",
+                "It is spread over an area of 178 square kilometres.",
+                "The sanctuary has many different mammals and the flying squirrel is a special attraction here."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Melghat",
+            "x": 108,
+            "y": 224,
+            "width": 35,
+            "height": 15,
+            "name": "Melghat",
+            "audio": "pages/module_1/page_10/audios/wildlife/melghat.mp3",
+            "desc": "",
+            "features": [
+                "Melghat Tiger Reserve is located in the state of Maharashtra.",
+                "It was established as a wildlife sanctuary in 1967 and later declared a Tiger Reserve in 1974.",
+                "It is one of the biggest tiger reserves in terms of area in India."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Eturnagaram",
+            "x": 110,
+            "y": 260,
+            "width": 45,
+            "height": 15,
+            "name": "Eturnagaram",
+            "audio": "pages/module_1/page_10/audios/wildlife/eturnagaram.mp3",
+            "desc": "",
+            "features": [
+                "Eturnagaram Wildlife Sanctuary is located in the state of Telangana.",
+                "It encompasses an area of 806 square kilometres and has diverse flora and fauna."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Pakhal",
+            "x": 146,
+            "y": 271,
+            "width": 40,
+            "height": 15,
+            "name": "Pakhal",
+            "audio": "pages/module_1/page_10/audios/wildlife/pakhal.mp3",
+            "desc": "",
+            "features": [
+                "Pakhal Wildlife Sanctuary is located in the state of Telangana.",
+                "It got its name from the beautiful Pakhal lake around which this sanctuary is located.",
+                "It has mixed deciduous forests and covers an area of 839 square kilometres."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Pocharam",
+            "x": 105,
+            "y": 275,
+            "width": 40,
+            "height": 15,
+            "name": "Pocharam",
+            "audio": "pages/module_1/page_10/audios/wildlife/pocharam.mp3",
+            "desc": "",
+            "features": [
+                "Pocharam Wildlife Sanctuary is located in the state of Telangana.",
+                "The sanctuary encompasses an area of 130 square kilometres.",
+                "The sanctuary has diverse fauna such as Wild Dog, Leopard, Wolf, Jackal, Forest Cat, Sloth Bear, Sambar, Nilgai, Chinkara, Chital, and four-horned Antelope."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Nagarjuna Sagar",
+            "x": 135,
+            "y": 300,
+            "width": 50,
+            "height": 15,
+            "name": "Nagarjuna Sagar",
+            "audio": "pages/module_1/page_10/audios/wildlife/nagarjuna_sagar.mp3",
+            "desc": "",
+            "features": [
+                "Nagarjuna Sagar Wildlife Sanctuary is now Nagarajunasagar Srisailam Tiger Reserve (NSTR) located in the state of Andhra Pradesh.",
+                "It was granted the status of a Tiger Reserve in 1983.",
+                "It is India’s largest Tiger Reserve."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Bhagwan Mahavir",
+            "x": 20,
+            "y": 310,
+            "width": 60,
+            "height": 15,
+            "name": "Bhagwan Mahavir",
+            "audio": "pages/module_1/page_10/audios/wildlife/bhagwan_mahavir.mp3",
+            "desc": "",
+            "features": [
+                "Bhagwan Mahavir Wildlife Sanctuary is located in the state of Goa.",
+                "It encompasses an area of 240 square kilometres.",
+                "It is the largest wildlife preserve within the state of Goa."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Mudumalai",
+            "x": 70,
+            "y": 370,
+            "width": 50,
+            "height": 15,
+            "name": "Mudumalai",
+            "audio": "pages/module_1/page_10/audios/wildlife/mudumalai.mp3",
+            "desc": "",
+            "features": [
+                "Mudumalai Tiger Reserve is located in the state of Tamil Nadu.",
+                "It is spread over 688.59 square kilometres.",
+                "It is situated at the tri-junction of three states: Karnataka, Tamil Nadu and Kerala."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Jaldapara",
+            "x": 228,
+            "y": 142,
+            "width": 50,
+            "height": 15,
+            "name": "Jaldapara",
+            "audio": "pages/module_1/page_10/audios/wildlife/jaldapara.mp3",
+            "desc": "",
+            "features": [
+                "Jaldapara National Park is located in the state of West Bengal.",
+                "Jaldapara was declared as a wildlife sanctuary in 1941 for the protection of the Indian One-Horned Rhino, and in 2012, it was declared as a National Park.",
+                "It covers an area of 216 square kilometres.",
+                "It has herds of Bison, Hispid hare, Hog deer, Sambar, and Asian elephants amongst other animals."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Kaimur",
+            "x": 200,
+            "y": 170,
+            "width": 35,
+            "height": 15,
+            "name": "Kaimur",
+            "audio": "pages/module_1/page_10/audios/wildlife/kaimur.mp3",
+            "desc": "",
+            "features": [
+                "The Kaimur Wildlife Sanctuary is located in the state of Bihar.",
+                "It spans an area of 1500 square kilometres.",
+                "This sanctuary is a plateau with lush forests."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Dalma",
+            "x": 210,
+            "y": 205,
+            "width": 40,
+            "height": 15,
+            "name": "Dalma",
+            "audio": "pages/module_1/page_10/audios/wildlife/dalma.mp3",
+            "desc": "",
+            "features": [
+                "Dalma Wildlife Sanctuary is located in the state of Jharkhand.",
+                "It was inaugurated in 1975 and has a sizable population of Indian elephants."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Intanki",
+            "x": 325,
+            "y": 155,
+            "width": 40,
+            "height": 15,
+            "name": "Intanki",
+            "audio": "pages/module_1/page_10/audios/wildlife/intanki.mp3",
+            "desc": "",
+            "features": [
+                "The Intanki National park is located in the state of Nagaland.",
+                "It encompasses an area of 202.02 square kilometres.",
+                "It was declared as a National park in the year 1993.",
+                "It was also declared as an elephant reserve by the government in 2005."
+            ],
+            "cx": "50%",
+            "cy": "50%",
+            "scale": 1.5
+        },
+        {
+            "type": "rect",
+            "id": "Bhitarkanika",
+            "x": 235,
+            "y": 235,
+            "width": 50,
+            "height": 15,
+            "name": "Bhitarkanika",
+            "audio": "pages/module_1/page_10/audios/wildlife/bhitarkanika.mp3",
+            "desc": "",
+            "features": [
+                "Bhitarkanika Wildlife Sanctuary is located in the state of Odisha.",
+                "It is famous for its Tidal mangroves.",
+                "It covers an area of approximately 672 square kilometres.",
+                "The saltwater crocodile is a permanent resident here and this sanctuary is a habitat for migratory birds."
             ],
             "cx": "50%",
             "cy": "50%",

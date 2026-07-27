@@ -133,7 +133,7 @@ function addSectionData() {
 
             if (_pageData.sections[sectionCnt - 1].content.sectionArray != "") {
                 for (let i = 0; i < _pageData.sections[sectionCnt - 1].content.sectionArray.length; i++) {
-                    imgObj += '<div class="btn_holder btn_' + i + '"><button class="box" id="box-' + (_pageData.sections[sectionCnt - 1].content.sectionArray[i].sectionIndx) + '">'
+                    imgObj += '<div class="btn_holder btn_' + i + '"><button class="box" id="box-' + (_pageData.sections[sectionCnt - 1].content.sectionArray[i].sectionIndx) + '" disabled="true" style="pointer-events:none; cursor:default;">'
 
                     if (_pageData.sections[sectionCnt - 1].content.sectionArray[i].thumb) {
                         imgObj += '<div class="card-thumb" style="background-image:url(\'' + _pageData.sections[sectionCnt - 1].content.sectionArray[i].thumb + '\');"></div>';
@@ -195,13 +195,13 @@ function addSectionData() {
         //     pointerEvents: "none",
         //     cursor: "default"
         // })
-        // setTimeout(function () {
-        //     $('#box-1').attr("disabled", false);
-        //     $('#box-1').css({
-        //         pointerEvents: "auto",
-        //         cursor: "pointer"
-        //     })
-        // }, 6000)
+        setTimeout(function () {
+            $('#box-1').attr("disabled", false);
+            $('#box-1').css({
+                pointerEvents: "auto",
+                cursor: "pointer"
+            })
+        }, 4000)
 
         backButton = $('.goback-btn')
 
@@ -384,7 +384,6 @@ function onClickinfoHandler(evt) {
     var num = Number(arr[arr.length - 1]);
     console.log("helo", num)
     var body = $('#section-' + sectionCnt).find('.content-holder')
-    clearTimeout(instTimer);
     switch (eventType) {
         case "click":
             playClickThen();
@@ -418,13 +417,16 @@ function onClickHandler(evt) {
     var jumpToPage = [1, 2]; // [Physical Map (page 10), Political Map (page 2)]
     console.log("Jump to page", jumpToPage[num])
     //var jumpToPage = sectionArray.sectionID
-
     //console.log(' == num ', num, sectionCnt,  _pageData.sections[sectionCnt-1].content[num].terms.iconHoverImage)
     switch (eventType) {
         case "click":
             playClickThen();
             //pageVisited();
             _controller.pageCnt = jumpToPage[num];
+            $(".dummy-patch").hide();
+            $(".wrapTextaudio").removeClass("playing");
+            $(".wrapTextaudio").addClass("paused");
+            resetSimulationAudio();
 
             // $("#f_preventor").show();
             _controller.updateViewNow();

@@ -145,7 +145,7 @@
           {
             "value": "vegetation",
             "label": "Vegetation",
-            "image": "pages/module_1/page_10/images/vegetation.jpg",
+            "image": "pages/module_1/page_10/images/vegetation.png",
             "audio": "pages/module_1/page_10/audios/vegetation/vegetation.mp3",
             "desc": "India's natural vegetation is remarkably diverse, ranging from dense tropical evergreen forests and monsoon forests to thorny scrublands, mountain forests, and mangrove ecosystems. These different types of vegetation are shaped by variations in climate, rainfall, and landforms, supporting rich biodiversity and contributing to the country's ecological balance."
           },
@@ -160,14 +160,14 @@
             "value": "parks",
             "label": "National Parks",
             "image": "pages/module_1/page_10/images/park_map.png",
-            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "audio": "pages/module_1/page_10/audios/click.mp3",
             "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
           },
           {
             "value": "wildlife",
             "label": "Wildlife Sanctuaries",
             "image": "pages/module_1/page_10/images/wildlife_map.png",
-            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
+            "audio": "pages/module_1/page_10/audios/wildlife/wildlife.mp3",
             "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
           }
         ],
@@ -203,28 +203,7 @@
             "dataSrc": "pages/module_1/page_10/data/rivers.json"
           },
           "vegetation": {
-            "mapImage": {
-              "src": "pages/module_1/page_10/images/vegetation_map.jpg",
-              "alt": "Vegetation Map of India"
-            },
-            "regions": [
-              {
-                "audio": "pages/module_1/page_10/audios/n_plains.mp3",
-                "id": "tropical-evergreen",
-                "d": "M350,400 Q450,350 550,400 Q500,450 400,450 Z",
-                "fill": "rgba(50, 200, 50, 0.6)",
-                "name": "Tropical Evergreen Forests",
-                "desc": "Dense forests found in areas with heavy rainfall.",
-                "features": [
-                  "Found in Western Ghats and Andaman & Nicobar Islands",
-                  "Rich biodiversity with many endemic species",
-                  "Important for climate regulation"
-                ],
-                "cx": "50%",
-                "cy": "70%",
-                "scale": 2
-              }
-            ]
+            "dataSrc": "pages/module_1/page_10/data/vegetation.json"
           },
           "population": {
             "mapImage": {
