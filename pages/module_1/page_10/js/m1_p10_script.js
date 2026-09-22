@@ -274,7 +274,7 @@ function addSectionData() {
   <div id="layerInfoPopup" class="layer-info-popup">
     <div class="popup-content">
       <button class="introPopclose" data-tooltip="Close" onClick="closeLayerInfoPopup()"></button>
-      <button class="wrapTextaudio playing" id="wrapTextaudio_1" data-tooltip="audio" data-src="${_pageData.sections[sectionCnt - 1].replayBtnAudios}" onClick="replayLastAudio(this)"></button>
+      <button class="wrapTextaudio playing" id="wrapTextaudio_1" data-tooltip="Audio" data-src="${_pageData.sections[sectionCnt - 1].replayBtnAudios}" onClick="replayLastAudio(this)"></button>
       <div class="layer-popup-text">
         <h2 id="layerPopupTitle"></h2>
         <p id="layerPopupDesc"></p>
