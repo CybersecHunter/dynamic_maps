@@ -693,13 +693,14 @@ html {
   right: 6%;
 }
 #f_wrapper #f_start_course #intro #intro-text .paper-plane {
-  position: absolute;
+  position: fixed;
   width: 100px;
   height: 100px;
   background: url(../assets/images/paper-plane.png) no-repeat center;
   background-size: contain;
   z-index: 999;
-  top: 20%;
+  top: 18%;
+  margin-left: 100px;
 }
 #f_wrapper #f_start_course #intro #intro-text .paper-plane:hover {
   animation: glidePlane 3s ease-in-out infinite;
@@ -932,6 +933,26 @@ html {
     height: 35px;
   }
 }
+#f_wrapper #f_start_course #intro #intro-text #intro-btns .helpInfo {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/images/nav/help.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+@media (max-width: 950px) and (orientation: landscape) {
+  #f_wrapper #f_start_course #intro #intro-text #intro-btns .helpInfo {
+    width: 35px;
+    height: 35px;
+  }
+}
+#f_wrapper #f_start_course #intro #intro-text #intro-btns .helpInfo:disabled {
+  background: url(../assets/images/nav/help.png) no-repeat;
+  background-size: contain;
+  pointer-events: none !important;
+}
 #f_wrapper #f_start_course #intro #intro-text #intro-btns button {
   position: relative;
   cursor: pointer;
@@ -1062,6 +1083,7 @@ html {
   background: url("../assets/images/play.png") no-repeat;
   background-size: contain;
   transition: transform 0.5s ease-in;
+  animation: launchPulse 1.5s ease-in-out infinite;
 }
 @media screen and (orientation: landscape) and (min-width: 951px) and (max-height: 550px) {
   #f_wrapper #f_start_course #intro #intro-text #f_launchBtn {
@@ -1109,6 +1131,17 @@ html {
 }
 #f_wrapper #f_start_course #intro #intro-text #f_launchBtn:hover::after {
   opacity: 1;
+}
+@keyframes launchPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 #f_wrapper #f_start_course .btn_container {
   width: 100%;
@@ -1348,29 +1381,29 @@ html {
 }
 #f_wrapper #f_content {
   /*  @include mobile-landscape {
-       height: auto;
+             height: auto;
 
-       #f_pageLoader {
-            position: relative;
-            height: auto;
-       }
-  }*/
+             #f_pageLoader {
+                  position: relative;
+                  height: auto;
+             }
+        }*/
   /*    @include ipad-landscape {
-       height: auto;
+             height: auto;
 
-       #f_pageLoader {
-            position: relative;
-            height: auto;
-       }
-  }*/
+             #f_pageLoader {
+                  position: relative;
+                  height: auto;
+             }
+        }*/
   /*   @include mobile-portrait {
-       height: auto;
+             height: auto;
 
-       #f_pageLoader {
-            position: relative;
-            height: auto;
-       }
-  }*/
+             #f_pageLoader {
+                  position: relative;
+                  height: auto;
+             }
+        }*/
 }
 #f_wrapper #f_footer {
   position: absolute;
@@ -1974,6 +2007,212 @@ footer p {
   cursor: pointer;
 }
 
+#launchIntroPopup {
+  display: none;
+  opacity: 0;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+  z-index: 99999;
+}
+#launchIntroPopup .popup-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 85%;
+  max-height: 450px;
+  transform: translate(-50%, -50%);
+  animation: fadeInPopup 0.3s ease;
+  z-index: 10002;
+  pointer-events: auto;
+  padding: 1%;
+  background: transparent;
+}
+#launchIntroPopup .popup-content .introPopclose {
+  position: absolute;
+  top: 40px;
+  right: 35px;
+  background: url("../assets/images/popup_close.png") no-repeat;
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out;
+}
+#launchIntroPopup .popup-content .introPopclose:hover {
+  transform: scale(1.125);
+}
+#launchIntroPopup .popup-content .introPopclose::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  font-weight: normal;
+  white-space: nowrap;
+  box-shadow: 0 2px 19px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 10px;
+  padding: 3px 5px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  margin-top: 4px;
+  z-index: 10;
+}
+#launchIntroPopup .popup-content .introPopclose:hover::after {
+  opacity: 1;
+}
+#launchIntroPopup .popup-content .introPopAudio {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: 38px;
+  right: 80px;
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out;
+}
+#launchIntroPopup .popup-content .introPopAudio:hover {
+  transform: scale(1.125);
+}
+#launchIntroPopup .popup-content .introPopAudio.playing {
+  background: url("../assets/images/speaker.png") no-repeat;
+  background-size: contain;
+}
+#launchIntroPopup .popup-content .introPopAudio.mute {
+  background: url("../assets/images/sound_pause.png") no-repeat;
+  background-size: contain;
+}
+#launchIntroPopup .popup-content .popup-info {
+  position: absolute;
+  display: flex;
+  top: 54px;
+  left: 22px;
+  background-color: #508588;
+  border-radius: 0px 25px 26px 0px;
+  text-align: center;
+  background-size: revert;
+  background-size: contain;
+  color: #fff;
+  /* font-size: 1.2rem; */
+  font-weight: bold;
+  height: 50px;
+  width: 350px;
+  padding: 10px;
+}
+#launchIntroPopup .popup-content .popup-info .info {
+  display: block;
+  height: 35px;
+  width: 35px;
+}
+#launchIntroPopup .popup-content .popup-info p {
+  margin-left: 3%;
+  font-size: 1.6vw;
+  color: #e0d06d;
+  margin-bottom: 0px !important;
+  font-weight: normal;
+}
+#launchIntroPopup .popup-content .popup-text {
+  position: absolute;
+  padding: 0px 30px;
+  width: 100%;
+  margin-top: 3vw;
+  text-align: left;
+  color: #508588;
+  font-size: 2rem;
+  font-weight: normal;
+  margin-bottom: 7px;
+}
+#launchIntroPopup .popup-content .popup-text .section {
+  font-size: 15px;
+  padding: 0px 15px;
+}
+#launchIntroPopup .popup-content .popup-text .section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+#launchIntroPopup .popup-content .popup-text .section ul li {
+  margin-bottom: 7px;
+}
+#launchIntroPopup .popup-content .popup-text .section span {
+  border: 2px solid #508588;
+  padding: 10px;
+  margin: 10px;
+  display: block;
+}
+#launchIntroPopup .popup-content img {
+  width: 100%;
+  height: auto;
+}
+#launchIntroPopup .launchSkipWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+#launchIntroPopup .launchSkipWrap .launchIntroPopSkip {
+  padding: 12px 20px;
+  background: url("../assets/images/skip.png") no-repeat;
+  background-size: contain;
+  color: #e0d06d;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#inactivePopup {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.inactivePopup-content {
+  width: 600px;
+  max-width: 85%;
+  padding: 35px 30px;
+  background: url("../assets/images/inactive.png") no-repeat;
+  background-size: 100% 100%;
+  border-radius: 15px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.inactivePopup-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.inactivePopup-text {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+#inactivePopupContinue {
+  padding: 12px 35px;
+  background-color: #e7d166;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
 #introPopup-1 {
   display: none;
   opacity: 0;
@@ -2077,7 +2316,7 @@ footer p {
   /* font-size: 1.2rem; */
   font-weight: bold;
   height: 50px;
-  width: 250px;
+  width: 350px;
   padding: 10px;
 }
 #introPopup-1 .popup-content .popup-info .info {
@@ -2121,6 +2360,161 @@ footer p {
   display: block;
 }
 #introPopup-1 .popup-content img {
+  width: 100%;
+  height: auto;
+}
+
+#helpPopup-2 {
+  display: none;
+  opacity: 0;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+  z-index: 99999;
+}
+#helpPopup-2 .popup-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 85%;
+  max-height: 450px;
+  transform: translate(-50%, -50%);
+  animation: fadeInPopup 0.3s ease;
+  z-index: 10002;
+  pointer-events: auto;
+  padding: 1%;
+  background: transparent;
+}
+#helpPopup-2 .popup-content .introPopclose {
+  position: absolute;
+  top: 40px;
+  right: 35px;
+  background: url("../assets/images/popup_close.png") no-repeat;
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out;
+}
+#helpPopup-2 .popup-content .introPopclose:hover {
+  transform: scale(1.125);
+}
+#helpPopup-2 .popup-content .introPopclose::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  font-weight: normal;
+  white-space: nowrap;
+  box-shadow: 0 2px 19px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 10px;
+  padding: 3px 5px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  margin-top: 4px;
+  z-index: 10;
+}
+#helpPopup-2 .popup-content .introPopclose:hover::after {
+  opacity: 1;
+}
+#helpPopup-2 .popup-content .introPopAudio {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: 38px;
+  right: 80px;
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out;
+}
+#helpPopup-2 .popup-content .introPopAudio:hover {
+  transform: scale(1.125);
+}
+#helpPopup-2 .popup-content .introPopAudio.playing {
+  background: url("../assets/images/speaker.png") no-repeat;
+  background-size: contain;
+}
+#helpPopup-2 .popup-content .introPopAudio.mute {
+  background: url("../assets/images/sound_pause.png") no-repeat;
+  background-size: contain;
+}
+#helpPopup-2 .popup-content .popup-info {
+  position: absolute;
+  display: flex;
+  top: 54px;
+  left: 22px;
+  background-color: #508588;
+  border-radius: 0px 25px 26px 0px;
+  text-align: center;
+  background-size: revert;
+  background-size: contain;
+  color: #fff;
+  /* font-size: 1.2rem; */
+  font-weight: bold;
+  height: 50px;
+  width: 150px;
+  padding: 10px;
+}
+#helpPopup-2 .popup-content .popup-info .info {
+  display: block;
+  height: 35px;
+  width: 35px;
+}
+#helpPopup-2 .popup-content .popup-info p {
+  margin-left: 3%;
+  font-size: 1.6vw;
+  color: #e0d06d;
+  margin-bottom: 0px !important;
+  font-weight: normal;
+}
+#helpPopup-2 .popup-content .popup-text {
+  position: absolute;
+  padding: 0px 30px;
+  width: 100%;
+  margin-top: 3vw;
+  text-align: left;
+  color: #508588;
+  font-size: 2rem;
+  font-weight: normal;
+  margin-bottom: 7px;
+}
+#helpPopup-2 .popup-content .popup-text .section {
+  font-size: 15px;
+  padding: 0px 15px;
+}
+#helpPopup-2 .popup-content .popup-text .section p {
+  text-align: Center;
+}
+#helpPopup-2 .popup-content .popup-text .section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+#helpPopup-2 .popup-content .popup-text .section ul li {
+  margin-bottom: 7px;
+  font-size: 14px;
+}
+#helpPopup-2 .popup-content .popup-text .section span {
+  border: 2px solid #508588;
+  padding: 10px;
+  margin: 10px;
+  display: block;
+}
+#helpPopup-2 .popup-content img {
   width: 100%;
   height: auto;
 }
@@ -2341,6 +2735,26 @@ footer p {
   background-size: contain;
   pointer-events: none !important;
 }
+#f_header .nav_btns .helpInfo {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/images/nav/help.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+@media (max-width: 950px) and (orientation: landscape) {
+  #f_header .nav_btns .helpInfo {
+    width: 35px;
+    height: 35px;
+  }
+}
+#f_header .nav_btns .helpInfo:disabled {
+  background: url(../assets/images/nav/help.png) no-repeat;
+  background-size: contain;
+  pointer-events: none !important;
+}
 #f_header .nav_btns .playPause {
   position: relative;
   width: 50px;
@@ -2412,6 +2826,27 @@ footer p {
   }
 }
 #f_header .nav_btns .home_btn:disabled {
+  background: url(../assets/images/nav/back_disabled.png) !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  pointer-events: none !important;
+}
+#f_header .nav_btns .back_btn {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/images/nav/back.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+@media (max-width: 950px) and (orientation: landscape) {
+  #f_header .nav_btns .back_btn {
+    width: 35px;
+    height: 35px;
+  }
+}
+#f_header .nav_btns .back_btn:disabled {
   background: url(../assets/images/nav/back_disabled.png) !important;
   background-repeat: no-repeat !important;
   background-size: contain !important;

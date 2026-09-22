@@ -809,9 +809,6 @@ $bg-position: -120px -120px, 0 0, 20px 50px, 25px 55px, 50px 125px;*/
   flex-direction: column;
   gap: 2px;
 }
-#section-1 .content-holder .col-left .content .content-bg .content-style .layers-sidebar .layers-list .layer-option:nth-child(4) {
-  pointer-events: none;
-}
 #section-1 .content-holder .col-left .content .content-bg .content-style .layers-sidebar .layers-list .layer-option {
   display: flex;
   align-items: center;

@@ -143,32 +143,18 @@
             "desc": "India's major rivers form one of the largest river systems in the world. They support rich ecosystems, fertile plains, and countless communities, while also holding immense historical, cultural, and religious significance across the country."
           },
           {
-            "value": "vegetation",
-            "label": "Vegetation",
-            "image": "pages/module_1/page_10/images/vegetation.png",
-            "audio": "pages/module_1/page_10/audios/vegetation/vegetation.mp3",
-            "desc": "India's natural vegetation is remarkably diverse, ranging from dense tropical evergreen forests and monsoon forests to thorny scrublands, mountain forests, and mangrove ecosystems. These different types of vegetation are shaped by variations in climate, rainfall, and landforms, supporting rich biodiversity and contributing to the country's ecological balance."
-          },
-          {
-            "value": "population",
-            "label": "Population Density",
-            "image": "pages/module_1/page_10/images/rivers.png",
-            "audio": "pages/module_1/page_10/audios/n_plains.mp3",
-            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-          },
-          {
             "value": "parks",
             "label": "National Parks",
             "image": "pages/module_1/page_10/images/park_map.png",
-            "audio": "pages/module_1/page_10/audios/click.mp3",
-            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            "audio": "pages/module_1/page_10/audios/parks/parks.mp3",
+            "desc": "India has several national parks that home to a variety of wildlife. These parks provide protected habitats for endangered species and help preserve the country's natural heritage."
           },
           {
             "value": "wildlife",
             "label": "Wildlife Sanctuaries",
             "image": "pages/module_1/page_10/images/wildlife_map.png",
             "audio": "pages/module_1/page_10/audios/wildlife/wildlife.mp3",
-            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            "desc": "India has numerous wildlife sanctuaries that serve as safe havens for various animal species. These protected areas help in the conservation of biodiversity and support eco-tourism initiatives."
           }
         ],
         "mapImage": {
@@ -184,8 +170,6 @@
         "layerIcons": {
           "physical": "pages/module_1/page_10/images/india_division_icon.png",
           "rivers": "pages/module_1/page_10/images/river_icon.png",
-          "vegetation": "pages/module_1/page_10/images/vegetation_icon.png",
-          "population": "pages/module_1/page_10/images/density_icon.png",
           "parks": "pages/module_1/page_10/images/park_icon.png",
           "wildlife": "pages/module_1/page_10/images/wildlife_icon.png"
         },
@@ -201,32 +185,6 @@
           },
           "rivers": {
             "dataSrc": "pages/module_1/page_10/data/rivers.json"
-          },
-          "vegetation": {
-            "dataSrc": "pages/module_1/page_10/data/vegetation.json"
-          },
-          "population": {
-            "mapImage": {
-              "src": "pages/module_1/page_10/images/population_map.jpg",
-              "alt": "Population Density Map of India"
-            },
-            "regions": [
-              {
-                "id": "high-density",
-                "d": "M300,220 Q450,200 600,250 Q500,300 350,280 Z",
-                "fill": "rgba(255, 100, 100, 0.6)",
-                "name": "High Population Density",
-                "desc": "Areas with more than 1000 people per sq km.",
-                "features": [
-                  "Includes cities like Mumbai, Delhi, Kolkata",
-                  "High demand for resources and infrastructure",
-                  "Challenges include congestion and pollution"
-                ],
-                "cx": "50%",
-                "cy": "25%",
-                "scale": 2.5
-              }
-            ]
           },
           "parks": {
             "dataSrc": "pages/module_1/page_10/data/parks.json"

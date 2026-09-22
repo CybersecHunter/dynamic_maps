@@ -32,7 +32,9 @@ var prevSectionCnt = -1;
 var sectionTopPos = [];
 var playMainAudio = false;
 
-var dataValue = []; var currentPattern = null; var currentIndex = 0;
+var dataValue = [];
+var currentPattern = null;
+var currentIndex = 0;
 var patterns = [];
 var layerOrder = [];
 var activeLayerOrder = [];
@@ -43,7 +45,6 @@ var memCards = [];
 var memFlipped = [];
 var memMatched = 0;
 var memLock = false;
-
 
 // ------------------ common function start ------------------------------------------------------------------------
 $(document).ready(function () {
@@ -65,24 +66,13 @@ function _pageLoaded() {
   if (_videoRequired) _videoId = "courseVideo";
 
   //addSlideData();
-  console.log(_pageData.sections, _pageData.sections[0].backBtnSrc, "pageDAtat")
-  appState.pageCount = _controller.pageCnt - 1;
+  console.log(
+    _pageData.sections,
+    _pageData.sections[0].backBtnSrc,
+    "pageDAtat",
+  );
+  appState.pageCount = _controller.pageCnt - 2;
   addSectionData();
-
-  $(".introInfo").css({ backgroundImage: `url(${_pageData.sections[0].homeBtnSrc})` });
-  $(".introInfo").attr("data-tooltip", "Home");
-  $('.introInfo').on("click", function () {
-    // window.location.reload();
-    goToMainScreen();
-  });
-  // $('.introInfo').attr('data-popup', 'introPopup-7');
-  $("#f_header").css({ background: `#f4ede4` });
-  $("#f_header").find("#f_courseTitle").css({ content: `Dynamic Maps` });
-  $(".home_btn").css({ backgroundImage: `url(${_pageData.sections[0].backBtnSrc})` });
-  $(".home_btn").attr("data-tooltip", "Back");
-  // playBtnSounds(_pageData.sections[sectionCnt - 1].endAudio);
-  //   showEndAnimations();
-  //checkGlobalAudio();
   assignAudio(
     _audioId,
     _audioIndex,
@@ -90,7 +80,7 @@ function _pageLoaded() {
     _forceNavigation,
     _videoId,
     _popupAudio,
-    _reloadRequired
+    _reloadRequired,
   );
   pagePreLoad();
 }
@@ -99,14 +89,12 @@ function _pageLoaded() {
 
 // -------- adding slide data ------------
 
-
 // -------- adding slide data ------------
 function addSectionData() {
   totalSection = _pageData.sections.length;
   for (let n = 0; n < _pageData.sections.length; n++) {
     sectionCnt = n + 1;
     if (sectionCnt == 1) {
-
       // playBtnSounds(_pageData.sections[sectionCnt - 1].replayBtnAudios);
       // audioEnd(function () {
       //   $(".dummy-patch").hide();
@@ -122,7 +110,7 @@ function addSectionData() {
         vegetation: `<img src="${_pageData.sections[sectionCnt - 1].content.layerIcons.vegetation}" alt="Icon">`,
         population: `<img src="${_pageData.sections[sectionCnt - 1].content.layerIcons.population}" alt="Icon">`,
         parks: `<img src="${_pageData.sections[sectionCnt - 1].content.layerIcons.parks}" alt="Icon">`,
-        wildlife: `<img src="${_pageData.sections[sectionCnt - 1].content.layerIcons.wildlife}" alt="Icon">`
+        wildlife: `<img src="${_pageData.sections[sectionCnt - 1].content.layerIcons.wildlife}" alt="Icon">`,
       };
       let mapHtml = `
   <div class="dynamic-map-container">
@@ -154,7 +142,7 @@ function addSectionData() {
     <input type="checkbox" name="map_layer" value="${layer.value}">
     <span class="layer-icon-wrap">${icon}</span>
     <span class="layer-label-text">${layer.label}</span>
-    <button type="button" class="layer-info-icon layerPopupIcon" data-layer="${layer.value}" data-tooltip="Info"></button>
+    <button type="button" class="layer-info-icon layerPopupIcon" data-layer="${layer.value}" data-tooltip="Info" style="display:none;"></button>
     <button type="button"
             class="layer-active-toggle"
             data-layer="${layer.value}"
@@ -179,8 +167,8 @@ function addSectionData() {
     <!-- end .layers-sidebar -->
 `;
 
-
-      mapHtml += `<!-- Map Area -->
+      mapHtml +=
+        `<!-- Map Area -->
           <div class="map-view-area">
               <div class="zoom-controls">
                   <div class="zoomButtons">
@@ -192,10 +180,16 @@ function addSectionData() {
               
               <div class="map-wrapper" id="mapWrapper">
                <div class="map-img-layer" id="mapImgLayer">
-                  <img src="`+ _pageData.sections[0].content.mapImage.src + `" 
-                    alt="` + _pageData.sections[0].content.mapImage.alt + `" 
+                  <img src="` +
+        _pageData.sections[0].content.mapImage.src +
+        `" 
+                    alt="` +
+        _pageData.sections[0].content.mapImage.alt +
+        `" 
                     id="baseMapImg" 
-                    onerror="this.src='` + _pageData.sections[0].content.mapImage.fallback + `'" 
+                    onerror="this.src='` +
+        _pageData.sections[0].content.mapImage.fallback +
+        `'" 
                     style="width:100%; height:auto;" />
                     <div id="layerContainer"
      style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:5;">
@@ -209,7 +203,9 @@ function addSectionData() {
                         <path id="activeRegionPath" d="" />
                       </clipPath>
                     </defs>
-                    <image id="svgTopImg" href="`+ _pageData.sections[0].content.mapImage.src + `" 
+                    <image id="svgTopImg" href="` +
+        _pageData.sections[0].content.mapImage.src +
+        `" 
                            width="382" height="444" 
                            preserveAspectRatio="xMidYMid meet" 
                            clip-path="url(#regionClip)" style="display:none;" />
@@ -222,11 +218,13 @@ function addSectionData() {
           <!-- Information Panel -->
           <div class="div-info-panel" id="divInfoPanel" style="display:none;">
               <div class="info-content">
-                  <button class="wrapTextaudio playing" id="wrapTextaudio_1" data-tooltip="audio" data-src="${_pageData.sections[sectionCnt - 1].replayBtnAudios}" onClick="replayLastAudio(this)"></button>
+                  <button class="wrapTextaudio playing" id="wrapTextaudio_1" data-tooltip="Audio" data-src="${_pageData.sections[sectionCnt - 1].replayBtnAudios}" onClick="replayLastAudio(this)"></button>
                   <button class="region-info-close" data-tooltip="close" id="regionInfoClose" type="button"  aria-label="Close region information"></button>
                   <h2 id="infoTitle">Division Name</h2>
                   <p id="infoDesc">Description of the physical division goes here.</p>
-                  <h4>`+ _pageData.sections[0].content.uiText.infoPanelKeyFeaturesLabel + `</h4>
+                  <h4>` +
+        _pageData.sections[0].content.uiText.infoPanelKeyFeaturesLabel +
+        `</h4>
                   <ul id="infoFeatures"></ul>
               </div>
           </div>
@@ -271,6 +269,7 @@ function addSectionData() {
             </div>
           </div>
         </div>`;
+        
       popupDiv += `
   <div id="layerInfoPopup" class="layer-info-popup">
     <div class="popup-content">
@@ -295,7 +294,6 @@ function addSectionData() {
 
       // $('.nav_btns').append('<button id="full-screen" class="full-screen fScreen fullScreen" onclick="toggleFullscreen(this)" data-tooltip="Fullscreen"></button>')
 
-
       /* ================= BUTTON EVENTS ================= */
 
       // ---- Bind popup buttons ----
@@ -304,13 +302,9 @@ function addSectionData() {
         jumtoPage(_controller.pageCnt);
       });
 
-
-
-
       // $("#homeBack").on("click", function () {
-      //   jumtoPage(1); 
+      //   jumtoPage(1);
       // });
-
     } // end sectionCnt == 1
   } // end for
 } // end addSectionData
@@ -320,7 +314,7 @@ window.appState = { pageCount: 0 };
 // MAP INTERACTIONS — FUNCTIONS
 // ============================================================
 
-if (typeof currentZoomScale === 'undefined') {
+if (typeof currentZoomScale === "undefined") {
   var currentZoomScale = 1;
   var mapTranslateX = 0;
   var mapTranslateY = 0;
@@ -349,43 +343,65 @@ function getLayerData(layerKey) {
     return $.Deferred().resolve(null).promise();
   }
 
-  return $.getJSON(layerData.dataSrc + "?v=" + new Date().getTime())
-    .then(function (json) {
+  return $.getJSON(layerData.dataSrc + "?v=" + new Date().getTime()).then(
+    function (json) {
       layerDataCache[layerKey] = json;
       _pageData.sections[0].content.layerData[layerKey] = json;
       return json;
-    });
+    },
+  );
 }
 
 function initMapInteractions() {
   const $mapTooltip = $("#mapTooltip");
   // Create a fixed wrapper that acts as viewport anchor (immune to ancestor transforms)
   if (!$("#tooltipRoot").length) {
-    $("body").append('<div id="tooltipRoot" style="position:fixed;inset:0;pointer-events:none;z-index:99999"></div>');
+    $("body").append(
+      '<div id="tooltipRoot" style="position:fixed;inset:0;pointer-events:none;z-index:99999"></div>',
+    );
   }
   if (!$mapTooltip.parent().is("#tooltipRoot")) {
     $mapTooltip.appendTo("#tooltipRoot");
   }
-  $("input[name='map_layer']").on("change", function () {
-    renderActiveLayers();
-    currentZoomScale = 1;
-  });
+
+  $("input[name='map_layer']")
+    .off("change")
+    .on("change", function () {
+      const key = String($(this).val());
+
+      if ($(this).prop("checked")) {
+        // Checkbox click makes this the only active/ticked layer
+        setActiveLayer(key);
+      } else {
+        // Do not allow the active tick to disappear
+        if (activeLayerKey === key) {
+          $(this).prop("checked", true);
+          return;
+        }
+
+        renderActiveLayers();
+      }
+
+      currentZoomScale = 1;
+    });
 
   initLayerActiveToggle();
 
   // Tab switching
-  $(".layers-tab-btn").off("click").on("click", function () {
-    let tab = $(this).data("tab");
-    $(".layers-tab-btn").removeClass("active");
-    $(".layers-tab-panel").removeClass("active");
-    $(this).addClass("active");
-    if (tab === "layers") {
-      $("#layersTabPanel").addClass("active");
-    } else {
-      $("#positionTabPanel").addClass("active");
-      updateLayerPositionUI();
-    }
-  });
+  $(".layers-tab-btn")
+    .off("click")
+    .on("click", function () {
+      let tab = $(this).data("tab");
+      $(".layers-tab-btn").removeClass("active");
+      $(".layers-tab-panel").removeClass("active");
+      $(this).addClass("active");
+      if (tab === "layers") {
+        $("#layersTabPanel").addClass("active");
+      } else {
+        $("#positionTabPanel").addClass("active");
+        updateLayerPositionUI();
+      }
+    });
 
   $("#mapReset").on("click", function () {
     currentZoomScale = 1;
@@ -404,13 +420,34 @@ function initMapInteractions() {
     $("#mapReset").fadeIn();
   });
 
+  $(".layer-option")
+    .off("click.layerPopup")
+    .on("click.layerPopup", function (e) {
+      // Active toggle should only toggle layer
+      if ($(e.target).closest(".layer-active-toggle").length) {
+        return;
+      }
+
+      const layerKey = String($(this).data("layer"));
+
+      // Open popup for this layer
+      const $infoButton = $(`.layerPopupIcon[data-layer="${layerKey}"]`);
+
+      if ($infoButton.length) {
+        $infoButton.trigger("click");
+      }
+    });
+
   $("#mapZoomOut").on("click", function () {
     currentZoomScale -= _pageData.sections[0].content.zoomSettings.step;
     if (currentZoomScale < _pageData.sections[0].content.zoomSettings.min)
       currentZoomScale = _pageData.sections[0].content.zoomSettings.min;
     // TweenMax.to("#mapWrapper", 0.5, { scale: currentZoomScale, ease: Power2.easeOut });
     updateMapTransform();
-    if (currentZoomScale === _pageData.sections[0].content.zoomSettings.defaultScale)
+    if (
+      currentZoomScale ===
+      _pageData.sections[0].content.zoomSettings.defaultScale
+    )
       $("#mapReset").fadeOut();
   });
 
@@ -433,9 +470,7 @@ function initMapInteractions() {
     if (currentZoomScale <= 1) return;
     isDraggingMap = true;
 
-    const point = e.type === "touchstart"
-      ? e.originalEvent.touches[0]
-      : e;
+    const point = e.type === "touchstart" ? e.originalEvent.touches[0] : e;
 
     dragStartX = point.pageX - mapTranslateX;
     dragStartY = point.pageY - mapTranslateY;
@@ -444,12 +479,9 @@ function initMapInteractions() {
   });
 
   $(document).on("mousemove touchmove", function (e) {
-
     if (!isDraggingMap) return;
 
-    const point = e.type === "touchmove"
-      ? e.originalEvent.touches[0]
-      : e;
+    const point = e.type === "touchmove" ? e.originalEvent.touches[0] : e;
 
     mapTranslateX = point.pageX - dragStartX;
     mapTranslateY = point.pageY - dragStartY;
@@ -458,78 +490,131 @@ function initMapInteractions() {
   });
 
   $(document).on("mouseup touchend touchcancel", function () {
-
     isDraggingMap = false;
 
-    $("#mapWrapper").css(
-      "cursor",
-      currentZoomScale > 1 ? "grab" : "default"
-    );
+    $("#mapWrapper").css("cursor", currentZoomScale > 1 ? "grab" : "default");
   });
 
-  layerOrder = _pageData.sections[0].content.mapLayers.map(l => l.value);
+  layerOrder = _pageData.sections[0].content.mapLayers.map((l) => l.value);
 
   updateLayerOrderUI();
 
-  $("#layersToggleBtn").off("click").on("click", function () {
+  $("#layersToggleBtn")
+    .off("click")
+    .on("click", function () {
+      playClickThen();
+
+      const $sidebar = $("#layersSidebar");
+      const isOpen = $sidebar.is(":visible");
+
+      if (isOpen) {
+        $sidebar.hide();
+        $(this).removeClass("active").attr("aria-expanded", "false");
+      } else {
+        $sidebar.show();
+        $(this).addClass("active").attr("aria-expanded", "true");
+      }
+    });
+
+  $(".layerPopupIcon").off("click").on("click", layerPopupBox);
+}
+
+function layerPopupBox(e) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  if (typeof playClickThen === "function") {
     playClickThen();
+  }
 
-    const $sidebar = $("#layersSidebar");
-    const isOpen = $sidebar.is(":visible");
+  const layerKey = String($(this).data("layer"));
 
-    if (isOpen) {
-      $sidebar.hide();
-      $(this).removeClass("active").attr("aria-expanded", "false");
-    } else {
-      $sidebar.show();
-      $(this).addClass("active").attr("aria-expanded", "true");
-    }
+  const layerData = _pageData.sections[0].content.mapLayers.find(
+    function (layer) {
+      return String(layer.value) === layerKey;
+    },
+  );
+
+  if (!layerData) {
+    console.warn("Layer data not found for:", layerKey);
+    return;
+  }
+
+  // Set popup content
+  $("#layerPopupTitle").text(layerData.label);
+  $("#layerPopupDesc").text(layerData.desc || "");
+
+  // Show popup
+  $("#layerInfoPopup").css({
+    display: "flex",
+    visibility: "visible",
+    opacity: "1",
   });
 
-  $(".layerPopupIcon").off("click").on("click", function (e) {
-    e.preventDefault();
-    e.stopPropagation();
+  // Play layer audio if available
+  if (layerData.audio) {
+    const audio = document.getElementById("simulationAudio");
 
-    if (typeof playClickThen === "function") {
-      playClickThen();
-    }
-
-    const layerKey = $(this).data("layer");
-    const layerData = _pageData.sections[0].content.mapLayers.find(function (layer) {
-      return layer.value === layerKey;
-    });
-
-    if (!layerData) return;
-
-    $("#layerPopupTitle").text(layerData.label);
-    $("#layerPopupDesc").text(layerData.desc);
-
-    $("#layerInfoPopup").css({
-      display: "flex",
-      visibility: "visible",
-      opacity: "1"
-    });
-
-    if (layerData.audio) { // replace 'audio' with your actual property name if different
-      const audio = $("#simulationAudio")[0];
+    if (audio) {
       audio.pause();
       audio.currentTime = 0;
       audio.src = layerData.audio;
       audio.load();
-      audio.play();
-      const audioElement = document.querySelector("#wrapTextaudio_1");
-      audioElement.classList.remove("mute");
-      audioElement.classList.add("playing");
 
+      audio.play().catch(function (err) {
+        console.warn("Layer popup audio play failed:", err);
+      });
+
+      const audioElement = document.querySelector("#wrapTextaudio_1");
+
+      if (audioElement) {
+        audioElement.classList.remove("mute");
+        audioElement.classList.add("playing");
+
+        // Update replay button audio source
+        audioElement.setAttribute("data-src", layerData.audio);
+      }
+    }
+  }
+}
+
+function setActiveLayer(key) {
+  key = String(key);
+
+  const $checkbox = $(`input[name="map_layer"][value="${key}"]`);
+
+  if (!$checkbox.length) return;
+
+  // Only ONE checkbox/tick is allowed
+  $("input[name='map_layer']").each(function () {
+    const otherKey = String($(this).val());
+
+    if (otherKey !== key) {
+      $(this).prop("checked", false);
     }
   });
+
+  // Always keep selected layer ticked
+  $checkbox.prop("checked", true);
+
+  // This becomes the active/top layer
+  activeLayerKey = key;
+
+  // Add to selected layer list if missing
+  if (!activeLayerOrder.includes(key)) {
+    activeLayerOrder.push(key);
+  }
+
+  moveActiveLayerToTop();
+  renderActiveLayers();
 }
+
 function closeLayerInfoPopup() {
   playClickThen();
 
   $("#layerInfoPopup").css({
     display: "none",
-    opacity: "0"
+    opacity: "0",
   });
   let audio = document.getElementById("simulationAudio");
   if (audio.src) {
@@ -540,7 +625,7 @@ function closeLayerInfoPopup() {
 function closeLayerBtnInfoPopup() {
   playClickThen();
   $("#layersSidebar").css({
-    display: "none"
+    display: "none",
   });
 }
 
@@ -552,11 +637,17 @@ function clampMapTranslate() {
     return;
   }
 
-  const maxTranslateX = wrapper.offsetWidth * (currentZoomScale - 1) / 2;
-  const maxTranslateY = wrapper.offsetHeight * (currentZoomScale - 1) / 2;
+  const maxTranslateX = (wrapper.offsetWidth * (currentZoomScale - 1)) / 2;
+  const maxTranslateY = (wrapper.offsetHeight * (currentZoomScale - 1)) / 2;
 
-  mapTranslateX = Math.max(-maxTranslateX, Math.min(maxTranslateX, mapTranslateX));
-  mapTranslateY = Math.max(-maxTranslateY, Math.min(maxTranslateY, mapTranslateY));
+  mapTranslateX = Math.max(
+    -maxTranslateX,
+    Math.min(maxTranslateX, mapTranslateX),
+  );
+  mapTranslateY = Math.max(
+    -maxTranslateY,
+    Math.min(maxTranslateY, mapTranslateY),
+  );
 }
 
 function updateMapTransform() {
@@ -566,7 +657,7 @@ function updateMapTransform() {
     scale: currentZoomScale,
     x: mapTranslateX,
     y: mapTranslateY,
-    transformOrigin: "center center"
+    transformOrigin: "center center",
   });
 }
 
@@ -583,8 +674,10 @@ function focusMapOnRegion(regionPath, clickEvent) {
 
   try {
     const bbox = regionPath.getBBox();
-    targetX = ((bbox.x + bbox.width / 2) - viewBox.x) / viewBox.width * wrapperWidth;
-    targetY = ((bbox.y + bbox.height / 2) - viewBox.y) / viewBox.height * wrapperHeight;
+    targetX =
+      ((bbox.x + bbox.width / 2 - viewBox.x) / viewBox.width) * wrapperWidth;
+    targetY =
+      ((bbox.y + bbox.height / 2 - viewBox.y) / viewBox.height) * wrapperHeight;
   } catch (err) {
     if (clickEvent) {
       const offset = $("#mapWrapper").offset();
@@ -601,7 +694,7 @@ function updateLayerOrderUI() {
   let html = "";
   layerOrder.forEach((key, index) => {
     let layer = _pageData.sections[0].content.mapLayers.find(
-      l => l.value === key
+      (l) => l.value === key,
     );
     html += `
         <li class="layer-order-item"
@@ -616,7 +709,6 @@ function updateLayerOrderUI() {
 }
 
 function initLayerDrag() {
-
   let dragged = null;
 
   $(".layer-order-item").on("dragstart", function () {
@@ -628,7 +720,6 @@ function initLayerDrag() {
   });
 
   $(".layer-order-item").on("drop", function (e) {
-
     e.preventDefault();
 
     if (dragged === this) return;
@@ -645,33 +736,37 @@ function initLayerDrag() {
 }
 
 function renderActiveLayers() {
-  $("input[name='map_layer']:checked").each(function () {
-    let key = $(this).val();
-
-    if (!activeLayerOrder.includes(key)) {
-      activeLayerOrder.push(key);
-    }
+  // Remove invalid or unchecked layers from the selected layer order
+  activeLayerOrder = activeLayerOrder.filter(function (key) {
+    return $(`input[name="map_layer"][value="${key}"]`).length;
   });
 
-  activeLayerOrder = activeLayerOrder.filter(key =>
-    $(`input[value="${key}"]`).prop("checked")
-  );
-
-  if (!activeLayerOrder.includes(activeLayerKey)) {
-    activeLayerKey = activeLayerOrder[0] || null;
+  // Make sure active layer exists in the selected layer order
+  if (activeLayerKey && !activeLayerOrder.includes(activeLayerKey)) {
+    activeLayerOrder.push(activeLayerKey);
   }
 
-  moveActiveLayerToTop();
+  // If active layer is missing, use the first selected layer
+  if (
+    activeLayerKey &&
+    !$(`input[name="map_layer"][value="${activeLayerKey}"]`).length
+  ) {
+    activeLayerKey = null;
+  }
 
   $("#layerContainer").empty();
 
-  activeLayerOrder.slice().reverse().forEach(function (key) {
-    let layer = _pageData.sections[0].content.mapLayers.find(
-      x => x.value === key
-    );
+  // Render from bottom to top
+  activeLayerOrder
+    .slice()
+    .reverse()
+    .forEach(function (key) {
+      const layer = _pageData.sections[0].content.mapLayers.find(
+        (x) => x.value === key,
+      );
 
-    if (layer && layer.image) {
-      $("#layerContainer").append(`
+      if (layer && layer.image) {
+        $("#layerContainer").append(`
         <img
           src="${layer.image}"
           class="map-layer-img"
@@ -684,9 +779,10 @@ function renderActiveLayers() {
             height:100%;
           ">
       `);
-    }
-  });
+      }
+    });
 
+  updateCheckboxUI();
   updateLayerActiveToggleUI();
 
   if (activeLayerOrder.length === 0) {
@@ -696,14 +792,17 @@ function renderActiveLayers() {
     return;
   }
 
-  renderSVGForLayer(activeLayerKey);
+  // Always show SVG/info for the one ticked active layer
+  if (activeLayerKey) {
+    renderSVGForLayer(activeLayerKey);
+  }
 }
 
 function updateLayerPositionUI() {
   let html = "";
   activeLayerOrder.forEach((key, index) => {
     let layer = _pageData.sections[0].content.mapLayers.find(
-      x => x.value === key
+      (x) => x.value === key,
     );
     html += `
         <div class="layer-position-item"
@@ -719,58 +818,94 @@ function updateLayerPositionUI() {
 
 function updateLayerActiveToggleUI() {
   $(".layer-active-toggle").each(function () {
-    let key = $(this).data("layer");
-    let isActive =
-      key === activeLayerKey &&
-      $(`input[name="map_layer"][value="${key}"]`).prop("checked");
+    const key = String($(this).attr("data-layer"));
+    const isSelected = activeLayerOrder.includes(key);
 
     $(this)
-      .toggleClass("active", isActive)
-      .attr("aria-pressed", isActive)
+      .toggleClass("active", isSelected)
+      .attr("aria-pressed", isSelected)
       .css({
-        background: isActive ? "#2e7d32" : "#d7dce2",
-        borderColor: isActive ? "#2e7d32" : "#7c8794"
-      })
+        background: isSelected ? "#2e7d32" : "#d7dce2",
+        borderColor: isSelected ? "#2e7d32" : "#7c8794",
+      });
+
+    $(this)
       .find(".layer-active-toggle-knob")
-      .css("transform", isActive ? "translateX(16px)" : "translateX(0)");
+      .css("transform", isSelected ? "translateX(16px)" : "translateX(0)");
   });
 }
 
 function moveActiveLayerToTop() {
   if (!activeLayerKey) return;
 
-  activeLayerOrder = activeLayerOrder.filter(key => key !== activeLayerKey);
+  activeLayerOrder = activeLayerOrder.filter((key) => key !== activeLayerKey);
   activeLayerOrder.unshift(activeLayerKey);
 }
 
-function setActiveLayer(key) {
-  let $checkbox = $(`input[name="map_layer"][value="${key}"]`);
-  if (!$checkbox.length) return;
+function toggleLayerSelection(key) {
+  key = String(key);
 
-  if (!$checkbox.prop("checked")) {
-    $checkbox.prop("checked", true);
-  }
+  const isSelected = activeLayerOrder.includes(key);
 
-  if (!activeLayerOrder.includes(key)) {
+  if (isSelected) {
+    // -----------------------------------------
+    // Toggle OFF
+    // -----------------------------------------
+    activeLayerOrder = activeLayerOrder.filter(function (k) {
+      return k !== key;
+    });
+
+    // Remove checkbox tick
+    $(`input[name="map_layer"][value="${key}"]`).prop("checked", false);
+
+    // If the removed layer was the active layer,
+    // select another active layer if available.
+    if (activeLayerKey === key) {
+      if (activeLayerOrder.length > 0) {
+        activeLayerKey = activeLayerOrder[0];
+
+        // Keep the new active layer checked
+        $(`input[name="map_layer"][value="${activeLayerKey}"]`)
+          .prop("checked", true);
+      } else {
+        // -----------------------------------------
+        // NOTHING SELECTED
+        // -----------------------------------------
+        activeLayerKey = null;
+      }
+    }
+  } else {
+    // -----------------------------------------
+    // Toggle ON
+    // -----------------------------------------
     activeLayerOrder.push(key);
+
+    // If there is no active layer, make this active
+    if (!activeLayerKey) {
+      activeLayerKey = key;
+
+      $(`input[name="map_layer"][value="${key}"]`)
+        .prop("checked", true);
+    }
   }
 
-  activeLayerKey = key;
-  moveActiveLayerToTop();
   renderActiveLayers();
 }
 
 function initLayerActiveToggle() {
-  $(".layer-active-toggle").off("click").on("click", function (e) {
-    e.preventDefault();
-    e.stopPropagation();
+  $(".layer-active-toggle")
+    .off("click.layerToggle")
+    .on("click.layerToggle", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
 
-    setActiveLayer($(this).data("layer"));
-  });
+      const key = String($(this).attr("data-layer"));
+
+      toggleLayerSelection(key);
+    });
 }
 
 function initLayerSorting() {
-
   let dragged = null;
 
   $(".layer-position-item").off();
@@ -784,7 +919,6 @@ function initLayerSorting() {
   });
 
   $(".layer-position-item").on("drop", function (e) {
-
     e.preventDefault();
 
     let fromLayer = $(dragged).data("layer");
@@ -801,7 +935,6 @@ function initLayerSorting() {
 }
 
 function renderSVGForLayer(layerKey) {
-
   $("#regionPathsGroup").empty();
 
   if (!layerKey) {
@@ -817,9 +950,7 @@ function renderSVGForLayer(layerKey) {
       $("#physicalLayerSVG").hide();
       return;
     }
-    $("#svgTopImg")
-      .attr("href", layerData.mapImage.src)
-      .hide();
+    $("#svgTopImg").attr("href", layerData.mapImage.src).hide();
 
     if (!layerData || !layerData.regions) {
       $("#physicalLayerSVG").hide();
@@ -828,8 +959,7 @@ function renderSVGForLayer(layerKey) {
 
     let svgHtml = "";
 
-    layerData.regions.forEach(region => {
-
+    layerData.regions.forEach((region) => {
       if (region.type === "rect") {
         svgHtml += `
             <rect
@@ -850,7 +980,7 @@ function renderSVGForLayer(layerKey) {
               y="${region.y}"
               width="${region.width}"
               height="${region.height}"
-              transform="${region.rotate ? `rotate(${region.rotate} ${region.x + region.width / 2} ${region.y + region.height / 2})` : ''}"
+              transform="${region.rotate ? `rotate(${region.rotate} ${region.x + region.width / 2} ${region.y + region.height / 2})` : ""}"
               fill="transparent">
             </rect>`;
       } else {
@@ -874,11 +1004,10 @@ function renderSVGForLayer(layerKey) {
   });
 }
 
-
 function closeRegionInfoPanel() {
   $("#divInfoPanel").fadeOut(150);
   console.log("popup closed");
-  const audio = document.getElementById('simulationAudio');
+  const audio = document.getElementById("simulationAudio");
   audio.pause();
   audio.currentTime = 0;
   $("#svgTopImg").hide();
@@ -890,15 +1019,16 @@ function closeRegionInfoPanel() {
 var gScale = detectGlobalScale();
 function detectGlobalScale() {
   var d = document.createElement("div");
-  d.style.cssText = "position:fixed;left:100px;top:100px;width:1px;height:1px;opacity:0;pointer-events:none;z-index:-1";
+  d.style.cssText =
+    "position:fixed;left:100px;top:100px;width:1px;height:1px;opacity:0;pointer-events:none;z-index:-1";
   document.body.appendChild(d);
   var r = d.getBoundingClientRect();
   document.body.removeChild(d);
-  return (r.left / 100) || 1;
+  return r.left / 100 || 1;
 }
 
 // Re-detect on resize/orientation change
-$(window).on("resize orientationchange", function() {
+$(window).on("resize orientationchange", function () {
   gScale = detectGlobalScale();
 });
 
@@ -916,11 +1046,11 @@ function positionMapTooltip(e) {
   var wh = window.innerHeight / gScale;
 
   if (x + tw > ww) {
-    x = (e.clientX - ($tooltip.outerWidth() / gScale) - gap) / gScale;
+    x = (e.clientX - $tooltip.outerWidth() / gScale - gap) / gScale;
   }
 
   if (y + th > wh) {
-    y = (e.clientY - ($tooltip.outerHeight() / gScale) - gap) / gScale;
+    y = (e.clientY - $tooltip.outerHeight() / gScale - gap) / gScale;
   }
 
   if (x < 0) x = gap / gScale;
@@ -934,65 +1064,70 @@ function positionMapTooltip(e) {
 
 function bindRegionEvents(regions) {
   let regionMap = {};
-  regions.forEach(r => regionMap[r.id] = r);
+  regions.forEach((r) => (regionMap[r.id] = r));
 
   $(document).off("mouseenter mouseleave click", ".phy-region");
 
-  $(".phy-region").on("mouseenter", function (e) {
-    let bbox = this.getBBox();
+  $(".phy-region")
+    .on("mouseenter", function (e) {
+      let bbox = this.getBBox();
 
-    let centerX = bbox.x + bbox.width / 2;
-    let centerY = bbox.y + bbox.height / 2;
-    if (!$(this).hasClass("active")) {
-      TweenMax.to(this, 0.3, { fillOpacity: 0, strokeWidth: 0 });
-      $(this).css("cursor", "pointer");
+      let centerX = bbox.x + bbox.width / 2;
+      let centerY = bbox.y + bbox.height / 2;
+      if (!$(this).hasClass("active")) {
+        TweenMax.to(this, 0.3, { fillOpacity: 0, strokeWidth: 0 });
+        $(this).css("cursor", "pointer");
+        let regionId = $(this).data("id");
+        let d = regionMap[regionId];
+        if (d) {
+          $("#mapTooltip").stop(true, true).text(d.name).show();
+          positionMapTooltip(e);
+        }
+      }
+    })
+    .on("mousemove", function (e) {
+      positionMapTooltip(e);
+    })
+    .on("mouseleave", function () {
+      if (!$(this).hasClass("active")) {
+        TweenMax.to(this, 0.1, { fillOpacity: 0, strokeWidth: 0 });
+      }
+      $("#mapTooltip").stop(true, true).fadeOut(100);
+    })
+    .on("click", function (e) {
       let regionId = $(this).data("id");
       let d = regionMap[regionId];
-      if (d) {
-        $("#mapTooltip").stop(true, true).text(d.name).show();
-        positionMapTooltip(e);
-      }
-    }
-  }).on("mousemove", function (e) {
-    positionMapTooltip(e);
-  }).on("mouseleave", function () {
-    if (!$(this).hasClass("active")) {
-      TweenMax.to(this, 0.1, { fillOpacity: 0, strokeWidth: 0 });
-    }
-    $("#mapTooltip").stop(true, true).fadeOut(100);
-  }).on("click", function (e) {
-    let regionId = $(this).data("id");
-    let d = regionMap[regionId];
-    if (!d) return;
+      if (!d) return;
 
-    TweenMax.to("#baseMapImg", 0.1, { filter: "blur(0px)" });
-    // $("#activeRegionPath").attr("d", d.d);
-    $("#svgTopImg").hide();
+      TweenMax.to("#baseMapImg", 0.1, { filter: "blur(0px)" });
+      // $("#activeRegionPath").attr("d", d.d);
+      $("#svgTopImg").hide();
 
-    $(".phy-region").removeClass("active");
-    TweenMax.to(".phy-region", 0.3, { fillOpacity: 0, strokeWidth: 0 });
+      $(".phy-region").removeClass("active");
+      TweenMax.to(".phy-region", 0.3, { fillOpacity: 0, strokeWidth: 0 });
 
-    $(this).addClass("active");
-    TweenMax.to(this, 0.3, { fillOpacity: 0, strokeWidth: 0 });
+      $(this).addClass("active");
+      TweenMax.to(this, 0.3, { fillOpacity: 0, strokeWidth: 0 });
 
-    currentZoomScale = d.scale || _pageData.sections[0].content.zoomSettings.defaultScale;
-    focusMapOnRegion(this, e);
+      currentZoomScale =
+        d.scale || _pageData.sections[0].content.zoomSettings.defaultScale;
+      focusMapOnRegion(this, e);
 
-    updateMapTransform();
+      updateMapTransform();
 
-    $("#infoTitle").text(d.name);
+      $("#infoTitle").text(d.name);
 
-    $("#infoDesc").text(d.desc);
-    let fHtml = "";
-    d.features.forEach(f => fHtml += "<li>" + f + "</li>");
-    $("#infoFeatures").html(fHtml);
-    $("#divInfoPanel").fadeIn();
-    const audio = $("#simulationAudio")[0];
-    audio.src = d.audio;
-    audio.load();
-    audio.play();
-    $("#mapReset").fadeIn();
-  });
+      $("#infoDesc").text(d.desc);
+      let fHtml = "";
+      d.features.forEach((f) => (fHtml += "<li>" + f + "</li>"));
+      $("#infoFeatures").html(fHtml);
+      $("#divInfoPanel").fadeIn();
+      const audio = $("#simulationAudio")[0];
+      audio.src = d.audio;
+      audio.load();
+      audio.play();
+      $("#mapReset").fadeIn();
+    });
 }
 /* ---------- showEndAnimations — overrides shared version ---------- */
 function showEndAnimations() {
@@ -1021,7 +1156,6 @@ function showEndAnimations() {
   });
 }
 
-
 /* ---------- restartActivity — overrides shared version ---------- */
 function restartActivity() {
   $(".popup").css("opacity", "0");
@@ -1035,45 +1169,50 @@ function restartActivity() {
 
 function playFeedbackAudio(_audio) {
   $(".dummy-patch").show();
-  playBtnSounds(_audio)
+  playBtnSounds(_audio);
   audioEnd(function () {
     $(".dummy-patch").hide();
-  })
+  });
 }
 
+function updateCheckboxUI() {
+  $("input[name='map_layer']").each(function () {
+    const key = String($(this).val());
+
+    $(this).prop("checked", key === String(activeLayerKey));
+  });
+}
 
 function onClickAudioHandler(e) {
-
   $("#simulationAudio")[0].pause();
   playClickThen();
-  $('.dummy-box').show();
+  $(".dummy-box").show();
   e.stopPropagation();
-  const audioSrc = $(this).data('audio');
+  const audioSrc = $(this).data("audio");
   if (!audioSrc) {
-    console.log('No audio src found');
+    console.log("No audio src found");
     return;
   }
 
-  const audio = document.getElementById('simulationAudio');
+  const audio = document.getElementById("simulationAudio");
   if (!audio) {
-    console.log('Audio element not found');
+    console.log("Audio element not found");
     return;
   }
 
   audio.src = audioSrc;
   audio.currentTime = 0;
 
-  audio.play().catch(err => {
-    console.error('Audio play failed:', err);
+  audio.play().catch((err) => {
+    console.error("Audio play failed:", err);
   });
 
-  audio.addEventListener('ended', function () {
-    console.log('Audio finished playing');
+  audio.addEventListener("ended", function () {
+    console.log("Audio finished playing");
     $("dummy-patch").hide();
     resetSimulationAudio();
 
-    $('.dummy-box').hide();
-
+    $(".dummy-box").hide();
   });
 }
 
@@ -1100,7 +1239,7 @@ function stayPage() {
   // AudioController.play();
 
   // Resume simulation audio if it was playing before popup
-  if (typeof resumeSimulationAudio === 'function') {
+  if (typeof resumeSimulationAudio === "function") {
     resumeSimulationAudio();
   }
 
@@ -1110,7 +1249,6 @@ function stayPage() {
 function leavePage() {
   playClickThen();
 
-
   var audio = document.getElementById("simulationAudio");
   if (audio) {
     // Stop audio whether it's playing or paused
@@ -1119,14 +1257,14 @@ function leavePage() {
   }
 
   // Clear the manual pause flag since we're leaving
-  if (typeof isManuallyPaused !== 'undefined') {
+  if (typeof isManuallyPaused !== "undefined") {
     isManuallyPaused = false;
   }
-  if (typeof simulationWasPlaying !== 'undefined') {
+  if (typeof simulationWasPlaying !== "undefined") {
     simulationWasPlaying = false;
   }
 
-  jumtoPage(0);
+  jumtoPage(1);
 }
 
 function jumtoPage(pageNo) {
@@ -1136,7 +1274,6 @@ function jumtoPage(pageNo) {
 
   _controller.updateViewNow();
 }
-
 
 var activeAudio = null;
 
@@ -1165,13 +1302,9 @@ function playBtnSounds(soundFile) {
   audio.play().catch((err) => {
     console.warn("Audio play error:", err);
   });
-
 }
 
-
-
 function resetSimulationAudio() {
-
   $("dummy-patch").hide();
 
   const audioElement = document.getElementById("simulationAudio");
@@ -1188,12 +1321,7 @@ function resetSimulationAudio() {
   audioElement.load();
   audioElement.onended = null;
   // ✅ ensure button enabled
-
 }
-
-
-
-
 
 function audioEnd(callback) {
   const audio = document.getElementById("simulationAudio");
@@ -1203,11 +1331,10 @@ function audioEnd(callback) {
   };
 }
 
-
 function toggleAudio(el) {
   playClickThen();
   // console.log(event, "current e")
-  // const el = event.currentTarget; 
+  // const el = event.currentTarget;
   const audio = document.getElementById("audio_src");
 
   // console.log(el, "Target class");
@@ -1237,14 +1364,9 @@ var AudioController = (() => {
     },
     pause() {
       if (hasAudio()) audio.pause();
-    }
+    },
   };
 })();
-
-
-
-
-
 
 function restartActivity() {
   $(".popup").css("opacity", "0");
@@ -1257,7 +1379,7 @@ function restartActivity() {
 
 function showEndAnimations() {
   var $audio = $("#simulationAudio");
-  closePopup('introPopup-1');
+  closePopup("introPopup-1");
   console.log("Audio ending");
   pageVisited();
 
@@ -1274,15 +1396,14 @@ function showEndAnimations() {
         $(".greetingsPop").css("opacity", "0");
         $(".popup").css("visibility", "visible");
         $(".popup").css("opacity", "1");
-      }, 1500)
+      }, 1500);
       setTimeout(function () {
         $(".confetti").removeClass("show");
-        // $(".confetti").hide();                
+        // $(".confetti").hide();
       }, 2000);
 
       $audio.off("timeupdate");
     }
-
   });
 }
 
@@ -1313,55 +1434,79 @@ function goToMainScreen() {
 //   }
 // }
 
-
 // --- UPDATED REPLAY FUNCTION ---
+
 function replayLastAudio(btn) {
   const audio = document.getElementById("simulationAudio");
-  const audioSource = btn.getAttribute('data-src') || window.replayBtnAudio;
 
-  console.log("Replay/Toggle triggered");
-
-  // 1. RESTART: If audio has finished or isn't loaded
-  if (audio.ended || !audio.src || audio.src === "") {
-    console.log("Starting Audio Fresh");
-
-    // Reset Mute to False (Play with sound)
-    audio.muted = false;
-
-    // SHOW patch on start
-    $(".dummy-patch").show();
-
-    playBtnSounds(audioSource);
-    setButtonState(btn, "playing");
-
-    // Attach completion listener
-    audioEnd(() => {
-      setButtonState(btn, "paused");
-      $(".dummy-patch").hide(); // Always hide when done
-      console.log("Audio completed");
-    });
+  if (!audio) {
+    console.warn("simulationAudio not found");
     return;
   }
 
-  // 2. TOGGLE Logic (While Playing)
-  if (audio.muted) {
-    // --- RESUME (UNMUTE) ---
-    console.log("Resuming Sound");
-    audio.muted = false;
-    setButtonState(btn, "playing");
+  console.log("Replay/Toggle triggered");
+  console.log("Current audio source:", audio.currentSrc || audio.src);
 
-    // SHOW patch because audio is audible now
-    $(".dummy-patch").show();
-  } else {
-    // --- MUTE (SILENT PLAY) ---
-    console.log("Muting Sound");
-    audio.muted = true;
+  // --------------------------------------------------
+  // AUDIO IS PLAYING
+  // Pause and reset to beginning.
+  // DO NOT remove/change the source.
+  // --------------------------------------------------
+  if (!audio.paused && !audio.ended) {
+    console.log("Pausing and resetting audio");
+
+    audio.pause();
+    audio.currentTime = 0;
+
+    $(".dummy-patch").hide();
     setButtonState(btn, "paused");
 
-    // HIDE patch because audio is silent (user wants to interact)
+    return;
+  }
+
+  // --------------------------------------------------
+  // AUDIO IS PAUSED / ENDED
+  // Play the SAME source again from beginning.
+  // --------------------------------------------------
+  console.log("Playing same audio from beginning");
+
+  audio.muted = false;
+  audio.currentTime = 0;
+
+  $(".dummy-patch").show();
+
+  audio.play().then(function () {
+    setButtonState(btn, "playing");
+  }).catch(function (err) {
+    console.warn("Audio play failed:", err);
+  });
+
+  // Only attach the ended handler.
+  // Do NOT change audio.src.
+  audio.onended = function () {
+    audio.currentTime = 0;
+
     $(".dummy-patch").hide();
+    setButtonState(btn, "paused");
+
+    console.log("Audio completed");
+  };
+}
+
+
+function setButtonState(btn, state) {
+  if (!btn) return;
+
+  if (state === "playing") {
+    btn.classList.remove("paused");
+    btn.classList.add("playing");
+  } else {
+    btn.classList.remove("playing");
+    btn.classList.add("paused");
   }
 }
+
+
 
 // Helper to toggle classes
 function setButtonState(btn, state) {
@@ -1382,7 +1527,6 @@ function audioEnd(callback) {
     if (typeof callback === "function") callback();
   };
 }
-
 
 // -------- update CSS ------------
 function setCSS(sectionCnt) {
@@ -1417,22 +1561,25 @@ function enableAll() {
   playClickThen();
   window.enableClockControls();
   // window.enableIdleStart();
-  $(".home_btn, .music,.introInfo,#full-screen, .wrapTextaudio").prop("disabled", false);
+  $(".home_btn, .music,.introInfo,#full-screen, .wrapTextaudio").prop(
+    "disabled",
+    false,
+  );
   const audio = document.getElementById("audio_src");
   if (_controller._globalMusicPlaying) {
     audio.muted = false;
     audio.play();
   }
-
 }
-
-
 
 function disableAll() {
   playClickThen();
   window.disableClockControls();
   // window.disableIdleStart();
-  $(".home_btn, .music,.introInfo,#full-screen,.wrapTextaudio").prop("disabled", true);
+  $(".home_btn, .music,.introInfo,#full-screen,.wrapTextaudio").prop(
+    "disabled",
+    true,
+  );
   const audio = document.getElementById("audio_src");
   if (_controller._globalMusicPlaying) {
     audio.pause();
@@ -1480,7 +1627,7 @@ function mainAnimation() {
     {
       opacity: 1,
     },
-    300
+    300,
   );
 }
 
@@ -1494,10 +1641,7 @@ function withAudioSync() {
   _tweenTimeline.add(animateFadeOut($(".dummy-patch"), 0.5).play(), 3);
   // _tweenTimeline.add(animateFadeIn($(".inst"), 0.5).play(), 5);
 
-  _tweenTimeline.add(
-    animateFadeIn($(".animat-container"), 0.5, 0).play(),
-    0.3
-  );
+  _tweenTimeline.add(animateFadeIn($(".animat-container"), 0.5, 0).play(), 0.3);
 
   var rightListTiming = [0.3];
   // for (var k = 0; k < rightListTiming.length; k++) {

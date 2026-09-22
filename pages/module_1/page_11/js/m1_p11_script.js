@@ -550,7 +550,7 @@ function leavePage() {
     simulationWasPlaying = false;
   }
 
-  jumtoPage(0);
+  jumtoPage(1);
 }
 
 function jumtoPage(pageNo) {

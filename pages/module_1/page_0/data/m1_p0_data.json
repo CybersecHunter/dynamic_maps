@@ -1,0 +1,94 @@
+{
+	"mainAudio": {
+		"audioSRC": "pages/module_1/page_0/audios/intro_pop_audio.mp3",
+		"isEmptyAudio": false,
+		"audioIndex": 0
+	},
+	"bgImgs": [
+		{
+			"imageSRC": "pages/module_1/page_0/images/intro_bg.gif"
+		}
+	],
+	"imgCollage": {
+		"desktop": [
+			{
+				"imageSRC": "pages/module_1/page_0/images/intro_bg.gif",
+				"altText": ""
+			}
+		],
+		"portrait": [
+			{
+				"imageSRC": "pages/module_1/page_0/images/intro_bg.gif",
+				"altText": ""
+			}
+		]
+	},
+	"sections": [
+		{
+			"slideType": "overview",
+			"slideTitle": "overview",
+			"headerTitle": "pages/module_1/page_0/images/title.png",
+			"infoPopAudio":"pages/module_1/page_0/audios/intro_pop_audio.mp3",
+			"helpPopAudio":"pages/module_1/page_0/audios/help_popup.mp3",
+			"replayBtnAudios":"pages/module_1/page_0/audios/intro_pop_audio.mp3",
+			"introAudio": "pages/module_1/page_0/audios/intro_pop_audio.mp3",
+			"infoPopImage":"pages/module_1/page_0/images/home_info.png",
+			"infoBtnSrc": "assets/images/info.png",
+			"homeBtnSrc": "assets/images/home.png",
+			"helpBtnSrc": "assets/images/help.png",
+			"ost": "",
+			"insText": "Page_0",
+			"content": {
+				"text": [
+					""
+				],
+				"sectionArray": [
+					{
+						"sectionID": 10,
+						"sectionIndx": 1,
+						"infoAudio": "pages/module_1/page_0/audios/BG.mp3",
+						"isEmptyAudio": false,
+						"audioIndex": 0,
+						"infoImg": "pages/module_1/page_0/images/Story_Time_Info.png",
+						"thumb": "pages/module_1/page_0/images/map1.png",
+						"title": ""
+					},
+					{
+						"sectionID": 11,
+						"sectionIndx": 2,
+						"infoAudio": "pages/module_1/page_0/audios/BG.mp3",
+						"isEmptyAudio": false,
+						"audioIndex": 1,
+						"infoImg": "pages/module_1/page_0/images/Simulation_info.png",
+						"thumb": "pages/module_1/page_0/images/map2.png",
+						"title": ""
+					}
+				]
+			}
+		}
+	],
+	"transcriptText": [
+		[
+			"There are several key elements that must be addressed during an internal control test. Each button here represents a fundamental aspect of the internal control testing process.",
+			"To learn more about each subject, Select the respective button."
+		],
+		[
+			""
+		],
+		[
+			""
+		],
+		[
+			""
+		]
+	],
+	"ccText": [
+		[
+			{
+				"text": "",
+				"startTime": 0,
+				"endTime": 6.2
+			}
+		]
+	]
+}
